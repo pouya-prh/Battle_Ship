@@ -9,11 +9,7 @@ DialogSetGameBoard::DialogSetGameBoard(QWidget *parent)
 {
     ui->setupUi(this);
     setAcceptDrops(true);
-    //GameBoard *gameBoard = ui->tableWidget;
-    // gameBoard = qobject_cast<GameBoard *>(ui->tableWidget);
-    // if (gameBoard) {
-    //     gameBoard->setAcceptDrops(true);
-    // }
+
 
 
 }
