@@ -1,0 +1,20 @@
+{
+     "accounts": [
+          {
+               "email": "pouya@gmail.com",
+               "lastname": "prh",
+               "name": "pouya",
+               "number": "09113171725",
+               "password": "2953Aa!",
+               "username": "pouya"
+          },
+          {
+               "email": "soroush@gmail.com",
+               "lastname": "danesh",
+               "name": "soroush",
+               "number": "09135246785",
+               "password": "1234Aa!",
+               "username": "sourosh"
+          }
+     ]
+}

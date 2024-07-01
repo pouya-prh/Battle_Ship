@@ -1,0 +1,956 @@
+
+global.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+ArsenalCell
+  rotate: false
+  xy: 1898, 1896
+  size: 133, 150
+  orig: 133, 150
+  offset: 0, 0
+  index: -1
+ArsenalSetBackground
+  rotate: false
+  xy: 1742, 20
+  size: 284, 556
+  orig: 284, 556
+  offset: 0, 0
+  index: -1
+CloseButton
+  rotate: false
+  xy: 1690, 164
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+CodeFrame
+  rotate: false
+  xy: 2, 75
+  size: 715, 123
+  orig: 715, 123
+  offset: 0, 0
+  index: -1
+Corner
+  rotate: false
+  xy: 2000, 1155
+  size: 22, 25
+  orig: 22, 25
+  offset: 0, 0
+  index: -1
+FuelIcon
+  rotate: false
+  xy: 2008, 1476
+  size: 30, 48
+  orig: 30, 48
+  offset: 0, 0
+  index: -1
+InGameBomber
+  rotate: false
+  xy: 1898, 1271
+  size: 100, 140
+  orig: 100, 140
+  offset: 0, 0
+  index: -1
+InGameBomberShadow
+  rotate: false
+  xy: 1898, 1129
+  size: 100, 140
+  orig: 100, 140
+  offset: 0, 0
+  index: -1
+InGameFuelBox
+  rotate: false
+  xy: 1395, 8
+  size: 300, 72
+  orig: 300, 72
+  offset: 0, 0
+  index: -1
+InGameFuelIcon
+  rotate: false
+  xy: 1987, 799
+  size: 56, 78
+  orig: 56, 78
+  offset: 0, 0
+  index: -1
+InGameLine
+  rotate: false
+  xy: 2, 16
+  size: 430, 43
+  orig: 430, 43
+  offset: 0, 0
+  index: -1
+InGameMine
+  rotate: false
+  xy: 2000, 666
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+InGameSystem
+  rotate: false
+  xy: 719, 94
+  size: 108, 104
+  orig: 108, 104
+  offset: 0, 0
+  index: -1
+InGameTorpedoBomber
+  rotate: false
+  xy: 1898, 1555
+  size: 108, 140
+  orig: 108, 140
+  offset: 0, 0
+  index: -1
+InGameTorpedoBomberShadow
+  rotate: false
+  xy: 1898, 1413
+  size: 108, 140
+  orig: 108, 140
+  offset: 0, 0
+  index: -1
+InfoIcon
+  rotate: false
+  xy: 2000, 1321
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+LoaderShip
+  rotate: false
+  xy: 1980, 598
+  size: 55, 66
+  orig: 55, 66
+  offset: 0, 0
+  index: -1
+LoaderWave
+  rotate: false
+  xy: 719, 73
+  size: 75, 19
+  orig: 75, 19
+  offset: 0, 0
+  index: -1
+LogoSea
+  rotate: false
+  xy: 830, 66
+  size: 492, 148
+  orig: 492, 148
+  offset: 0, 0
+  index: -1
+MainShadow
+  rotate: false
+  xy: 1898, 584
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+Mine
+  rotate: false
+  xy: 1898, 666
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+NextPlayerIcon
+  rotate: false
+  xy: 1898, 1697
+  size: 148, 56
+  orig: 148, 56
+  offset: 0, 0
+  index: -1
+Pencil
+  rotate: false
+  xy: 2008, 1434
+  size: 28, 40
+  orig: 28, 40
+  offset: 0, 0
+  index: -1
+PopupMBackground
+  rotate: false
+  xy: 1028, 578
+  size: 868, 440
+  orig: 868, 440
+  offset: 0, 0
+  index: -1
+PopupProfileBackground
+  rotate: false
+  xy: 1028, 1020
+  size: 868, 440
+  orig: 868, 440
+  offset: 0, 0
+  index: -1
+PopupRankInfoBackground
+  rotate: false
+  xy: 1028, 1462
+  size: 868, 584
+  orig: 868, 584
+  offset: 0, 0
+  index: -1
+PopupRankInfoMarker
+  rotate: false
+  xy: 2, 200
+  size: 826, 32
+  orig: 826, 32
+  offset: 0, 0
+  index: -1
+PopupSBackground
+  rotate: false
+  xy: 1028, 216
+  size: 712, 360
+  orig: 712, 360
+  offset: 0, 0
+  index: -1
+PressedKeyboardSpace
+  rotate: false
+  xy: 676, 2
+  size: 449, 62
+  orig: 449, 62
+  offset: 0, 0
+  index: -1
+PressedNumBtn
+  rotate: false
+  xy: 1127, 2
+  size: 266, 62
+  orig: 266, 62
+  offset: 0, 0
+  index: -1
+RateUsPopupIcon
+  rotate: false
+  xy: 608, 2
+  size: 45, 57
+  orig: 45, 57
+  offset: 0, 0
+  index: -1
+RedLine
+  rotate: false
+  xy: 2, 234
+  size: 1024, 6
+  orig: 1024, 6
+  offset: 0, 0
+  index: -1
+SearchBackground
+  rotate: false
+  xy: 2, 242
+  size: 1024, 600
+  orig: 1024, 600
+  offset: 0, 0
+  index: -1
+SearchIconBluetooth
+  rotate: false
+  xy: 2000, 1208
+  size: 28, 32
+  orig: 28, 32
+  offset: 0, 0
+  index: -1
+SearchIconWiFi
+  rotate: false
+  xy: 2000, 1242
+  size: 28, 32
+  orig: 28, 32
+  offset: 0, 0
+  index: -1
+SearchLine
+  rotate: false
+  xy: 2, 61
+  size: 672, 12
+  orig: 672, 12
+  offset: 0, 0
+  index: -1
+SearchPoint
+  rotate: false
+  xy: 2000, 1182
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+SettingsAccountAndroidPopupIcon
+  rotate: false
+  xy: 2000, 1367
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+SettingsAccountButton
+  rotate: false
+  xy: 1324, 82
+  size: 364, 132
+  orig: 364, 132
+  offset: 0, 0
+  index: -1
+SettingsAccountIOSPopupIcon1
+  rotate: false
+  xy: 2000, 753
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+SettingsAccountIOSPopupIcon2
+  rotate: false
+  xy: 2000, 707
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+SettingsBackground
+  rotate: false
+  xy: 2, 844
+  size: 1024, 600
+  orig: 1024, 600
+  offset: 0, 0
+  index: -1
+SettingsLanguageButton
+  rotate: false
+  xy: 1898, 877
+  size: 80, 128
+  orig: 80, 128
+  offset: 0, 0
+  index: -1
+Ship1
+  rotate: false
+  xy: 2000, 1276
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+Ship4
+  rotate: false
+  xy: 434, 16
+  size: 172, 43
+  orig: 172, 43
+  offset: 0, 0
+  index: -1
+StepArrow2
+  rotate: false
+  xy: 1980, 879
+  size: 55, 126
+  orig: 55, 126
+  offset: 0, 0
+  index: -1
+TextCursor
+  rotate: false
+  xy: 2038, 1434
+  size: 8, 40
+  orig: 8, 40
+  offset: 0, 0
+  index: -1
+WinBackground
+  rotate: false
+  xy: 2, 1446
+  size: 1024, 600
+  orig: 1024, 600
+  offset: 0, 0
+  index: -1
+WinLoseADButtonRankIcon
+  rotate: false
+  xy: 1690, 110
+  size: 44, 52
+  orig: 44, 52
+  offset: 0, 0
+  index: -1
+arrowsMine
+  rotate: false
+  xy: 1898, 1007
+  size: 121, 120
+  orig: 121, 120
+  offset: 0, 0
+  index: -1
+arrowsPvo
+  rotate: false
+  xy: 2008, 1526
+  size: 21, 169
+  orig: 21, 169
+  offset: 0, 0
+  index: -1
+greenCell
+  rotate: false
+  xy: 1697, 65
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+hand
+  rotate: false
+  xy: 1898, 768
+  size: 87, 107
+  orig: 87, 107
+  offset: 0, 0
+  index: -1
+radar_green
+  rotate: false
+  xy: 1898, 1755
+  size: 139, 139
+  orig: 139, 139
+  offset: 0, 0
+  index: -1
+redCell
+  rotate: false
+  xy: 1697, 20
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+
+global2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+AdsIcon
+  rotate: false
+  xy: 1063, 18
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+ArsenalADButton
+  rotate: false
+  xy: 1806, 845
+  size: 208, 88
+  orig: 208, 88
+  offset: 0, 0
+  index: -1
+AtomicBomber
+  rotate: false
+  xy: 1898, 138
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+AutoIcon
+  rotate: false
+  xy: 1963, 1823
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+BackButton
+  rotate: false
+  xy: 1984, 1670
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+CrumpleMask
+  rotate: false
+  xy: 1028, 330
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Field
+  rotate: false
+  xy: 1542, 390
+  size: 452, 452
+  orig: 452, 452
+  offset: 0, 0
+  index: -1
+InGameAtomicBomber
+  rotate: false
+  xy: 1720, 18
+  size: 176, 220
+  orig: 176, 220
+  offset: 0, 0
+  index: -1
+InGameAtomicBomberShadow
+  rotate: false
+  xy: 1542, 18
+  size: 176, 220
+  orig: 176, 220
+  offset: 0, 0
+  index: -1
+InGameBomberAim
+  rotate: false
+  xy: 1630, 1772
+  size: 274, 274
+  orig: 274, 274
+  offset: 0, 0
+  index: -1
+InGameLineDual
+  rotate: false
+  xy: 1028, 242
+  size: 430, 86
+  orig: 430, 86
+  offset: 0, 0
+  index: -1
+InGameTorpedo
+  rotate: false
+  xy: 1580, 844
+  size: 71, 30
+  orig: 71, 30
+  offset: 0, 0
+  index: -1
+InGameTorpedoShadow
+  rotate: false
+  xy: 1507, 844
+  size: 71, 30
+  orig: 71, 30
+  offset: 0, 0
+  index: -1
+LoaderBackground
+  rotate: false
+  xy: 1205, 853
+  size: 300, 120
+  orig: 300, 120
+  offset: 0, 0
+  index: -1
+LoadingIcon
+  rotate: false
+  xy: 1984, 1724
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+LogoBattle
+  rotate: false
+  xy: 1542, 240
+  size: 492, 148
+  orig: 492, 148
+  offset: 0, 0
+  index: -1
+LogoT
+  rotate: false
+  xy: 757, 6
+  size: 72, 68
+  orig: 72, 68
+  offset: 0, 0
+  index: -1
+LoseBackground
+  rotate: false
+  xy: 2, 1446
+  size: 1024, 600
+  orig: 1024, 600
+  offset: 0, 0
+  index: -1
+MSButton
+  rotate: false
+  xy: 399, 11
+  size: 265, 63
+  orig: 265, 63
+  offset: 0, 0
+  index: -1
+MainMenuBackground
+  rotate: false
+  xy: 2, 242
+  size: 1024, 600
+  orig: 1024, 600
+  offset: 0, 0
+  index: -1
+MainMenuUserPanel
+  rotate: false
+  xy: 1205, 1336
+  size: 316, 108
+  orig: 316, 108
+  offset: 0, 0
+  index: -1
+MainModeButton
+  rotate: false
+  xy: 1630, 1426
+  size: 352, 116
+  orig: 352, 116
+  offset: 0, 0
+  index: -1
+MainModeButtonList
+  rotate: false
+  xy: 1630, 1610
+  size: 352, 160
+  orig: 352, 160
+  offset: 0, 0
+  index: -1
+PageShadow
+  rotate: false
+  xy: 1028, 844
+  size: 175, 600
+  orig: 175, 600
+  offset: 0, 0
+  index: -1
+PaperBackground
+  rotate: false
+  xy: 2, 844
+  size: 1024, 600
+  orig: 1024, 600
+  offset: 0, 0
+  index: -1
+PlayModeButton
+  rotate: false
+  xy: 1806, 935
+  size: 220, 224
+  orig: 220, 224
+  offset: 0, 0
+  index: -1
+PlayModeButtonIconBluetooth
+  rotate: false
+  xy: 1063, 96
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PlayerDeviceIcon
+  rotate: false
+  xy: 219, 57
+  size: 178, 183
+  orig: 178, 183
+  offset: 0, 0
+  index: -1
+PressedKeyboardBtn
+  rotate: false
+  xy: 831, 11
+  size: 79, 63
+  orig: 79, 63
+  offset: 0, 0
+  index: -1
+PressedKeyboardShift
+  rotate: false
+  xy: 666, 3
+  size: 89, 71
+  orig: 89, 71
+  offset: 0, 0
+  index: -1
+PressedNumDelete
+  rotate: false
+  xy: 1249, 178
+  size: 152, 62
+  orig: 152, 62
+  offset: 0, 0
+  index: -1
+Radar
+  rotate: false
+  xy: 1898, 36
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+SButton
+  rotate: false
+  xy: 1460, 174
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+SearchEnemySlot
+  rotate: false
+  xy: 1205, 975
+  size: 308, 48
+  orig: 308, 48
+  offset: 0, 0
+  index: -1
+SettingsAccountAndroidIcon
+  rotate: false
+  xy: 1145, 34
+  size: 92, 60
+  orig: 92, 60
+  offset: 0, 0
+  index: -1
+SettingsAccountIOSIcon
+  rotate: false
+  xy: 1239, 2
+  size: 92, 60
+  orig: 92, 60
+  offset: 0, 0
+  index: -1
+SettingsButtonBack
+  rotate: false
+  xy: 399, 76
+  size: 164, 164
+  orig: 164, 164
+  offset: 0, 0
+  index: -1
+SettingsIcon
+  rotate: false
+  xy: 1460, 252
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+SettingsOffIcon
+  rotate: false
+  xy: 897, 76
+  size: 164, 164
+  orig: 164, 164
+  offset: 0, 0
+  index: -1
+SettingsSoundIcon
+  rotate: false
+  xy: 565, 76
+  size: 164, 164
+  orig: 164, 164
+  offset: 0, 0
+  index: -1
+SettingsVibrationIcon
+  rotate: false
+  xy: 731, 76
+  size: 164, 164
+  orig: 164, 164
+  offset: 0, 0
+  index: -1
+Ship2
+  rotate: false
+  xy: 219, 12
+  size: 86, 43
+  orig: 86, 43
+  offset: 0, 0
+  index: -1
+Ship3
+  rotate: false
+  xy: 1906, 2003
+  size: 129, 43
+  orig: 129, 43
+  offset: 0, 0
+  index: -1
+SmokeWave
+  rotate: false
+  xy: 1028, 1446
+  size: 600, 600
+  orig: 600, 600
+  offset: 0, 0
+  index: -1
+StepArrow1
+  rotate: false
+  xy: 1906, 1773
+  size: 55, 126
+  orig: 55, 126
+  offset: 0, 0
+  index: -1
+TextEditPopup
+  rotate: false
+  xy: 1523, 1161
+  size: 516, 263
+  orig: 516, 263
+  offset: 0, 0
+  index: -1
+TorpedoBomber
+  rotate: false
+  xy: 1906, 1901
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+WinLoseADButton
+  rotate: false
+  xy: 1249, 64
+  size: 272, 108
+  orig: 272, 108
+  offset: 0, 0
+  index: -1
+WinLoseProgressBackground
+  rotate: false
+  xy: 1630, 1544
+  size: 364, 64
+  orig: 364, 64
+  offset: 0, 0
+  index: -1
+WinLoseStar
+  rotate: false
+  xy: 1333, 6
+  size: 76, 56
+  orig: 76, 56
+  offset: 0, 0
+  index: -1
+atomic_aim
+  rotate: false
+  xy: 2, 25
+  size: 215, 215
+  orig: 215, 215
+  offset: 0, 0
+  index: -1
+cracked_glass
+  rotate: false
+  xy: 1205, 1025
+  size: 310, 309
+  orig: 310, 309
+  offset: 0, 0
+  index: -1
+paper_expl
+  rotate: false
+  xy: 1517, 876
+  size: 287, 283
+  orig: 287, 283
+  offset: 0, 0
+  index: -1
+torpedo
+  rotate: false
+  xy: 1963, 1778
+  size: 55, 43
+  orig: 55, 43
+  offset: 0, 0
+  index: -1
+
+global3.png
+size: 2048, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+AirDefence
+  rotate: false
+  xy: 1180, 316
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ArsenalInfoAA
+  rotate: false
+  xy: 1286, 762
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoAtomic
+  rotate: false
+  xy: 1028, 762
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoBomber
+  rotate: false
+  xy: 260, 126
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoMine1
+  rotate: false
+  xy: 2, 126
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoMine2
+  rotate: false
+  xy: 518, 126
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoRadar1
+  rotate: false
+  xy: 1544, 762
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoRadar2
+  rotate: false
+  xy: 1028, 520
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+ArsenalInfoTorpedoBomber
+  rotate: false
+  xy: 1286, 520
+  size: 256, 240
+  orig: 256, 240
+  offset: 0, 0
+  index: -1
+Bomber
+  rotate: false
+  xy: 1484, 418
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+FlagSelectionOutline
+  rotate: false
+  xy: 1730, 530
+  size: 160, 140
+  orig: 160, 140
+  offset: 0, 0
+  index: -1
+Keyboard
+  rotate: false
+  xy: 2, 368
+  size: 1024, 316
+  orig: 1024, 316
+  offset: 0, 0
+  index: -1
+KeyboardNum
+  rotate: false
+  xy: 2, 686
+  size: 1024, 316
+  orig: 1024, 316
+  offset: 0, 0
+  index: -1
+LeaderboardIcon
+  rotate: false
+  xy: 84, 2
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+MButton
+  rotate: false
+  xy: 1544, 672
+  size: 256, 88
+  orig: 256, 88
+  offset: 0, 0
+  index: -1
+PlayModeButtonIconAI
+  rotate: false
+  xy: 1298, 374
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PlayModeButtonIconWiFi
+  rotate: false
+  xy: 776, 222
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PlayModeButtonIconWithFriend
+  rotate: false
+  xy: 776, 76
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PlayModeIconDevice
+  rotate: false
+  xy: 1544, 526
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PlayModeIconOnline
+  rotate: false
+  xy: 1802, 858
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PlayModeIconRemote
+  rotate: false
+  xy: 1802, 712
+  size: 184, 144
+  orig: 184, 144
+  offset: 0, 0
+  index: -1
+PressedNumEnter
+  rotate: false
+  xy: 1028, 283
+  size: 150, 133
+  orig: 150, 133
+  offset: 0, 0
+  index: -1
+ProgressBar
+  rotate: false
+  xy: 2, 80
+  size: 348, 44
+  orig: 348, 44
+  offset: 0, 0
+  index: -1
+ResetIcon
+  rotate: false
+  xy: 2, 2
+  size: 80, 76
+  orig: 80, 76
+  offset: 0, 0
+  index: -1
+SettingsLanguageBackground
+  rotate: false
+  xy: 1028, 418
+  size: 268, 100
+  orig: 268, 100
+  offset: 0, 0
+  index: -1

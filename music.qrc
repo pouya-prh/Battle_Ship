@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/sound"/>
+    <qresource prefix="/">
+        <file>Ocean.mp3</file>
+    </qresource>
+</RCC>

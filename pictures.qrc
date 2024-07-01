@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Recommended Source Files/Recommended Source Files/Images/textures/LoadingScreenBackground.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/mipmap-mdpi-v4/ic_launcher_round.png</file>
+        <file>witFriend_img.png</file>
+        <file>online_img.png</file>
+        <file>AI_imag.png</file>
+    </qresource>
+</RCC>

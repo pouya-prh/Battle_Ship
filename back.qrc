@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Recommended Source Files/Recommended Source Files/Images/textures/LoadingScreenBackground.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/AI_img.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/online_img.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/withFriend_img.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/mipmap-hdpi-v4/ic_launcher_round.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/textures/paper.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/textures/desk.jpg</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship1.PNG</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship2.PNG</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship3.PNG</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship4.PNG</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/sea.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Back.jpg</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/flesh.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/redLine.jpg</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/blueLine.jpg</file>
+    </qresource>
+</RCC>
