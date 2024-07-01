@@ -9,10 +9,11 @@ DialogSetGameBoard::DialogSetGameBoard(QWidget *parent)
 {
     ui->setupUi(this);
     setAcceptDrops(true);
-    GameBoard *gameBoard = qobject_cast<GameBoard *>(ui->tableWidget);
-    if (gameBoard) {
-        gameBoard->setAcceptDrops(true);
-    }
+    //GameBoard *gameBoard = ui->tableWidget;
+    // gameBoard = qobject_cast<GameBoard *>(ui->tableWidget);
+    // if (gameBoard) {
+    //     gameBoard->setAcceptDrops(true);
+    // }
 
 
 }
@@ -55,18 +56,18 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
         QPoint dropPosition = event->position().toPoint() - sourceButton->rect().center();
         QPoint initialPosition = sourceButton->pos();
 
-        int row = ui->tableWidget->rowAt(dropPosition.y()) - 1;
-        int column = ui->tableWidget->columnAt(dropPosition.x());
+        int row = ui->tableWidget->rowAt(dropPosition.y()) - 2;
+        int column = ui->tableWidget->columnAt(dropPosition.x()) -1;
 
-        if (row < 1 || column < 1 || !isDropValid(column, shipSize)) {
+        if (!isDropValid(row,column, shipSize)) {
             sourceButton->move(initialPosition);
             sourceButton->show();
             event->ignore();
             return;
         }
-        Ship *newShip = new Ship(shipSize);
-        newShip->setPosition(dropPosition);
-        gameBoard->SetHasShipCells(dropPosition, shipSize);
+       // Ship *newShip = new Ship(shipSize);
+
+        ui->tableWidget->SetHasShipCells(row,column,shipSize);
         if (sourceButton) {
             // Move the source button to the drop location
             sourceButton->move(dropPosition);
@@ -76,10 +77,18 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
     }
 }
 
-bool DialogSetGameBoard::isDropValid(int column,int shipSize)
+bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horizental)
 {
-    if (column + shipSize - 1 >= ui->tableWidget->columnCount())
-        return false;
+    if(horizental)
+    {
+        if(column+shipSize>9)
+            return false;
+    }
+    else
+    {
+        if(row+shipSize>9)
+            return false;
+    }
 
    return true;
 }

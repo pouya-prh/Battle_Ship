@@ -18,7 +18,7 @@ protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
-    bool isDropValid(int,int);
+    bool isDropValid(int,int,int,bool horizental = true);
 private:
     Ui::DialogSetGameBoard *ui;
     GameBoard *gameBoard;

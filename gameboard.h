@@ -4,16 +4,17 @@
 #include <QTableWidget>
 #include <QPoint>
 #include <QHash>
+
 class GameBoard : public QTableWidget
 {
      Q_OBJECT
 private:
-    QTableWidget *TableWidget;
-    QHash<QPoint, bool> shipCells;
+
+    int** shipCells;
 public:
     GameBoard(QWidget* parent = nullptr);
-    void SetHasShipCells( QPoint &startPosition, int shipSize);
-    QList<QPoint> GetShipsCell();
+    void SetHasShipCells(int,int,int, bool horizontal = true);
+    int** GetShipsCell();
 };
 
 #endif // GAMEBOARD_H

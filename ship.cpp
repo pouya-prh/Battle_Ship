@@ -8,13 +8,3 @@ Ship::Ship(int size)
 int Ship::getSize() {
     return size;
 }
-
-void Ship::setPosition(QPoint &position)
-{
-    this->position = position;
-}
-
-QPoint Ship::poition()
-{
-    return position;
-}
