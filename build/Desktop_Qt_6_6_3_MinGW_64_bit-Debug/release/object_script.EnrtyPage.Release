@@ -2,6 +2,7 @@ release/dialogpage1.o
 release/dialogsetgameboard.o
 release/draggablebutton.o
 release/gameboard.o
+release/hashpassword.o
 release/main.o
 release/mainwindow.o
 release/dialogloginclicked.o

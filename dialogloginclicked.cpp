@@ -1,5 +1,6 @@
 #include "dialogloginclicked.h"
 #include "ui_dialogloginclicked.h"
+#include "hashpassword.h"
 #include <fstream>
 #include "json.hpp"
 using namespace std;
@@ -21,6 +22,7 @@ bool DialogLoginClicked::CheckUser()
 
     username = ui->usernameLineEdit->text();
     password = ui->passwordLineEdit->text();
+    HashPassword::Hash(password);
     if (username.isEmpty())
         ui->usernameLineEdit->
             setStyleSheet("background-color: rgb(255, 0, 0);font: 25pt \"BYRIL_Sea_Battle2\";color: rgb(255, 0, 0);");

@@ -10,11 +10,10 @@ class GameBoard : public QTableWidget
      Q_OBJECT
 private:
 
-    int** shipCells;
+
 public:
     GameBoard(QWidget* parent = nullptr);
     void SetHasShipCells(int,int,int, bool horizontal = true);
-    int** GetShipsCell();
 };
 
 #endif // GAMEBOARD_H

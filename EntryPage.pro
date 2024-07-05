@@ -15,6 +15,7 @@ SOURCES += \
     dialogsetgameboard.cpp \
     draggablebutton.cpp \
     gameboard.cpp \
+    hashpassword.cpp \
     main.cpp \
     mainwindow.cpp \
     dialogloginclicked.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     dialogsetgameboard.h \
     draggablebutton.h \
     gameboard.h \
+    hashpassword.h \
     mainwindow.h \
     dialogloginclicked.h \
     dialogsignupclicked.h \

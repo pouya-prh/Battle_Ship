@@ -2,6 +2,7 @@ debug/dialogpage1.o
 debug/dialogsetgameboard.o
 debug/draggablebutton.o
 debug/gameboard.o
+debug/hashpassword.o
 debug/main.o
 debug/mainwindow.o
 debug/dialogloginclicked.o

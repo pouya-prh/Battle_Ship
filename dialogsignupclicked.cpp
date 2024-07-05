@@ -2,6 +2,7 @@
 #include "ui_dialogsignupclicked.h"
 #include "validator.h"
 #include "json.hpp"
+#include "hashpassword.h"
 #include "fstream"
 #include <iostream>
 #include <string>
@@ -132,6 +133,7 @@ void DialogSignUpClicked::makeAccount()
     {
         return;
     }
+    HashPassword::Hash(password);
     json newAccount;
     newAccount["name"] = name.toStdString();
     newAccount["lastname"] = lastname.toStdString();
@@ -139,6 +141,12 @@ void DialogSignUpClicked::makeAccount()
     newAccount["password"] = password.toStdString();
     newAccount["email"] = email.toStdString();
     newAccount["number"] = number.toStdString();
+    newAccount["WinCount"] = 0;
+    newAccount["LoseCount"] = 0;
+    newAccount["point"]  = 0;
+    newAccount["level"] = 0;
+    newAccount["drop"] = 0;
+
     Data["accounts"].push_back(newAccount);
     file<<Data.dump(5);
     file.close();
