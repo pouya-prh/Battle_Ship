@@ -1,3 +1,4 @@
+debug/dialoggetarm.o
 debug/dialogpage1.o
 debug/dialogsetgameboard.o
 debug/draggablebutton.o
@@ -13,6 +14,7 @@ debug/validator.o
 debug/qrc_back.o
 debug/qrc_font.o
 debug/qrc_music.o
+debug/moc_dialoggetarm.o
 debug/moc_dialogpage1.o
 debug/moc_dialogsetgameboard.o
 debug/moc_draggablebutton.o

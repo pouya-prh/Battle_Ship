@@ -89,7 +89,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Sea Battle", nullptr));
         SignUppushButton->setText(QCoreApplication::translate("MainWindow", "Sign Up", nullptr));
-        LoginPushButton->setText(QCoreApplication::translate("MainWindow", "Log In", nullptr));
+        LoginPushButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
     } // retranslateUi
 
 };

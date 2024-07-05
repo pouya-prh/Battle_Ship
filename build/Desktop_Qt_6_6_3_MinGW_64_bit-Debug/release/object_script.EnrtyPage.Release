@@ -1,3 +1,4 @@
+release/dialoggetarm.o
 release/dialogpage1.o
 release/dialogsetgameboard.o
 release/draggablebutton.o
@@ -13,6 +14,7 @@ release/validator.o
 release/qrc_back.o
 release/qrc_font.o
 release/qrc_music.o
+release/moc_dialoggetarm.o
 release/moc_dialogpage1.o
 release/moc_dialogsetgameboard.o
 release/moc_draggablebutton.o

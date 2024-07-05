@@ -101,6 +101,12 @@ public:
 "font: 25pt \"BYRIL_Sea_Battle2\";\n"
 "color: rgb(0, 0, 255);"));
         wellcome_lable->setAlignment(Qt::AlignCenter);
+        BotPushbutton->raise();
+        progressBar->raise();
+        WifiPushbutton->raise();
+        FriendPushbutton->raise();
+        widget->raise();
+        wellcome_lable->raise();
 
         retranslateUi(DialogPage1);
 

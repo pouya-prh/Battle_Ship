@@ -1,7 +1,7 @@
 #include "dialogsetgameboard.h"
 #include "ui_dialogsetgameboard.h"
 #include "draggablebutton.h"
-#include "ship.h"
+#include "dialoggetarm.h"
 
 DialogSetGameBoard::DialogSetGameBoard(QWidget *parent)
     : QDialog(parent)
@@ -9,9 +9,6 @@ DialogSetGameBoard::DialogSetGameBoard(QWidget *parent)
 {
     ui->setupUi(this);
     setAcceptDrops(true);
-
-
-
 }
 
 DialogSetGameBoard::~DialogSetGameBoard()
@@ -22,7 +19,7 @@ void DialogSetGameBoard::dragEnterEvent(QDragEnterEvent *event) {
     if (event->mimeData()->hasFormat("application/x-ship")) {
         QWidget *sourceWidget = qobject_cast<QWidget *>(event->source());
         if (sourceWidget) {
-            sourceWidget->hide();  // Hide the source widget
+            sourceWidget->hide();
         }
         event->acceptProposedAction();
     }
@@ -49,9 +46,10 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
             shipSize = 3;
         else
             shipSize = 4;
-        QPoint dropPosition = event->position().toPoint() - sourceButton->rect().center();
+
         QPoint initialPosition = sourceButton->pos();
         QPoint droped = event->position().toPoint();
+        QPoint dropPosition = GameBoard::snapToGrid(droped);
 
         int row = ui->tableWidget->rowAt((droped.y()-68)) ;
         int column = ui->tableWidget->columnAt((droped.x()-50)) ;
@@ -62,14 +60,15 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
             event->ignore();
             return;
         }
-       // Ship *newShip = new Ship(shipSize);
 
-        ui->tableWidget->SetHasShipCells(row,column,shipSize);
+        ui->tableWidget->SetHasShipCells(row-1,column-1,shipSize);
         if (sourceButton) {
-            // Move the source button to the drop location
+
+
             sourceButton->move(dropPosition);
             sourceButton->show();
         }
+
         event->acceptProposedAction();
     }
 }
@@ -80,14 +79,22 @@ bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horize
         return false;
     if(horizental)
     {
-        if(column+shipSize>9)
+        if(column+shipSize>10)
             return false;
     }
     else
     {
-        if(row+shipSize>9)
+        if(row+shipSize>10)
             return false;
     }
 
    return true;
 }
+
+void DialogSetGameBoard::on_nextButton_clicked()
+{
+    this->hide();
+    DialogGetArm* page2 = new DialogGetArm(ui->tableWidget,ui->tableWidget->returnCells());
+    page2->show();
+}
+

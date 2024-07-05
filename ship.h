@@ -1,14 +1,17 @@
 #ifndef SHIP_H
 #define SHIP_H
-#include <QPoint>
+#include <QIcon>
+
 class Ship
 {
 private:
     int size;
+    QIcon* icon;
 
 public:
-    Ship(int size =0);
+    Ship(int);
     int getSize();
+    QIcon GetIcon(int);
 };
 
 #endif // SHIP_H
