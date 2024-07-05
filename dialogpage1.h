@@ -12,7 +12,7 @@ class DialogPage1 : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogPage1(QWidget *parent = nullptr);
+    explicit DialogPage1(QString username,int point,int level,int drop,QWidget *parent = nullptr);
     ~DialogPage1();
 
 

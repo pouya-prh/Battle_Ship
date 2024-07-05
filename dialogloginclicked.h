@@ -17,7 +17,7 @@ public:
     bool CheckUser();
 
 signals:
-    void Login_finished(bool);
+    void Login_finished(QString username,int point,int level,int drop);
 private slots:
     void on_OkButton_clicked();
 

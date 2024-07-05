@@ -3,6 +3,7 @@
 #include "hashpassword.h"
 #include <fstream>
 #include "json.hpp"
+#include <QString>
 using namespace std;
 using json = nlohmann::json;
 DialogLoginClicked::DialogLoginClicked(QWidget *parent)
@@ -56,8 +57,11 @@ bool DialogLoginClicked::CheckUser()
         string Password = it["password"];
           if (Username == username.toStdString()&&Password == password.toStdString())
           {
+            int point = it["point"];
+            int level = it["level"];
+            int drop = it["drop"];
             this->close();
-            emit Login_finished(true);
+            emit Login_finished(username,point,level,drop);
             return true;
            }
 
