@@ -51,9 +51,10 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
             shipSize = 4;
         QPoint dropPosition = event->position().toPoint() - sourceButton->rect().center();
         QPoint initialPosition = sourceButton->pos();
+        QPoint droped = event->position().toPoint();
 
-        int row = ui->tableWidget->rowAt(dropPosition.y()) - 2;
-        int column = ui->tableWidget->columnAt(dropPosition.x()) -1;
+        int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+        int column = ui->tableWidget->columnAt((droped.x()-50)) ;
 
         if (!isDropValid(row,column, shipSize)) {
             sourceButton->move(initialPosition);
@@ -75,6 +76,8 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
 
 bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horizental)
 {
+    if (row<1||row>10||column<1||column>10)
+        return false;
     if(horizental)
     {
         if(column+shipSize>9)
