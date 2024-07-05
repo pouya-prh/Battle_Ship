@@ -20,7 +20,7 @@ public:
 
 
 signals:
-    void Signup_finished(bool);
+    void Signup_finished(QString name,int point,int level,int drop);
 
 private slots:
     void on_OkButton_clicked();

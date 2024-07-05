@@ -41,15 +41,23 @@ constexpr auto qt_meta_stringdata_CLASSDialogSignUpClickedENDCLASS = QtMocHelper
     "DialogSignUpClicked",
     "Signup_finished",
     "",
+    "name",
+    "point",
+    "level",
+    "drop",
     "on_OkButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDialogSignUpClickedENDCLASS_t {
-    uint offsetsAndSizes[8];
+    uint offsetsAndSizes[16];
     char stringdata0[20];
     char stringdata1[16];
     char stringdata2[1];
-    char stringdata3[20];
+    char stringdata3[5];
+    char stringdata4[6];
+    char stringdata5[6];
+    char stringdata6[5];
+    char stringdata7[20];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDialogSignUpClickedENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -58,11 +66,19 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogSignUpClickedENDCLASS_t q
         QT_MOC_LITERAL(0, 19),  // "DialogSignUpClicked"
         QT_MOC_LITERAL(20, 15),  // "Signup_finished"
         QT_MOC_LITERAL(36, 0),  // ""
-        QT_MOC_LITERAL(37, 19)   // "on_OkButton_clicked"
+        QT_MOC_LITERAL(37, 4),  // "name"
+        QT_MOC_LITERAL(42, 5),  // "point"
+        QT_MOC_LITERAL(48, 5),  // "level"
+        QT_MOC_LITERAL(54, 4),  // "drop"
+        QT_MOC_LITERAL(59, 19)   // "on_OkButton_clicked"
     },
     "DialogSignUpClicked",
     "Signup_finished",
     "",
+    "name",
+    "point",
+    "level",
+    "drop",
     "on_OkButton_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -83,13 +99,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogSignUpClickedENDCLASS[] = 
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   26,    2, 0x06,    1 /* Public */,
+       1,    4,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   29,    2, 0x08,    3 /* Private */,
+       7,    0,   35,    2, 0x08,    6 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
 
  // slots: parameters
     QMetaType::Void,
@@ -108,7 +124,10 @@ Q_CONSTINIT const QMetaObject DialogSignUpClicked::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<DialogSignUpClicked, std::true_type>,
         // method 'Signup_finished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'on_OkButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -121,14 +140,14 @@ void DialogSignUpClicked::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         auto *_t = static_cast<DialogSignUpClicked *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->Signup_finished((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 0: _t->Signup_finished((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
         case 1: _t->on_OkButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (DialogSignUpClicked::*)(bool );
+            using _t = void (DialogSignUpClicked::*)(QString , int , int , int );
             if (_t _q_method = &DialogSignUpClicked::Signup_finished; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -168,9 +187,9 @@ int DialogSignUpClicked::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void DialogSignUpClicked::Signup_finished(bool _t1)
+void DialogSignUpClicked::Signup_finished(QString _t1, int _t2, int _t3, int _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void  OpenPage1();
+    void  OpenPage1(QString username,int point,int level,int drop);
 
 private slots:
 

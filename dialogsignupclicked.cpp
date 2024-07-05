@@ -37,6 +37,9 @@ bool DialogSignUpClicked::check()
     password = ui ->passwordLineEdit->text();
     email = ui->emailLineEdit->text();
     number = ui->numberLineEdit->text();
+    drop = 0;
+    level = 0;
+    point = 0;
     if(!validator::containsEword(name.toStdString()))
         nameFlag = false;
     if(!validator::containsEword(lastname.toStdString()))
@@ -151,7 +154,7 @@ void DialogSignUpClicked::makeAccount()
     file<<Data.dump(5);
     file.close();
     this->close();
-    emit Signup_finished(true);
+    emit Signup_finished(username,point,level,drop);
 
 }
 
