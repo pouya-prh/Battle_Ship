@@ -37,7 +37,7 @@ DialogPage1::DialogPage1(QString username,int point,int level,int drop,QWidget *
     });
 
 
-    timer->start(25);
+    timer->start(20);
 
 
 

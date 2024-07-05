@@ -5,7 +5,7 @@
 #include <QDrag>
 #include <QMimeData>
 #include <QMouseEvent>
-#include "ship.h"
+
 class DraggableButton : public QPushButton {
     Q_OBJECT
 
@@ -14,13 +14,10 @@ public:
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    Ship ship() const;
-    void setShip(const Ship &ship);
+    void mouseMoveEvent(QMouseEvent *event) override ;
 
 private:
     QPoint dragStartPosition;
-    Ship _ship;
 };
 
 #endif // DRAGGABLEBUTTON_H

@@ -1,17 +1,9 @@
 #include "DraggableButton.h"
 
 DraggableButton::DraggableButton(QWidget *parent)
-    : QPushButton(parent) {
-}
-Ship DraggableButton::ship() const
-{
-    return _ship;
-}
+    : QPushButton(parent) {}
 
-void DraggableButton::setShip(const Ship &ship)
-{
-    _ship = ship;
-}
+
 void DraggableButton::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         dragStartPosition = event->pos();

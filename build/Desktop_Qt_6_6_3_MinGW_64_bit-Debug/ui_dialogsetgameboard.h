@@ -14,10 +14,9 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <gameboard.h>
 #include "draggablebutton.h"
-#include "gameboard.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -36,7 +35,6 @@ public:
     DraggableButton *ship41;
     QPushButton *randomSetButton;
     QPushButton *nextButton;
-    QLabel *label;
 
     void setupUi(QDialog *DialogSetGameBoard)
     {
@@ -48,38 +46,41 @@ public:
         DialogSetGameBoard->setWindowIcon(icon);
         DialogSetGameBoard->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/Back.jpg);"));
         tableWidget = new GameBoard(DialogSetGameBoard);
-        if (tableWidget->columnCount() < 10)
-            tableWidget->setColumnCount(10);
+        if (tableWidget->columnCount() < 11)
+            tableWidget->setColumnCount(11);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         if (tableWidget->rowCount() < 11)
             tableWidget->setRowCount(11);
         QFont font;
         font.setWeight(QFont::Thin);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        __qtablewidgetitem->setFont(font);
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem1);
+        __qtablewidgetitem1->setFont(font);
+        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem2);
+        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem3);
+        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem4);
+        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem4);
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(5, __qtablewidgetitem5);
+        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(6, __qtablewidgetitem6);
+        tableWidget->setVerticalHeaderItem(5, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(7, __qtablewidgetitem7);
+        tableWidget->setVerticalHeaderItem(6, __qtablewidgetitem7);
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(8, __qtablewidgetitem8);
+        tableWidget->setVerticalHeaderItem(7, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(9, __qtablewidgetitem9);
+        tableWidget->setVerticalHeaderItem(8, __qtablewidgetitem9);
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        tableWidget->setItem(0, 0, __qtablewidgetitem10);
+        tableWidget->setVerticalHeaderItem(9, __qtablewidgetitem10);
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        tableWidget->setItem(3, 2, __qtablewidgetitem11);
+        tableWidget->setItem(0, 1, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        tableWidget->setItem(3, 3, __qtablewidgetitem12);
         tableWidget->setObjectName("tableWidget");
+        tableWidget->setEnabled(true);
         tableWidget->setGeometry(QRect(50, 68, 431, 431));
         QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -89,9 +90,9 @@ public:
         tableWidget->setMinimumSize(QSize(381, 411));
         tableWidget->setAcceptDrops(true);
         tableWidget->setStyleSheet(QString::fromUtf8("font: 15pt \"BYRIL_Sea_Battle2\";\n"
-"background-color: rgb(0, 0, 255);\n"
+"\n"
 "color: rgb(41, 134, 255);\n"
-"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"\n"
 "selection-background-color: rgb(0, 170, 255);\n"
 "\n"
 "gridline-color: rgb(48, 165, 255);"));
@@ -106,8 +107,10 @@ public:
         tableWidget->setSelectionMode(QAbstractItemView::NoSelection);
         tableWidget->setIconSize(QSize(40, 40));
         tableWidget->setGridStyle(Qt::DashDotLine);
+        tableWidget->setCornerButtonEnabled(false);
         tableWidget->setRowCount(11);
-        tableWidget->setColumnCount(10);
+        tableWidget->setColumnCount(11);
+        tableWidget->horizontalHeader()->setCascadingSectionResizes(false);
         tableWidget->horizontalHeader()->setMinimumSectionSize(40);
         tableWidget->horizontalHeader()->setDefaultSectionSize(40);
         tableWidget->verticalHeader()->setMinimumSectionSize(40);
@@ -180,14 +183,6 @@ public:
 "}\n"
 "\n"
 ""));
-        label = new QLabel(DialogSetGameBoard);
-        label->setObjectName("label");
-        label->setGeometry(QRect(740, 30, 31, 461));
-        label->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
-"background-color: rgb(85, 0, 255);\n"
-"font: 15pt \"BYRIL_Sea_Battle2\";\n"
-"color: rgb(0, 0, 255);\n"
-""));
 
         retranslateUi(DialogSetGameBoard);
 
@@ -236,7 +231,6 @@ public:
         ship41->setText(QString());
         randomSetButton->setText(QString());
         nextButton->setText(QCoreApplication::translate("DialogSetGameBoard", "Next", nullptr));
-        label->setText(QString());
     } // retranslateUi
 
 };

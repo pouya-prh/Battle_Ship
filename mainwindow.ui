@@ -78,7 +78,7 @@ QPushButton:hover{
 </string>
     </property>
     <property name="text">
-     <string>Log In</string>
+     <string>Login</string>
     </property>
    </widget>
   </widget>

@@ -19,6 +19,9 @@ protected:
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     bool isDropValid(int,int,int,bool horizental = true);
+private slots:
+    void on_nextButton_clicked();
+
 private:
     Ui::DialogSetGameBoard *ui;
     GameBoard *gameBoard;

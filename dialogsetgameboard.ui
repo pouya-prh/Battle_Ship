@@ -21,6 +21,9 @@
    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/Back.jpg);</string>
   </property>
   <widget class="GameBoard" name="tableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -49,9 +52,9 @@
    </property>
    <property name="styleSheet">
     <string notr="true">font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
-background-color: rgb(0, 0, 255);
+
 color: rgb(41, 134, 255);
-background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+
 selection-background-color: rgb(0, 170, 255);
 
 gridline-color: rgb(48, 165, 255);</string>
@@ -92,12 +95,18 @@ gridline-color: rgb(48, 165, 255);</string>
    <property name="gridStyle">
     <enum>Qt::DashDotLine</enum>
    </property>
+   <property name="cornerButtonEnabled">
+    <bool>false</bool>
+   </property>
    <property name="rowCount">
     <number>11</number>
    </property>
    <property name="columnCount">
-    <number>10</number>
+    <number>11</number>
    </property>
+   <attribute name="horizontalHeaderCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
    <attribute name="horizontalHeaderMinimumSectionSize">
     <number>40</number>
    </attribute>
@@ -166,6 +175,11 @@ gridline-color: rgb(48, 165, 255);</string>
     </property>
    </row>
    <row/>
+   <column>
+    <property name="text">
+     <string/>
+    </property>
+   </column>
    <column/>
    <column/>
    <column/>
@@ -176,12 +190,12 @@ gridline-color: rgb(48, 165, 255);</string>
    <column/>
    <column/>
    <column/>
-   <item row="0" column="0">
+   <item row="0" column="1">
     <property name="text">
      <string/>
     </property>
    </item>
-   <item row="3" column="2">
+   <item row="3" column="3">
     <property name="text">
      <string/>
     </property>
@@ -432,26 +446,6 @@ QPushButton:hover {
     <string>Next</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>30</y>
-     <width>31</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
-background-color: rgb(85, 0, 255);
-font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
-color: rgb(0, 0, 255);
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -462,7 +456,7 @@ color: rgb(0, 0, 255);
   <customwidget>
    <class>GameBoard</class>
    <extends>QTableWidget</extends>
-   <header>gameboard.h</header>
+   <header location="global">gameboard.h</header>
   </customwidget>
  </customwidgets>
  <resources>
