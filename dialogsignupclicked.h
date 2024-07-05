@@ -33,6 +33,11 @@ private:
     QString username;
     QString password;
     QString email;
+    int WinCount ;
+    int LoseCount;
+    int drop;
+    int point;
+    int level;
 };
 
 #endif // DIALOGSIGNUPCLICKED_H
