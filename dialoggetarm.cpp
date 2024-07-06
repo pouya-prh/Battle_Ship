@@ -34,6 +34,17 @@ DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
                     cells[i][j+k-1] = 20;
                 }
             }
+            else if (cells[i][j] == -2)
+            {
+                for(int k = 1; k<=2;k++)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship2" + QString::number(k) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i+k-1, j, item);
+                    cells[i+k-1][j] = 20;
+                }
+            }
             else if (cells[i][j] == 3)
             {
                 for(int k = 1; k<=3;k++)
@@ -45,6 +56,17 @@ DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
                     cells[i][j+k-1] = 30;
                 }
             }
+            else if (cells[i][j] == -3)
+            {
+                for(int k = 1; k<=3;k++)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship3" + QString::number(k) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i+k-1, j, item);
+                    cells[i+k-1][j] = 30;
+                }
+            }
             else if (cells[i][j] == 4)
             {
                 for(int k = 1; k<=4;k++)
@@ -54,6 +76,17 @@ DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
                     item->setIcon(icon);
                     ui->tableWidget->setItem(i, j+k-1, item);
                     cells[i][j+k-1] = 40;
+                }
+            }
+            else if (cells[i][j] == -4)
+            {
+                for(int k = 1; k<=4;k++)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship4" + QString::number(k) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i+k-1, j, item);
+                    cells[i+k-1][j] = 40;
                 }
             }
         }

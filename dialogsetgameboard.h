@@ -19,8 +19,15 @@ protected:
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     bool isDropValid(int,int,int,bool horizental = true);
+    void rotate(QPushButton*,int);
 private slots:
     void on_nextButton_clicked();
+    void on_ship21_clicked();
+    void on_ship22_clicked();
+    void on_ship23_clicked();
+    void on_ship31_clicked();
+    void on_ship32_clicked();
+    void on_ship41_clicked();
 
 private:
     Ui::DialogSetGameBoard *ui;

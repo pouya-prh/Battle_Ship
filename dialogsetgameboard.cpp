@@ -98,3 +98,160 @@ void DialogSetGameBoard::on_nextButton_clicked()
     page2->show();
 }
 
+void DialogSetGameBoard::rotate(QPushButton* shipButton,int size)
+{
+
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if (width>height)
+    {
+
+        shipButton->setStyleSheet("QPushButton { border-image: url(:/Recommended Source Files"
+                                  "/Recommended Source Files/Images/Vship"+QString::number(size)+".png); }");
+    }
+    else
+    {
+        shipButton->setStyleSheet("QPushButton { border-image: url(:/Recommended Source "
+                                  "Files/Recommended Source Files/Images/ship"+QString::number(size)+".PNG); }");
+    }
+    shipButton->setFixedSize(height, width);
+}
+
+void DialogSetGameBoard::on_ship21_clicked()
+{
+    QPushButton *shipButton = ui->ship21;
+    QPoint droped = ui->ship21->pos();
+    int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+    int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if(width>height)
+    {
+        ui->tableWidget->DellHasShipCells(row,column,2);
+        ui->tableWidget->SetHasShipCells(row,column,2,false);
+    }
+   else
+    {
+        ui->tableWidget->DellHasShipCells(row,column,2,false);
+        ui->tableWidget->SetHasShipCells(row,column,2);
+    }
+
+    rotate(shipButton,2);
+}
+
+
+
+void DialogSetGameBoard::on_ship22_clicked()
+{
+    QPushButton *shipButton = ui->ship22;
+    QPoint droped = ui->ship22->pos();
+    int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+    int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if(width>height)
+    {
+        ui->tableWidget->DellHasShipCells(row,column,2);
+        ui->tableWidget->SetHasShipCells(row,column,2,false);
+    }
+    else
+    {
+        ui->tableWidget->DellHasShipCells(row,column,2,false);
+        ui->tableWidget->SetHasShipCells(row,column,2);
+    }
+
+    rotate(shipButton,2);
+}
+
+
+void DialogSetGameBoard::on_ship23_clicked()
+{
+    QPushButton *shipButton = ui->ship23;
+    QPoint droped = ui->ship23->pos();
+    int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+    int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if(width>height)
+    {
+        ui->tableWidget->DellHasShipCells(row,column,2);
+        ui->tableWidget->SetHasShipCells(row,column,2,false);
+    }
+    else
+    {
+        ui->tableWidget->DellHasShipCells(row,column,2,false);
+        ui->tableWidget->SetHasShipCells(row,column,2);
+    }
+
+    rotate(shipButton,2);
+}
+
+
+void DialogSetGameBoard::on_ship31_clicked()
+{
+    QPushButton *shipButton = ui->ship31;
+    QPoint droped = ui->ship31->pos();
+    int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+    int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if(width>height)
+    {
+        ui->tableWidget->DellHasShipCells(row,column,3);
+        ui->tableWidget->SetHasShipCells(row,column,3,false);
+    }
+    else
+    {
+        ui->tableWidget->DellHasShipCells(row,column,3,false);
+        ui->tableWidget->SetHasShipCells(row,column,3);
+    }
+
+    rotate(shipButton,3);
+}
+
+
+void DialogSetGameBoard::on_ship32_clicked()
+{
+    QPushButton *shipButton = ui->ship32;
+    QPoint droped = ui->ship32->pos();
+    int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+    int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if(width>height)
+    {
+        ui->tableWidget->DellHasShipCells(row,column,3);
+        ui->tableWidget->SetHasShipCells(row,column,3,false);
+    }
+    else
+    {
+        ui->tableWidget->DellHasShipCells(row,column,3,false);
+        ui->tableWidget->SetHasShipCells(row,column,3);
+    }
+
+    rotate(shipButton,3);
+}
+
+
+void DialogSetGameBoard::on_ship41_clicked()
+{
+    QPushButton *shipButton = ui->ship41;
+    QPoint droped = ui->ship41->pos();
+    int row = ui->tableWidget->rowAt((droped.y()-68)) ;
+    int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+    int width = shipButton->width();
+    int height = shipButton->height();
+    if(width>height)
+    {
+        ui->tableWidget->DellHasShipCells(row,column,4);
+        ui->tableWidget->SetHasShipCells(row,column,4,false);
+    }
+    else
+    {
+        ui->tableWidget->DellHasShipCells(row,column,4,false);
+        ui->tableWidget->SetHasShipCells(row,column,4);
+    }
+
+    rotate(shipButton,4);
+}
+
