@@ -16,7 +16,7 @@ GameBoard::GameBoard(QWidget *parent)
 GameBoard::~GameBoard()
 {
 
-    for (int i = 0; i < rowCount(); ++i) {
+    for (int i = 0; i < 10; ++i) {
         delete [] HasShipCells[i];
     }
     delete [] HasShipCells;
