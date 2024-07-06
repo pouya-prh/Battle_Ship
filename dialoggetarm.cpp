@@ -2,18 +2,20 @@
 #include "ui_dialoggetarm.h"
 #include <QVBoxLayout>
 #include "gameboard.h"
+#include <QDebug>
 DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DialogGetArm),
     gameBoard(gameBoard)
 {
+
     ui->setupUi(this);
     // QVBoxLayout *layout = new QVBoxLayout();
     // layout->addWidget(gameBoard);
     // setLayout(layout);
     for(int i = 0; i <10;i++)
     {
-        for(int j = 0 ; j <10 ;j++)
+        for(int j = 0 ; j <10;j++)
         {
             if (cells[i][j] == 1)
             {
@@ -25,68 +27,68 @@ DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
             }
             else if (cells[i][j] == 2)
             {
-                for(int k = 1; k<=2;k++)
+                for(int k = 0; k<2;k++)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship2" + QString::number(k) + ".png");
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship2" + QString::number(k+1) + ".png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k-1, item);
-                    cells[i][j+k-1] = 20;
+                    ui->tableWidget->setItem(i, j+k, item);
+                    cells[i][j+k] = 20;
                 }
             }
             else if (cells[i][j] == -2)
             {
-                for(int k = 1; k<=2;k++)
+                for(int k = 0; k<2;k++)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship2" + QString::number(k) + ".png");
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship2" + QString::number(k+1) + ".png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k-1, j, item);
-                    cells[i+k-1][j] = 20;
+                    ui->tableWidget->setItem(i+k, j, item);
+                    cells[i+k][j] = 20;
                 }
             }
             else if (cells[i][j] == 3)
             {
-                for(int k = 1; k<=3;k++)
+                for(int k = 0; k<3;k++)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship3" + QString::number(k) + ".png");
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship3" + QString::number(k+1) + ".png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k-1, item);
-                    cells[i][j+k-1] = 30;
+                    ui->tableWidget->setItem(i, j+k, item);
+                    cells[i][j+k] = 30;
                 }
             }
             else if (cells[i][j] == -3)
             {
-                for(int k = 1; k<=3;k++)
+                for(int k = 0; k<3;k++)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship3" + QString::number(k) + ".png");
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship3" + QString::number(k+1) + ".png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k-1, j, item);
-                    cells[i+k-1][j] = 30;
+                    ui->tableWidget->setItem(i+k, j, item);
+                    cells[i+k][j] = 30;
                 }
             }
             else if (cells[i][j] == 4)
             {
-                for(int k = 1; k<=4;k++)
+                for(int k = 0; k<4;k++)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship4" + QString::number(k) + ".png");
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship4" + QString::number(k+1) + ".png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k-1, item);
-                    cells[i][j+k-1] = 40;
+                    ui->tableWidget->setItem(i, j+k, item);
+                    cells[i][j+k] = 40;
                 }
             }
             else if (cells[i][j] == -4)
             {
-                for(int k = 1; k<=4;k++)
+                for(int k = 0; k<4;k++)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship4" + QString::number(k) + ".png");
+                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship4" + QString::number(k+1) + ".png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k-1, j, item);
-                    cells[i+k-1][j] = 40;
+                    ui->tableWidget->setItem(i+k, j, item);
+                    cells[i+k][j] = 40;
                 }
             }
         }

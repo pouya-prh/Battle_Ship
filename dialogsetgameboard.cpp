@@ -51,8 +51,8 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
         QPoint droped = event->position().toPoint();
         QPoint dropPosition = GameBoard::snapToGrid(droped);
 
-        int row = ui->tableWidget->rowAt((droped.y()-68)) ;
-        int column = ui->tableWidget->columnAt((droped.x()-50)) ;
+        int row = ui->tableWidget->rowAt((dropPosition.y()-68)) ;
+        int column = ui->tableWidget->columnAt((dropPosition.x()-50));
 
         if (!isDropValid(row,column, shipSize)) {
             sourceButton->move(initialPosition);
@@ -61,7 +61,7 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
             return;
         }
 
-        ui->tableWidget->SetHasShipCells(row-1,column-1,shipSize);
+        ui->tableWidget->SetHasShipCells(row,column,shipSize);
         if (sourceButton) {
 
 
@@ -75,16 +75,16 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
 
 bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horizental)
 {
-    if (row<1||row>10||column<1||column>10)
+    if (row<0||row>9||column<0||column>9)
         return false;
     if(horizental)
     {
-        if(column+shipSize>10)
+        if(column+shipSize-1>9)
             return false;
     }
     else
     {
-        if(row+shipSize>10)
+        if(row+shipSize-1>9)
             return false;
     }
 
