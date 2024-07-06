@@ -17,6 +17,9 @@
    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/Back.jpg);</string>
   </property>
   <widget class="GameBoard" name="tableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -45,9 +48,9 @@
    </property>
    <property name="styleSheet">
     <string notr="true">font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
-background-color: rgb(0, 0, 255);
+
 color: rgb(41, 134, 255);
-background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+
 selection-background-color: rgb(0, 170, 255);
 
 gridline-color: rgb(48, 165, 255);</string>
@@ -88,12 +91,18 @@ gridline-color: rgb(48, 165, 255);</string>
    <property name="gridStyle">
     <enum>Qt::DashDotLine</enum>
    </property>
+   <property name="cornerButtonEnabled">
+    <bool>false</bool>
+   </property>
    <property name="rowCount">
-    <number>11</number>
+    <number>10</number>
    </property>
    <property name="columnCount">
     <number>10</number>
    </property>
+   <attribute name="horizontalHeaderCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
    <attribute name="horizontalHeaderMinimumSectionSize">
     <number>40</number>
    </attribute>
@@ -161,7 +170,6 @@ gridline-color: rgb(48, 165, 255);</string>
      <string>J</string>
     </property>
    </row>
-   <row/>
    <column/>
    <column/>
    <column/>
