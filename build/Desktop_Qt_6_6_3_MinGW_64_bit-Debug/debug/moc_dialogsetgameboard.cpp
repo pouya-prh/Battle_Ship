@@ -40,14 +40,26 @@ struct qt_meta_stringdata_CLASSDialogSetGameBoardENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSDialogSetGameBoardENDCLASS = QtMocHelpers::stringData(
     "DialogSetGameBoard",
     "on_nextButton_clicked",
-    ""
+    "",
+    "on_ship21_clicked",
+    "on_ship22_clicked",
+    "on_ship23_clicked",
+    "on_ship31_clicked",
+    "on_ship32_clicked",
+    "on_ship41_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDialogSetGameBoardENDCLASS_t {
-    uint offsetsAndSizes[6];
+    uint offsetsAndSizes[18];
     char stringdata0[19];
     char stringdata1[22];
     char stringdata2[1];
+    char stringdata3[18];
+    char stringdata4[18];
+    char stringdata5[18];
+    char stringdata6[18];
+    char stringdata7[18];
+    char stringdata8[18];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDialogSetGameBoardENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -55,11 +67,23 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogSetGameBoardENDCLASS_t qt
     {
         QT_MOC_LITERAL(0, 18),  // "DialogSetGameBoard"
         QT_MOC_LITERAL(19, 21),  // "on_nextButton_clicked"
-        QT_MOC_LITERAL(41, 0)   // ""
+        QT_MOC_LITERAL(41, 0),  // ""
+        QT_MOC_LITERAL(42, 17),  // "on_ship21_clicked"
+        QT_MOC_LITERAL(60, 17),  // "on_ship22_clicked"
+        QT_MOC_LITERAL(78, 17),  // "on_ship23_clicked"
+        QT_MOC_LITERAL(96, 17),  // "on_ship31_clicked"
+        QT_MOC_LITERAL(114, 17),  // "on_ship32_clicked"
+        QT_MOC_LITERAL(132, 17)   // "on_ship41_clicked"
     },
     "DialogSetGameBoard",
     "on_nextButton_clicked",
-    ""
+    "",
+    "on_ship21_clicked",
+    "on_ship22_clicked",
+    "on_ship23_clicked",
+    "on_ship31_clicked",
+    "on_ship32_clicked",
+    "on_ship41_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -71,7 +95,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogSetGameBoardENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,9 +103,21 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogSetGameBoardENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x08,    1 /* Private */,
+       1,    0,   56,    2, 0x08,    1 /* Private */,
+       3,    0,   57,    2, 0x08,    2 /* Private */,
+       4,    0,   58,    2, 0x08,    3 /* Private */,
+       5,    0,   59,    2, 0x08,    4 /* Private */,
+       6,    0,   60,    2, 0x08,    5 /* Private */,
+       7,    0,   61,    2, 0x08,    6 /* Private */,
+       8,    0,   62,    2, 0x08,    7 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -97,6 +133,18 @@ Q_CONSTINIT const QMetaObject DialogSetGameBoard::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<DialogSetGameBoard, std::true_type>,
         // method 'on_nextButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ship21_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ship22_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ship23_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ship31_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ship32_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_ship41_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -109,6 +157,12 @@ void DialogSetGameBoard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         (void)_t;
         switch (_id) {
         case 0: _t->on_nextButton_clicked(); break;
+        case 1: _t->on_ship21_clicked(); break;
+        case 2: _t->on_ship22_clicked(); break;
+        case 3: _t->on_ship23_clicked(); break;
+        case 4: _t->on_ship31_clicked(); break;
+        case 5: _t->on_ship32_clicked(); break;
+        case 6: _t->on_ship41_clicked(); break;
         default: ;
         }
     }
@@ -134,13 +188,13 @@ int DialogSetGameBoard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 7;
     }
     return _id;
 }

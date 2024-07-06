@@ -14,6 +14,7 @@ public:
     GameBoard(QWidget* parent = nullptr);
     ~GameBoard();
     void SetHasShipCells(int,int,int, bool horizontal = true);
+    void DellHasShipCells(int,int,int,bool horizental = true);
     QPoint static snapToGrid(const QPoint&);
     int** returnCells();
 };

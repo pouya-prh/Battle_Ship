@@ -54,14 +54,88 @@ void GameBoard::SetHasShipCells(int startRow, int startColumn, int shipSize, boo
         }
     } else {
         for (int k = 0; k < shipSize; ++k) {
-            QTableWidgetItem *item = new QTableWidgetItem();
-            this->item(startRow+k,startColumn);
-            item->setSelected(true);
+
+            if(shipSize == 1)
+            {
+                HasShipCells[startRow+k][startColumn] = -1;
+            }
+
+            else if(shipSize == 2)
+            {
+
+                HasShipCells[startRow+k][startColumn] = -2;
+
+            }
+            else if (shipSize == 3)
+            {
+
+                HasShipCells[startRow+k][startColumn] = -3;
+            }
+            else
+            {
+                HasShipCells[startRow+k][startColumn] = -4;
+            }
+
 
         }
     }
 }
 
+void GameBoard::DellHasShipCells(int startRow, int startColumn, int shipSize, bool horizontal)
+{
+    if (horizontal) {
+        for (int k = 0; k < shipSize; ++k) {
+
+            if(shipSize == 1)
+            {
+                HasShipCells[startRow][startColumn+k] = 0;
+            }
+
+            else if(shipSize == 2)
+            {
+
+                HasShipCells[startRow][startColumn+k] = 0;
+
+            }
+            else if (shipSize == 3)
+            {
+
+                HasShipCells[startRow][startColumn+k] = 0;
+            }
+            else
+            {
+                HasShipCells[startRow][startColumn+k] = 0;
+            }
+        }
+    }
+    else
+      {
+        for (int k = 0; k < shipSize; ++k) {
+
+            if(shipSize == 1)
+            {
+                HasShipCells[startRow+k][startColumn] = 0;
+            }
+
+            else if(shipSize == 2)
+            {
+
+                HasShipCells[startRow+k][startColumn] = 0;
+
+            }
+            else if (shipSize == 3)
+            {
+
+                HasShipCells[startRow+k][startColumn] = 0;
+            }
+            else
+            {
+                HasShipCells[startRow+k][startColumn] = 0;
+            }
+        }
+
+      }
+}
 QPoint GameBoard::snapToGrid(const QPoint& dropPosition)
 {
     int cellSize = 40;
