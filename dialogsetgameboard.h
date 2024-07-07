@@ -1,6 +1,7 @@
 #ifndef DIALOGSETGAMEBOARD_H
 #define DIALOGSETGAMEBOARD_H
 #include "gameboard.h"
+#include "arms.h"
 #include <QDialog>
 
 namespace Ui {
@@ -12,7 +13,7 @@ class DialogSetGameBoard : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogSetGameBoard(QWidget *parent = nullptr);
+    explicit DialogSetGameBoard(User&,QWidget *parent = nullptr);
     ~DialogSetGameBoard();
 protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
@@ -35,6 +36,7 @@ private slots:
 private:
     Ui::DialogSetGameBoard *ui;
     GameBoard *gameBoard;
+    User user;
 };
 
 #endif // DIALOGSETGAMEBOARD_H

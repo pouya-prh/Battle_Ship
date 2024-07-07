@@ -24,6 +24,7 @@ SOURCES += \
     dialogsignupclicked.cpp \
     musicplayer.cpp \
     ship.cpp \
+    user.cpp \
     validator.cpp
 
 # Header files
@@ -40,6 +41,7 @@ HEADERS += \
     dialogsignupclicked.h \
     musicplayer.h \
     ship.h \
+    user.h \
     validator.h
 
 # User interface files

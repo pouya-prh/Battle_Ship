@@ -1,6 +1,6 @@
 #ifndef DIALOGLOGINCLICKED_H
 #define DIALOGLOGINCLICKED_H
-#include "mainwindow.h"
+#include "user.h"
 #include <QDialog>
 
 

@@ -11,6 +11,7 @@ debug/dialogloginclicked.o
 debug/dialogsignupclicked.o
 debug/musicplayer.o
 debug/ship.o
+debug/user.o
 debug/validator.o
 debug/qrc_back.o
 debug/qrc_font.o

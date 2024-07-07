@@ -3,16 +3,7 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QMainWindow>
-
-typedef struct
-{
-    QString name;
-    int drop;
-    int point;
-    int level;
-}User;
-
-
+#include "user.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
