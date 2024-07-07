@@ -1,6 +1,7 @@
 #include "dialogpage1.h"
 #include "ui_dialogpage1.h"
 #include <dialogsetgameboard.h>
+#include "dialoggetarm.h"
 #include <windows.h>
 #include <QTimer>
 DialogPage1::DialogPage1(User& user,QWidget *parent)
@@ -52,7 +53,7 @@ DialogPage1::~DialogPage1()
 
 void DialogPage1::on_BotPushbutton_clicked()
 {
-    DialogSetGameBoard* setPage = new DialogSetGameBoard(user);
+    DialogGetArm* setPage = new DialogGetArm(user);
     this->close();
     setPage->show();
 

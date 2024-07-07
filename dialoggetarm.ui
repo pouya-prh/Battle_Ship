@@ -481,6 +481,35 @@ color: rgb(85, 85, 85);</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="nextButton">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>520</y>
+     <width>221</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton{
+background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+QPushButton:hover {
+ 
+	color: rgb(0, 85, 0);
+	background-color: rgb(0, 85, 0);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>Next</string>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

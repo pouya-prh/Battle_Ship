@@ -1,10 +1,9 @@
 #include "dialoggetarm.h"
 #include "ui_dialoggetarm.h"
-#include "gameboard.h"
-DialogGetArm::DialogGetArm(User& user,GameBoard *gameBoard,int** cells,QWidget *parent) :
+#include "dialogsetgameboard.h"
+DialogGetArm::DialogGetArm(User& user,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DialogGetArm),
-    gameBoard(gameBoard),
     user(user)
 {
 
@@ -12,114 +11,124 @@ DialogGetArm::DialogGetArm(User& user,GameBoard *gameBoard,int** cells,QWidget *
     drop +=30;
     user.SetDrop(drop);
     ui->setupUi(this);
-    for(int i = 0; i <10;i++)
-    {
-        for(int j = 0 ; j <10;j++)
-        {
-            if (cells[i][j] == 1)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship1" + QString::number(1) + ".png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
-                cells[i][j] = 10;
-            }
-            else if (cells[i][j] == 2)
-            {
-                for(int k = 0; k<2;k++)
-                {
-                    QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship2" + QString::number(k+1) + ".png");
-                    item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k, item);
-                    cells[i][j+k] = 20;
-                }
-            }
-            else if (cells[i][j] == -2)
-            {
-                for(int k = 0; k<2;k++)
-                {
-                    QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship2" + QString::number(k+1) + ".png");
-                    item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k, j, item);
-                    cells[i+k][j] = 20;
-                }
-            }
-            else if (cells[i][j] == 3)
-            {
-                for(int k = 0; k<3;k++)
-                {
-                    QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship3" + QString::number(k+1) + ".png");
-                    item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k, item);
-                    cells[i][j+k] = 30;
-                }
-            }
-            else if (cells[i][j] == -3)
-            {
-                for(int k = 0; k<3;k++)
-                {
-                    QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship3" + QString::number(k+1) + ".png");
-                    item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k, j, item);
-                    cells[i+k][j] = 30;
-                }
-            }
-            else if (cells[i][j] == 4)
-            {
-                for(int k = 0; k<4;k++)
-                {
-                    QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship4" + QString::number(k+1) + ".png");
-                    item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k, item);
-                    cells[i][j+k] = 40;
-                }
-            }
-            else if (cells[i][j] == -4)
-            {
-                for(int k = 0; k<4;k++)
-                {
-                    QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship4" + QString::number(k+1) + ".png");
-                    item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k, j, item);
-                    cells[i+k][j] = 40;
-                }
-            }
-            else if(cells[i][j] == 5)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/RedUnavailible.jpg");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i,j,item);
-            }
-            else if (cells[i][j] == 0)
-            {
+    // for(int i = 0; i <10;i++)
+    // {
+    //     for(int j = 0 ; j <10;j++)
+    //     {
+    //         if (cells[i][j] == 11||cells[i][j] ==12||cells[i][j]==13)
+    //         {
+    //             QTableWidgetItem *item = new QTableWidgetItem();
+    //             QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship1" + QString::number(1) + ".png");
+    //             item->setIcon(icon);
+    //             ui->tableWidget->setItem(i, j, item);
+    //             cells[i][j] *=10;
+    //         }
+    //         else if (cells[i][j] == 21 ||cells[i][j] == 22||cells[i][j] == 23)
+    //         {
+    //             for(int k = 0; k<2;k++)
+    //             {
+    //                 QTableWidgetItem *item = new QTableWidgetItem();
+    //                 QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship2" + QString::number(k+1) + ".png");
+    //                 item->setIcon(icon);
+    //                 ui->tableWidget->setItem(i, j+k, item);
+    //                 cells[i][j+k] *= 10;
+    //             }
+    //         }
+    //         else if (cells[i][j] == -21||cells[i][j] == -22||cells[i][j] == -23)
+    //         {
+    //             for(int k = 0; k<2;k++)
+    //             {
+    //                 QTableWidgetItem *item = new QTableWidgetItem();
+    //                 QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship2" + QString::number(k+1) + ".png");
+    //                 item->setIcon(icon);
+    //                 ui->tableWidget->setItem(i+k, j, item);
+    //                 cells[i+k][j] *= (-10);
+    //             }
+    //         }
+    //         else if (cells[i][j] == 31||cells[i][j] == 32)
+    //         {
+    //             for(int k = 0; k<3;k++)
+    //             {
+    //                 QTableWidgetItem *item = new QTableWidgetItem();
+    //                 QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship3" + QString::number(k+1) + ".png");
+    //                 item->setIcon(icon);
+    //                 ui->tableWidget->setItem(i, j+k, item);
+    //                 cells[i][j+k] *= 10;
+    //             }
+    //         }
+    //         else if (cells[i][j] == -31||cells[i][j] == -32)
+    //         {
+    //             for(int k = 0; k<3;k++)
+    //             {
+    //                 QTableWidgetItem *item = new QTableWidgetItem();
+    //                 QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship3" + QString::number(k+1) + ".png");
+    //                 item->setIcon(icon);
+    //                 ui->tableWidget->setItem(i+k, j, item);
+    //                 cells[i+k][j] *= (-10);
+    //             }
+    //         }
+    //         else if (cells[i][j] == 41)
+    //         {
+    //             for(int k = 0; k<4;k++)
+    //             {
+    //                 QTableWidgetItem *item = new QTableWidgetItem();
+    //                 QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/ship4" + QString::number(k+1) + ".png");
+    //                 item->setIcon(icon);
+    //                 ui->tableWidget->setItem(i, j+k, item);
+    //                 cells[i][j+k] *= 10;
+    //             }
+    //         }
+    //         else if (cells[i][j] == -41)
+    //         {
+    //             for(int k = 0; k<4;k++)
+    //             {
+    //                 QTableWidgetItem *item = new QTableWidgetItem();
+    //                 QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/Vship4" + QString::number(k+1) + ".png");
+    //                 item->setIcon(icon);
+    //                 ui->tableWidget->setItem(i+k, j, item);
+    //                 cells[i+k][j] *= (-10);
+    //             }
+    //         }
+    //         else if(cells[i][j] == 5)
+    //         {
+    //             QTableWidgetItem *item = new QTableWidgetItem();
+    //             QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/RedUnavailible.jpg");
+    //             item->setIcon(icon);
+    //             ui->tableWidget->setItem(i,j,item);
+    //         }
+    //         else if (cells[i][j] == 0)
+    //         {
 
-                QTableWidgetItem *item = new QTableWidgetItem();
-                item->setText(" ");
-                ui->tableWidget->setItem(i,j,item);
-            }
-        }
-    }
-    for(int i = 0; i <10;i++)
-    {
-        for(int j = 0 ; j <10 ;j++)
-        {
-            if (cells[i][j] == 10)
-                cells[i][j] =1;
-            else if (cells[i][j] ==20)
-                cells[i][j] = 2;
-            else if(cells[i][j] == 30)
-                cells[i][j] = 3;
-            else if(cells[i][j] == 40)
-                cells[i][j] = 4;
-        }
-    }
+    //             QTableWidgetItem *item = new QTableWidgetItem();
+    //             item->setText(" ");
+    //             ui->tableWidget->setItem(i,j,item);
+    //         }
+    //     }
+    // }
+    // for(int i = 0; i <10;i++)
+    // {
+    //     for(int j = 0 ; j <10 ;j++)
+    //     {
+    //         if (cells[i][j] == 110)
+    //             cells[i][j] =11;
+    //         else if (cells[i][j]==120)
+    //             cells[i][j]=12;
+    //         else if(cells[i][j] == 130)
+    //             cells[i][j] = 13;
+    //         else if (cells[i][j] ==210)
+    //             cells[i][j] = 21;
+    //         else if (cells[i][j] ==220)
+    //             cells[i][j] = 22;
+    //         else if (cells[i][j] ==230)
+    //             cells[i][j] = 23;
+    //         else if(cells[i][j] == 310)
+    //             cells[i][j] = 31;
+    //         else if(cells[i][j] == 320)
+    //             cells[i][j] = 32;
+    //         else if(cells[i][j] == 410)
+    //             cells[i][j] = 41;
+    //     }
+    // }
 }
 
 
@@ -137,6 +146,7 @@ void DialogGetArm::on_mineButton_clicked()
         int value = currentValue +1;
         QString newText = QString::number(value);
         ui->mineCounter->setText(newText);
+
     }
 
 
@@ -194,5 +204,16 @@ void DialogGetArm::on_atomicBombButton_clicked()
         QString newText = QString::number(value);
         ui->atomicBombCounter->setText(newText);
     }
+}
+
+
+void DialogGetArm::on_nextButton_clicked()
+{
+    this->close();
+    DialogSetGameBoard *setPage = new DialogSetGameBoard(user,arms);
+    setPage->show();
+
+
+
 }
 

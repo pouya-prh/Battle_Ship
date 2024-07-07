@@ -38,6 +38,7 @@ public:
     QLabel *trackerCounter;
     QLabel *linearAttackCounter;
     QLabel *atomicBombCounter;
+    QPushButton *nextButton;
 
     void setupUi(QDialog *DialogGetArm)
     {
@@ -191,7 +192,7 @@ public:
         trackerCounter->setAlignment(Qt::AlignCenter);
         linearAttackCounter = new QLabel(DialogGetArm);
         linearAttackCounter->setObjectName("linearAttackCounter");
-        linearAttackCounter->setGeometry(QRect(847, 425, 21, 21));
+        linearAttackCounter->setGeometry(QRect(843, 425, 21, 21));
         linearAttackCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
 "font: 10pt \"BYRIL_Sea_Battle2\";\n"
 "color: rgb(85, 85, 85);"));
@@ -203,6 +204,23 @@ public:
 "font: 10pt \"BYRIL_Sea_Battle2\";\n"
 "color: rgb(85, 85, 85);"));
         atomicBombCounter->setAlignment(Qt::AlignCenter);
+        nextButton = new QPushButton(DialogGetArm);
+        nextButton->setObjectName("nextButton");
+        nextButton->setGeometry(QRect(730, 520, 221, 51));
+        nextButton->setStyleSheet(QString::fromUtf8("\n"
+"QPushButton{\n"
+"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"background-color: rgb(85, 0, 255);\n"
+"font: 25pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(0, 0, 255);\n"
+"}\n"
+"QPushButton:hover {\n"
+" \n"
+"	color: rgb(0, 85, 0);\n"
+"	background-color: rgb(0, 85, 0);\n"
+"}\n"
+"\n"
+""));
 
         retranslateUi(DialogGetArm);
 
@@ -255,6 +273,7 @@ public:
         trackerCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
         linearAttackCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
         atomicBombCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
+        nextButton->setText(QCoreApplication::translate("DialogGetArm", "Next", nullptr));
     } // retranslateUi
 
 };

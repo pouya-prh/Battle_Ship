@@ -35,6 +35,10 @@ public:
     DraggableButton *ship41;
     QPushButton *randomSetButton;
     QPushButton *nextButton;
+    DraggableButton *mine1;
+    DraggableButton *mine2;
+    DraggableButton *airDefance1;
+    DraggableButton *airDefance2;
 
     void setupUi(QDialog *DialogSetGameBoard)
     {
@@ -154,8 +158,9 @@ public:
         ship32->setIconSize(QSize(120, 40));
         ship41 = new DraggableButton(DialogSetGameBoard);
         ship41->setObjectName("ship41");
-        ship41->setGeometry(QRect(800, 400, 160, 40));
-        ship41->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/ship4.PNG);"));
+        ship41->setGeometry(QRect(808, 400, 160, 40));
+        ship41->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/ship4.PNG);\n"
+""));
         ship41->setIconSize(QSize(160, 40));
         randomSetButton = new QPushButton(DialogSetGameBoard);
         randomSetButton->setObjectName("randomSetButton");
@@ -179,6 +184,26 @@ public:
 "}\n"
 "\n"
 ""));
+        mine1 = new DraggableButton(DialogSetGameBoard);
+        mine1->setObjectName("mine1");
+        mine1->setGeometry(QRect(730, 39, 40, 40));
+        mine1->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);"));
+        mine1->setIconSize(QSize(40, 40));
+        mine2 = new DraggableButton(DialogSetGameBoard);
+        mine2->setObjectName("mine2");
+        mine2->setGeometry(QRect(680, 40, 40, 40));
+        mine2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);"));
+        mine2->setIconSize(QSize(40, 40));
+        airDefance1 = new DraggableButton(DialogSetGameBoard);
+        airDefance1->setObjectName("airDefance1");
+        airDefance1->setGeometry(QRect(730, 90, 40, 40));
+        airDefance1->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        airDefance1->setIconSize(QSize(40, 40));
+        airDefance2 = new DraggableButton(DialogSetGameBoard);
+        airDefance2->setObjectName("airDefance2");
+        airDefance2->setGeometry(QRect(680, 91, 40, 40));
+        airDefance2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        airDefance2->setIconSize(QSize(40, 40));
 
         retranslateUi(DialogSetGameBoard);
 
@@ -227,6 +252,10 @@ public:
         ship41->setText(QString());
         randomSetButton->setText(QString());
         nextButton->setText(QCoreApplication::translate("DialogSetGameBoard", "Next", nullptr));
+        mine1->setText(QString());
+        mine2->setText(QString());
+        airDefance1->setText(QString());
+        airDefance2->setText(QString());
     } // retranslateUi
 
 };

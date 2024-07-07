@@ -13,7 +13,7 @@ private:
 public:
     GameBoard(QWidget* parent = nullptr);
     ~GameBoard();
-    void SetHasShipCells(int,int,int, bool horizontal = true);
+    void SetHasShipCells(int,int,int,int,bool horizontal = true);
     void DellHasShipCells(int,int,int,bool horizental = true);
     void AroundOfShips(int,int,int,bool horizental = true);
     void DellAroundOfShips(int,int,int,bool horizental = true);

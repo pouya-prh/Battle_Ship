@@ -2,7 +2,7 @@
 #define DIALOGGETARM_H
 #include <QTableWidget>
 #include <QDialog>
-#include "gameboard.h"
+
 #include "arms.h"
 namespace Ui {
 class DialogGetArm;
@@ -13,7 +13,7 @@ class DialogGetArm : public QDialog
     Q_OBJECT
 
 public:
-     DialogGetArm(User&,GameBoard *gameBoard,int** cells,QWidget *parent = nullptr);
+     DialogGetArm(User&,QWidget *parent = nullptr);
     ~DialogGetArm();
 
 private slots:
@@ -27,9 +27,10 @@ private slots:
 
     void on_atomicBombButton_clicked();
 
+    void on_nextButton_clicked();
+
 private:
     Ui::DialogGetArm *ui;
-    GameBoard *gameBoard;
     Arms arms;
     User& user;
 };

@@ -66,7 +66,26 @@ bool Arms::BuyAtomicBomb(User& user)
     }
     return false;
 }
+int Arms::getAirDefanceCount()
+{
+    return airDefanceCounter;
+}
 
-
+int Arms::getAtomicBombCount()
+{
+    return atomicBombCounter;
+}
+int Arms::getMineCount()
+{
+    return mineCounter;
+}
+int Arms::getLineAttackerCount()
+{
+    return linearattackCounter;
+}
+int Arms::getTrackerCount()
+{
+    return trackerCounter;
+}
 
 
