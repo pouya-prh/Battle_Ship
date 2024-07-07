@@ -12,6 +12,7 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     arms.cpp \
+    dialoggameai.cpp \
     dialoggetarm.cpp \
     dialogpage1.cpp \
     dialogsetgameboard.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
 # Header files
 HEADERS += \
     arms.h \
+    dialoggameai.h \
     dialoggetarm.h \
     dialogpage1.h \
     dialogsetgameboard.h \
@@ -46,6 +48,7 @@ HEADERS += \
 
 # User interface files
 FORMS += \
+    dialoggameai.ui \
     dialoggetarm.ui \
     dialogpage1.ui \
     dialogsetgameboard.ui \

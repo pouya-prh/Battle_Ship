@@ -370,14 +370,15 @@ gridline-color: rgb(48, 165, 255);</string>
   <widget class="DraggableButton" name="ship41">
    <property name="geometry">
     <rect>
-     <x>800</x>
+     <x>808</x>
      <y>400</y>
      <width>160</width>
      <height>40</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/ship4.PNG);</string>
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/ship4.PNG);
+</string>
    </property>
    <property name="text">
     <string/>
@@ -433,6 +434,94 @@ QPushButton:hover {
    </property>
    <property name="text">
     <string>Next</string>
+   </property>
+  </widget>
+  <widget class="DraggableButton" name="mine1">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>39</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="DraggableButton" name="mine2">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>40</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="DraggableButton" name="airDefance1">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>90</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="DraggableButton" name="airDefance2">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>91</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
    </property>
   </widget>
  </widget>

@@ -21,21 +21,32 @@ GameBoard::~GameBoard()
     }
     delete [] HasShipCells;
 }
-void GameBoard::SetHasShipCells(int startRow, int startColumn, int shipSize, bool horizontal)
+void GameBoard::SetHasShipCells(int startRow, int startColumn, int shipSize,int shipKind, bool horizontal)
 {
 
-
+    if(shipSize == 0) //airDefance or mine
+    {
+        if (shipKind == 7)
+        {
+            HasShipCells[startRow][startColumn] = 7;  //mine
+        }
+        else
+        {
+            HasShipCells[startRow][startColumn] = 8;  //airdefance
+        }
+        return;
+    }
 
     if (horizontal) {
         for (int k = 0; k < shipSize; ++k)
         {
-            HasShipCells[startRow][startColumn+k] = shipSize;
+            HasShipCells[startRow][startColumn+k] = shipKind;
         }
     } else {
         for (int k = 0; k < shipSize; ++k)
         {
-            int size = -(shipSize);
-            HasShipCells[startRow+k][startColumn] = size;
+            int ship = -(shipKind);
+            HasShipCells[startRow+k][startColumn] = ship;
 
         }
     }
@@ -83,7 +94,7 @@ int** GameBoard::returnCells()
 
 void GameBoard::AroundOfShips(int startRow,int startColumn,int shipSize,bool horizental)
 {
-    if (horizental)
+    if (horizental && shipSize != 0)
     {
         for (int i =startRow-1 ; i <= startRow+1;i++)
         {
@@ -97,7 +108,7 @@ void GameBoard::AroundOfShips(int startRow,int startColumn,int shipSize,bool hor
             }
         }
     }
-    else
+    else if (shipSize !=0)
     {
         for (int i = startColumn-1;i<= startColumn+1;i++)
         {
