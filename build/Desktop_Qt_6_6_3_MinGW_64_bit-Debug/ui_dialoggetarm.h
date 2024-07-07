@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
 #include <gameboard.h>
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,12 @@ class Ui_DialogGetArm
 {
 public:
     GameBoard *tableWidget;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
 
     void setupUi(QDialog *DialogGetArm)
     {
@@ -31,8 +38,8 @@ public:
         tableWidget = new GameBoard(DialogGetArm);
         if (tableWidget->columnCount() < 10)
             tableWidget->setColumnCount(10);
-        if (tableWidget->rowCount() < 11)
-            tableWidget->setRowCount(11);
+        if (tableWidget->rowCount() < 10)
+            tableWidget->setRowCount(10);
         QFont font;
         font.setWeight(QFont::Thin);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
@@ -61,6 +68,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
         tableWidget->setItem(3, 2, __qtablewidgetitem11);
         tableWidget->setObjectName("tableWidget");
+        tableWidget->setEnabled(true);
         tableWidget->setGeometry(QRect(50, 68, 431, 431));
         QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Minimum);
         sizePolicy.setHorizontalStretch(0);
@@ -70,9 +78,9 @@ public:
         tableWidget->setMinimumSize(QSize(381, 411));
         tableWidget->setAcceptDrops(true);
         tableWidget->setStyleSheet(QString::fromUtf8("font: 15pt \"BYRIL_Sea_Battle2\";\n"
-"background-color: rgb(0, 0, 255);\n"
+"\n"
 "color: rgb(41, 134, 255);\n"
-"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"\n"
 "selection-background-color: rgb(0, 170, 255);\n"
 "\n"
 "gridline-color: rgb(48, 165, 255);"));
@@ -87,12 +95,38 @@ public:
         tableWidget->setSelectionMode(QAbstractItemView::NoSelection);
         tableWidget->setIconSize(QSize(40, 40));
         tableWidget->setGridStyle(Qt::DashDotLine);
-        tableWidget->setRowCount(11);
+        tableWidget->setCornerButtonEnabled(false);
+        tableWidget->setRowCount(10);
         tableWidget->setColumnCount(10);
+        tableWidget->horizontalHeader()->setCascadingSectionResizes(false);
         tableWidget->horizontalHeader()->setMinimumSectionSize(40);
         tableWidget->horizontalHeader()->setDefaultSectionSize(40);
         tableWidget->verticalHeader()->setMinimumSectionSize(40);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
+        pushButton = new QPushButton(DialogGetArm);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(840, 75, 101, 101));
+        pushButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);"));
+        pushButton_2 = new QPushButton(DialogGetArm);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(840, 328, 101, 101));
+        pushButton_2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/lineattac.png);"));
+        pushButton_3 = new QPushButton(DialogGetArm);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(840, 201, 101, 101));
+        pushButton_3->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/square attack.png);"));
+        pushButton_4 = new QPushButton(DialogGetArm);
+        pushButton_4->setObjectName("pushButton_4");
+        pushButton_4->setGeometry(QRect(698, 76, 101, 101));
+        pushButton_4->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        pushButton_5 = new QPushButton(DialogGetArm);
+        pushButton_5->setObjectName("pushButton_5");
+        pushButton_5->setGeometry(QRect(700, 202, 101, 101));
+        pushButton_5->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);"));
+        pushButton_6 = new QPushButton(DialogGetArm);
+        pushButton_6->setObjectName("pushButton_6");
+        pushButton_6->setGeometry(QRect(700, 328, 101, 101));
+        pushButton_6->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);"));
 
         retranslateUi(DialogGetArm);
 
@@ -130,6 +164,12 @@ public:
 #if QT_CONFIG(accessibility)
         tableWidget->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
+        pushButton->setText(QString());
+        pushButton_2->setText(QString());
+        pushButton_3->setText(QString());
+        pushButton_4->setText(QString());
+        pushButton_5->setText(QString());
+        pushButton_6->setText(QString());
     } // retranslateUi
 
 };

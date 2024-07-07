@@ -21,6 +21,7 @@ void DialogSetGameBoard::dragEnterEvent(QDragEnterEvent *event) {
         if (sourceWidget) {
             sourceWidget->hide();
         }
+        ShowRedZone();
         event->acceptProposedAction();
     }
 }
@@ -33,7 +34,7 @@ void DialogSetGameBoard::dragMoveEvent(QDragMoveEvent *event) {
 
 void DialogSetGameBoard::dropEvent(QDropEvent *event) {
     if (event->mimeData()->hasFormat("application/x-ship")) {
-
+        HideRedZone();
         DraggableButton *sourceButton = qobject_cast<DraggableButton*>(event->source());
         QByteArray itemData = event->mimeData()->data("application/x-ship");
         QDataStream dataStream(&itemData, QIODevice::ReadOnly);
@@ -71,6 +72,38 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
         }
 
         event->acceptProposedAction();
+    }
+}
+void DialogSetGameBoard::ShowRedZone()
+{
+    int** cells = ui->tableWidget->returnCells();
+    for (int i =0 ; i <10;i++)
+    {
+        for (int j = 0 ; j <10 ; j ++)
+        {
+            if (cells[i][j] == 5)
+            {
+                QTableWidgetItem *item = new QTableWidgetItem();
+                QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/RedUnavailible.jpg");
+                item->setIcon(icon);
+                ui->tableWidget->setItem(i,j,item);
+            }
+        }
+    }
+}
+void DialogSetGameBoard::HideRedZone()
+{
+    int** cells = ui->tableWidget->returnCells();
+    for (int i =0 ; i <10;i++)
+    {
+        for (int j = 0 ; j <10 ; j ++)
+        {
+            if (cells[i][j] == 5)
+            {
+                QTableWidgetItem *item = new QTableWidgetItem();
+                ui->tableWidget->setItem(i,j,item);
+            }
+        }
     }
 }
 

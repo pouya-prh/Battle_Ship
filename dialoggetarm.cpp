@@ -10,9 +10,6 @@ DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
 {
 
     ui->setupUi(this);
-    // QVBoxLayout *layout = new QVBoxLayout();
-    // layout->addWidget(gameBoard);
-    // setLayout(layout);
     for(int i = 0; i <10;i++)
     {
         for(int j = 0 ; j <10;j++)
@@ -94,7 +91,8 @@ DialogGetArm::DialogGetArm(GameBoard *gameBoard,int** cells,QWidget *parent) :
             else if(cells[i][j] == 5)
             {
                 QTableWidgetItem *item = new QTableWidgetItem();
-                item->setText("*");
+                QIcon icon("D:/Qt/Project/EntryPage/Recommended Source Files/Recommended Source Files/Images/RedUnavailible.jpg");
+                item->setIcon(icon);
                 ui->tableWidget->setItem(i,j,item);
             }
             else if (cells[i][j] == 0)

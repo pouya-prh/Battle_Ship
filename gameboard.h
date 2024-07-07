@@ -17,6 +17,7 @@ public:
     void DellHasShipCells(int,int,int,bool horizental = true);
     void AroundOfShips(int,int,int,bool horizental = true);
     void DellAroundOfShips(int,int,int,bool horizental = true);
+
     QPoint static snapToGrid(const QPoint&);
     int** returnCells();
 };

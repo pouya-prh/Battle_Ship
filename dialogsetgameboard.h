@@ -21,6 +21,8 @@ protected:
     bool isDropValid(int,int,int,bool horizental = true);
     bool canRotate(int,int,int,bool horizental = true);
     void rotate(QPushButton*,int);
+    void ShowRedZone();
+    void HideRedZone();
 private slots:
     void on_nextButton_clicked();
     void on_ship21_clicked();
