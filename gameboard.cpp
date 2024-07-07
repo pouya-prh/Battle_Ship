@@ -27,55 +27,15 @@ void GameBoard::SetHasShipCells(int startRow, int startColumn, int shipSize, boo
 
 
     if (horizontal) {
-        for (int k = 0; k < shipSize; ++k) {
-
-            if(shipSize == 1)
-            {
-                HasShipCells[startRow][startColumn+k] = 1;
-            }
-
-            else if(shipSize == 2)
-            {
-
-                HasShipCells[startRow][startColumn+k] = 2;
-
-            }
-            else if (shipSize == 3)
-            {
-
-                HasShipCells[startRow][startColumn+k] = 3;
-            }
-            else
-            {
-                HasShipCells[startRow][startColumn+k] = 4;
-            }
-
-
+        for (int k = 0; k < shipSize; ++k)
+        {
+            HasShipCells[startRow][startColumn+k] = shipSize;
         }
     } else {
-        for (int k = 0; k < shipSize; ++k) {
-
-            if(shipSize == 1)
-            {
-                HasShipCells[startRow+k][startColumn] = -1;
-            }
-
-            else if(shipSize == 2)
-            {
-
-                HasShipCells[startRow+k][startColumn] = -2;
-
-            }
-            else if (shipSize == 3)
-            {
-
-                HasShipCells[startRow+k][startColumn] = -3;
-            }
-            else
-            {
-                HasShipCells[startRow+k][startColumn] = -4;
-            }
-
+        for (int k = 0; k < shipSize; ++k)
+        {
+            int size = -(shipSize);
+             HasShipCells[startRow+k][startColumn] = size;
 
         }
     }
@@ -83,57 +43,17 @@ void GameBoard::SetHasShipCells(int startRow, int startColumn, int shipSize, boo
 
 void GameBoard::DellHasShipCells(int startRow, int startColumn, int shipSize, bool horizontal)
 {
-    if (horizontal) {
-        for (int k = 0; k < shipSize; ++k) {
+  if (horizontal)
+    {
 
-            if(shipSize == 1)
-            {
-                HasShipCells[startRow][startColumn+k] = 0;
-            }
-
-            else if(shipSize == 2)
-            {
-
-                HasShipCells[startRow][startColumn+k] = 0;
-
-            }
-            else if (shipSize == 3)
-            {
-
-                HasShipCells[startRow][startColumn+k] = 0;
-            }
-            else
-            {
-                HasShipCells[startRow][startColumn+k] = 0;
-            }
-        }
+     for (int k = 0; k < shipSize; ++k)
+        HasShipCells[startRow][startColumn+k] = 0;
     }
     else
       {
-        for (int k = 0; k < shipSize; ++k) {
 
-            if(shipSize == 1)
-            {
-                HasShipCells[startRow+k][startColumn] = 0;
-            }
-
-            else if(shipSize == 2)
-            {
-
-                HasShipCells[startRow+k][startColumn] = 0;
-
-            }
-            else if (shipSize == 3)
-            {
-
-                HasShipCells[startRow+k][startColumn] = 0;
-            }
-            else
-            {
-                HasShipCells[startRow+k][startColumn] = 0;
-            }
-        }
-
+        for (int k = 0; k < shipSize; ++k)
+         HasShipCells[startRow+k][startColumn] = 0;
       }
 }
 QPoint GameBoard::snapToGrid(const QPoint& dropPosition)
@@ -161,7 +81,73 @@ int** GameBoard::returnCells()
     return HasShipCells;
 }
 
+void GameBoard::AroundOfShips(int startRow,int startColumn,int shipSize,bool horizental)
+{
+    if (horizental)
+    {
+        for (int i =startRow-1 ; i <= startRow+1;i++)
+        {
+            for(int j =startColumn-1 ; j <= startColumn+shipSize;j++)
+            {
+                if (i>=0&&i<=9&&j>=0&&j<=9)
+                {
+                    if (HasShipCells[i][j]==0)
+                      HasShipCells[i][j] = 5;
+                }
+            }
+        }
+    }
+    else
+    {
+        for (int i = startColumn-1;i<= startColumn+1;i++)
+        {
+            for(int j = startRow-1;j<= startRow+shipSize;j++)
+            {
+                if (i>=0&&i<=9&&j>=0&&j<=9)
+                {
+                    if (HasShipCells[j][i] == 0)
+                      HasShipCells[j][i] = 5;
+                }
+            }
+        }
+    }
+}
 
+void GameBoard::DellAroundOfShips(int row,int column,int shipsize,bool horizental)
+{
+    if (horizental)
+    {
+        for (int i = row-1 ;i <= row+1;i++)
+        {
+            for (int j = column-1; j<= column+shipsize ;j++)
+            {
+                if(i>=0&&i<=9&&j>=0&&j<=9)
+                {
+                  if (HasShipCells[i][j]==5)
+                    {
+                    HasShipCells[i][j] = 0;
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+        for (int i = column - 1;i <= column+1 ;i++)
+        {
+            for (int j = row-1 ; j <= row+shipsize ; j++)
+            {
+                if(i>=0&&i<=9&&j>=0&&j<=9)
+                {
+                  if (HasShipCells[j][i]==5)
+                  {
+                    HasShipCells[j][i] = 0;
+                  }
+                }
+            }
+        }
+    }
+}
 
 
 

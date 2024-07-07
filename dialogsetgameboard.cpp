@@ -62,6 +62,7 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
         }
 
         ui->tableWidget->SetHasShipCells(row,column,shipSize);
+        ui->tableWidget->AroundOfShips(row,column,shipSize);
         if (sourceButton) {
 
 
@@ -75,21 +76,46 @@ void DialogSetGameBoard::dropEvent(QDropEvent *event) {
 
 bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horizental)
 {
+    int** HasShipCells = ui->tableWidget->returnCells();
     if (row<0||row>9||column<0||column>9)
         return false;
     if(horizental)
     {
         if(column+shipSize-1>9)
             return false;
+
+        for (int j = column  ; j< column+shipSize ;j++)
+        {
+            if(j>=0&&j<=9)
+            {
+            if (HasShipCells[row][j]==5)
+                {
+                    return false;
+                }
+            }
+        }
+
     }
     else
     {
         if(row+shipSize-1>9)
             return false;
+
+        for (int j = row ; j < row+1 ; j++)
+        {
+            if(j>=0)
+            {
+                if (HasShipCells[j][column]==5)
+                    return false;
+            }
+
+        }
+
     }
 
    return true;
 }
+
 
 void DialogSetGameBoard::on_nextButton_clicked()
 {
@@ -127,16 +153,31 @@ void DialogSetGameBoard::on_ship21_clicked()
     int height = shipButton->height();
     if(width>height)
     {
+        ui->tableWidget->DellAroundOfShips(row,column,2);
+        if(!isDropValid(row,column,2,false))
+        {
+            ui->tableWidget->AroundOfShips(row,column,2);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,2);
         ui->tableWidget->SetHasShipCells(row,column,2,false);
+        ui->tableWidget->AroundOfShips(row,column,2,false);
+        rotate(shipButton,2);
     }
-   else
+    else
     {
+        ui->tableWidget->DellAroundOfShips(row,column,2,false);
+        if(!isDropValid(row,column,2))
+        {
+            ui->tableWidget->AroundOfShips(row,column,2,false);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,2,false);
         ui->tableWidget->SetHasShipCells(row,column,2);
+        ui->tableWidget->AroundOfShips(row,column,2);
+        rotate(shipButton,2);
     }
 
-    rotate(shipButton,2);
 }
 
 
@@ -151,16 +192,33 @@ void DialogSetGameBoard::on_ship22_clicked()
     int height = shipButton->height();
     if(width>height)
     {
+
+        ui->tableWidget->DellAroundOfShips(row,column,2);
+        if(!isDropValid(row,column,2,false))
+        {
+            ui->tableWidget->AroundOfShips(row,column,2);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,2);
         ui->tableWidget->SetHasShipCells(row,column,2,false);
+        ui->tableWidget->AroundOfShips(row,column,2,false);
+        rotate(shipButton,2);
     }
     else
     {
+        ui->tableWidget->DellAroundOfShips(row,column,2,false);
+        if(!isDropValid(row,column,2))
+        {
+            ui->tableWidget->AroundOfShips(row,column,2,false);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,2,false);
         ui->tableWidget->SetHasShipCells(row,column,2);
+        ui->tableWidget->AroundOfShips(row,column,2,false);
+        rotate(shipButton,2);
     }
 
-    rotate(shipButton,2);
+
 }
 
 
@@ -174,16 +232,32 @@ void DialogSetGameBoard::on_ship23_clicked()
     int height = shipButton->height();
     if(width>height)
     {
+        ui->tableWidget->DellAroundOfShips(row,column,2);
+        if(!isDropValid(row,column,2,false))
+        {
+            ui->tableWidget->AroundOfShips(row,column,2);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,2);
         ui->tableWidget->SetHasShipCells(row,column,2,false);
+        ui->tableWidget->AroundOfShips(row,column,2,false);
+        rotate(shipButton,2);
     }
     else
     {
+        ui->tableWidget->DellAroundOfShips(row,column,false);
+        if(!isDropValid(row,column,2))
+        {
+            ui->tableWidget->AroundOfShips(row,column,2,false);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,2,false);
         ui->tableWidget->SetHasShipCells(row,column,2);
+        ui->tableWidget->AroundOfShips(row,column,2);
+        rotate(shipButton,2);
     }
 
-    rotate(shipButton,2);
+
 }
 
 
@@ -197,16 +271,32 @@ void DialogSetGameBoard::on_ship31_clicked()
     int height = shipButton->height();
     if(width>height)
     {
+        ui->tableWidget->DellAroundOfShips(row,column,3);
+        if(!isDropValid(row,column,2,false))
+        {
+            ui->tableWidget->AroundOfShips(row,column,3);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,3);
         ui->tableWidget->SetHasShipCells(row,column,3,false);
+        ui->tableWidget->AroundOfShips(row,column,3,false);
+        rotate(shipButton,3);
     }
     else
     {
+        ui->tableWidget->DellAroundOfShips(row,column,3,false);
+        if(!isDropValid(row,column,2))
+        {
+            ui->tableWidget->AroundOfShips(row,column,3,false);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,3,false);
         ui->tableWidget->SetHasShipCells(row,column,3);
+        ui->tableWidget->AroundOfShips(row,column,3);
+        rotate(shipButton,3);
     }
 
-    rotate(shipButton,3);
+
 }
 
 
@@ -220,16 +310,32 @@ void DialogSetGameBoard::on_ship32_clicked()
     int height = shipButton->height();
     if(width>height)
     {
+        ui->tableWidget->DellAroundOfShips(row,column,3);
+        if(!isDropValid(row,column,2,false))
+        {
+            ui->tableWidget->AroundOfShips(row,column,3);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,3);
         ui->tableWidget->SetHasShipCells(row,column,3,false);
+        ui->tableWidget->AroundOfShips(row,column,3,false);
+        rotate(shipButton,3);
     }
     else
     {
+        ui->tableWidget->DellAroundOfShips(row,column,3,false);
+        if(!isDropValid(row,column,2))
+        {
+            ui->tableWidget->AroundOfShips(row,column,3,false);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,3,false);
         ui->tableWidget->SetHasShipCells(row,column,3);
+        ui->tableWidget->AroundOfShips(row,column,3);
+        rotate(shipButton,3);
     }
 
-    rotate(shipButton,3);
+
 }
 
 
@@ -243,15 +349,31 @@ void DialogSetGameBoard::on_ship41_clicked()
     int height = shipButton->height();
     if(width>height)
     {
+        ui->tableWidget->DellAroundOfShips(row,column,4);
+        if(!isDropValid(row,column,2,false))
+        {
+            ui->tableWidget->AroundOfShips(row,column,4);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,4);
         ui->tableWidget->SetHasShipCells(row,column,4,false);
+        ui->tableWidget->AroundOfShips(row,column,4,false);
+        rotate(shipButton,4);
     }
     else
     {
+        ui->tableWidget->DellAroundOfShips(row,column,4,false);
+        if(!isDropValid(row,column,2))
+        {
+            ui->tableWidget->AroundOfShips(row,column,4,false);
+            return;
+        }
         ui->tableWidget->DellHasShipCells(row,column,4,false);
         ui->tableWidget->SetHasShipCells(row,column,4);
+        ui->tableWidget->AroundOfShips(row,column,4);
+        rotate(shipButton,4);
     }
 
-    rotate(shipButton,4);
+
 }
 

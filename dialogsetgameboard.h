@@ -19,6 +19,7 @@ protected:
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     bool isDropValid(int,int,int,bool horizental = true);
+    bool canRotate(int,int,int,bool horizental = true);
     void rotate(QPushButton*,int);
 private slots:
     void on_nextButton_clicked();
