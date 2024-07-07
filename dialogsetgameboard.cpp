@@ -231,7 +231,8 @@ bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horize
 void DialogSetGameBoard::on_nextButton_clicked()
 {
     this->hide();
-    DialogGameAI* page2 = new DialogGameAI();
+    int** cells = ui->tableWidget->returnCells();
+    DialogGameAI* page2 = new DialogGameAI(cells);
     page2->show();
 }
 

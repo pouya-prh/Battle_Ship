@@ -60,6 +60,7 @@ FORMS += \
 RESOURCES += \
     back.qrc \
     font.qrc \
+    images.qrc \
     music.qrc
 
 # Other files

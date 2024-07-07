@@ -43,17 +43,19 @@ constexpr auto qt_meta_stringdata_CLASSMusicPlayerENDCLASS = QtMocHelpers::strin
     "",
     "handleMediaStatusChanged",
     "QMediaPlayer::MediaStatus",
-    "status"
+    "status",
+    "sendOceanPath"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMusicPlayerENDCLASS_t {
-    uint offsetsAndSizes[12];
+    uint offsetsAndSizes[14];
     char stringdata0[12];
     char stringdata1[10];
     char stringdata2[1];
     char stringdata3[25];
     char stringdata4[26];
     char stringdata5[7];
+    char stringdata6[14];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMusicPlayerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -64,14 +66,16 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMusicPlayerENDCLASS_t qt_meta_s
         QT_MOC_LITERAL(22, 0),  // ""
         QT_MOC_LITERAL(23, 24),  // "handleMediaStatusChanged"
         QT_MOC_LITERAL(48, 25),  // "QMediaPlayer::MediaStatus"
-        QT_MOC_LITERAL(74, 6)   // "status"
+        QT_MOC_LITERAL(74, 6),  // "status"
+        QT_MOC_LITERAL(81, 13)   // "sendOceanPath"
     },
     "MusicPlayer",
     "playMusic",
     "",
     "handleMediaStatusChanged",
     "QMediaPlayer::MediaStatus",
-    "status"
+    "status",
+    "sendOceanPath"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -83,7 +87,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMusicPlayerENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -91,12 +95,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMusicPlayerENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   26,    2, 0x0a,    1 /* Public */,
-       3,    1,   27,    2, 0x0a,    2 /* Public */,
+       1,    1,   32,    2, 0x0a,    1 /* Public */,
+       3,    1,   35,    2, 0x0a,    3 /* Public */,
+       6,    0,   38,    2, 0x0a,    5 /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -112,9 +118,12 @@ Q_CONSTINIT const QMetaObject MusicPlayer::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<MusicPlayer, std::true_type>,
         // method 'playMusic'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'handleMediaStatusChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QMediaPlayer::MediaStatus, std::false_type>
+        QtPrivate::TypeAndForceComplete<QMediaPlayer::MediaStatus, std::false_type>,
+        // method 'sendOceanPath'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -125,8 +134,9 @@ void MusicPlayer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         auto *_t = static_cast<MusicPlayer *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->playMusic(); break;
+        case 0: _t->playMusic((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->handleMediaStatusChanged((*reinterpret_cast< std::add_pointer_t<QMediaPlayer::MediaStatus>>(_a[1]))); break;
+        case 2: _t->sendOceanPath(); break;
         default: ;
         }
     }
@@ -151,13 +161,13 @@ int MusicPlayer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

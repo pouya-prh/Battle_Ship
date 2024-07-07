@@ -1,4 +1,5 @@
 debug/arms.o
+debug/dialoggameai.o
 debug/dialoggetarm.o
 debug/dialogpage1.o
 debug/dialogsetgameboard.o
@@ -15,7 +16,9 @@ debug/user.o
 debug/validator.o
 debug/qrc_back.o
 debug/qrc_font.o
+debug/qrc_images.o
 debug/qrc_music.o
+debug/moc_dialoggameai.o
 debug/moc_dialoggetarm.o
 debug/moc_dialogpage1.o
 debug/moc_dialogsetgameboard.o

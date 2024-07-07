@@ -125,7 +125,7 @@ public:
         airDefanceButton = new QPushButton(DialogGetArm);
         airDefanceButton->setObjectName("airDefanceButton");
         airDefanceButton->setGeometry(QRect(638, 76, 101, 101));
-        airDefanceButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        airDefanceButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/airDefense.png);"));
         trackerButton = new QPushButton(DialogGetArm);
         trackerButton->setObjectName("trackerButton");
         trackerButton->setGeometry(QRect(640, 350, 101, 101));

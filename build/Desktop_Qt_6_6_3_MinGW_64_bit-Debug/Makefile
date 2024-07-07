@@ -262,6 +262,7 @@ Makefile: ../../EntryPage.pro C:/Qt/6.6.3/mingw_64/mkspecs/win32-g++/qmake.conf 
 		C:/Qt/6.6.3/mingw_64/mkspecs/features/build_pass.prf \
 		../../back.qrc \
 		../../font.qrc \
+		../../images.qrc \
 		../../music.qrc
 	$(QMAKE) -o Makefile ..\..\EntryPage.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt/6.6.3/mingw_64/mkspecs/features/spec_pre.prf:
@@ -456,6 +457,7 @@ C:/Qt/6.6.3/mingw_64/lib/Qt6EntryPoint.prl:
 C:/Qt/6.6.3/mingw_64/mkspecs/features/build_pass.prf:
 ../../back.qrc:
 ../../font.qrc:
+../../images.qrc:
 ../../music.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\EntryPage.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

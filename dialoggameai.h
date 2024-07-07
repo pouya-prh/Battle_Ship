@@ -12,7 +12,7 @@ class DialogGameAI : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogGameAI(QWidget *parent = nullptr);
+    explicit DialogGameAI(int**,QWidget *parent = nullptr);
     ~DialogGameAI();
 
 private:

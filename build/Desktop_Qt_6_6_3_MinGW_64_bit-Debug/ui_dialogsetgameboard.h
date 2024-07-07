@@ -197,12 +197,12 @@ public:
         airDefance1 = new DraggableButton(DialogSetGameBoard);
         airDefance1->setObjectName("airDefance1");
         airDefance1->setGeometry(QRect(730, 90, 40, 40));
-        airDefance1->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        airDefance1->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/airDefense.png);"));
         airDefance1->setIconSize(QSize(40, 40));
         airDefance2 = new DraggableButton(DialogSetGameBoard);
         airDefance2->setObjectName("airDefance2");
         airDefance2->setGeometry(QRect(680, 91, 40, 40));
-        airDefance2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        airDefance2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/airDefense.png);"));
         airDefance2->setIconSize(QSize(40, 40));
 
         retranslateUi(DialogSetGameBoard);

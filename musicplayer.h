@@ -11,8 +11,10 @@ class MusicPlayer:public QObject
         MusicPlayer();
 
     public slots:
-        void playMusic();
+        void playMusic(QString);
         void handleMediaStatusChanged(QMediaPlayer::MediaStatus status);
+        void sendOceanPath();
+
     private:
         QMediaPlayer* player;
         QAudioOutput* AudioOutput;

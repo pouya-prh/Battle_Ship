@@ -233,7 +233,7 @@ gridline-color: rgb(48, 165, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);</string>
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/airDefense.png);</string>
    </property>
    <property name="text">
     <string/>
