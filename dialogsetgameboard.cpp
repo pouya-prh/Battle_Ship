@@ -232,7 +232,7 @@ void DialogSetGameBoard::on_nextButton_clicked()
 {
     this->hide();
     int** cells = ui->tableWidget->returnCells();
-    DialogGameAI* page2 = new DialogGameAI(cells);
+    DialogGameAI* page2 = new DialogGameAI(user,arms,cells);
     page2->show();
 }
 

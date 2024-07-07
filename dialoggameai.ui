@@ -186,7 +186,7 @@ gridline-color: rgb(48, 165, 255);</string>
     </property>
    </item>
   </widget>
-  <widget class="GameBoard" name="tableWidget_2">
+  <widget class="GameBoard" name="botTableWidget">
    <property name="enabled">
     <bool>true</bool>
    </property>
