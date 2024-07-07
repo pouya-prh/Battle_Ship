@@ -1,6 +1,5 @@
 #include "dialogloginclicked.h"
 #include "ui_dialogloginclicked.h"
-#include "mainwindow.h"
 #include "hashpassword.h"
 #include <fstream>
 #include "json.hpp"
@@ -66,11 +65,7 @@ bool DialogLoginClicked::CheckUser()
             int level = it["level"];
             int drop = it["drop"];
             this->close();
-            User user;
-            user.name = username;
-            user.point = point;
-            user.drop = drop;
-            user.level = level;
+            User user(username,drop,point,level);
             emit Login_finished(user,point,level,drop);
             return true;
            }

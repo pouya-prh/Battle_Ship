@@ -1,8 +1,7 @@
 #ifndef DIALOGSIGNUPCLICKED_H
 #define DIALOGSIGNUPCLICKED_H
-#include "mainwindow.h"
 #include <QDialog>
-
+#include "user.h"
 namespace Ui {
 class DialogSignUpClicked;
 }
@@ -20,7 +19,7 @@ public:
 
 
 signals:
-    void Signup_finished(User user,int point,int level,int drop);
+    void Signup_finished(User& user,int point,int level,int drop);
 
 private slots:
     void on_OkButton_clicked();

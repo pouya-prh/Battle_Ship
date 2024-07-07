@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <gameboard.h>
 
@@ -22,12 +23,21 @@ class Ui_DialogGetArm
 {
 public:
     GameBoard *tableWidget;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
+    QPushButton *mineButton;
+    QPushButton *linearAttackButton;
+    QPushButton *airDefanceButton;
+    QPushButton *trackerButton;
+    QPushButton *atomicBombButton;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
+    QLabel *label_5;
+    QLabel *airDefanceCounter;
+    QLabel *mineCounter;
+    QLabel *trackerCounter;
+    QLabel *linearAttackCounter;
+    QLabel *atomicBombCounter;
 
     void setupUi(QDialog *DialogGetArm)
     {
@@ -103,30 +113,96 @@ public:
         tableWidget->horizontalHeader()->setDefaultSectionSize(40);
         tableWidget->verticalHeader()->setMinimumSectionSize(40);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
-        pushButton = new QPushButton(DialogGetArm);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(840, 75, 101, 101));
-        pushButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);"));
-        pushButton_2 = new QPushButton(DialogGetArm);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(840, 328, 101, 101));
-        pushButton_2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/lineattac.png);"));
-        pushButton_3 = new QPushButton(DialogGetArm);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(840, 201, 101, 101));
-        pushButton_3->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/square attack.png);"));
-        pushButton_4 = new QPushButton(DialogGetArm);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(698, 76, 101, 101));
-        pushButton_4->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
-        pushButton_5 = new QPushButton(DialogGetArm);
-        pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(700, 202, 101, 101));
-        pushButton_5->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);"));
-        pushButton_6 = new QPushButton(DialogGetArm);
-        pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(700, 328, 101, 101));
-        pushButton_6->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);"));
+        mineButton = new QPushButton(DialogGetArm);
+        mineButton->setObjectName("mineButton");
+        mineButton->setGeometry(QRect(830, 65, 111, 111));
+        mineButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);"));
+        linearAttackButton = new QPushButton(DialogGetArm);
+        linearAttackButton->setObjectName("linearAttackButton");
+        linearAttackButton->setGeometry(QRect(842, 348, 101, 101));
+        linearAttackButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/square attack.png);"));
+        airDefanceButton = new QPushButton(DialogGetArm);
+        airDefanceButton->setObjectName("airDefanceButton");
+        airDefanceButton->setGeometry(QRect(638, 76, 101, 101));
+        airDefanceButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/triple.png);"));
+        trackerButton = new QPushButton(DialogGetArm);
+        trackerButton->setObjectName("trackerButton");
+        trackerButton->setGeometry(QRect(640, 350, 101, 101));
+        trackerButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);"));
+        atomicBombButton = new QPushButton(DialogGetArm);
+        atomicBombButton->setObjectName("atomicBombButton");
+        atomicBombButton->setGeometry(QRect(740, 210, 101, 101));
+        atomicBombButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);"));
+        label = new QLabel(DialogGetArm);
+        label->setObjectName("label");
+        label->setGeometry(QRect(640, 40, 41, 31));
+        label->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(0, 150, 0);"));
+        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_2 = new QLabel(DialogGetArm);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(829, 39, 41, 31));
+        label_2->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(0, 150, 0);"));
+        label_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_3 = new QLabel(DialogGetArm);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(637, 317, 41, 31));
+        label_3->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(0, 150, 0);"));
+        label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_4 = new QLabel(DialogGetArm);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(843, 319, 41, 31));
+        label_4->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(0, 150, 0);"));
+        label_4->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_5 = new QLabel(DialogGetArm);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(740, 182, 51, 31));
+        label_5->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(150, 0, 0);"));
+        label_5->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        airDefanceCounter = new QLabel(DialogGetArm);
+        airDefanceCounter->setObjectName("airDefanceCounter");
+        airDefanceCounter->setGeometry(QRect(640, 155, 21, 21));
+        airDefanceCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        airDefanceCounter->setAlignment(Qt::AlignCenter);
+        mineCounter = new QLabel(DialogGetArm);
+        mineCounter->setObjectName("mineCounter");
+        mineCounter->setGeometry(QRect(835, 154, 21, 21));
+        mineCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        mineCounter->setAlignment(Qt::AlignCenter);
+        trackerCounter = new QLabel(DialogGetArm);
+        trackerCounter->setObjectName("trackerCounter");
+        trackerCounter->setGeometry(QRect(640, 430, 21, 21));
+        trackerCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        trackerCounter->setAlignment(Qt::AlignCenter);
+        linearAttackCounter = new QLabel(DialogGetArm);
+        linearAttackCounter->setObjectName("linearAttackCounter");
+        linearAttackCounter->setGeometry(QRect(847, 425, 21, 21));
+        linearAttackCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        linearAttackCounter->setAlignment(Qt::AlignCenter);
+        atomicBombCounter = new QLabel(DialogGetArm);
+        atomicBombCounter->setObjectName("atomicBombCounter");
+        atomicBombCounter->setGeometry(QRect(742, 288, 21, 21));
+        atomicBombCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        atomicBombCounter->setAlignment(Qt::AlignCenter);
 
         retranslateUi(DialogGetArm);
 
@@ -164,12 +240,21 @@ public:
 #if QT_CONFIG(accessibility)
         tableWidget->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
-        pushButton->setText(QString());
-        pushButton_2->setText(QString());
-        pushButton_3->setText(QString());
-        pushButton_4->setText(QString());
-        pushButton_5->setText(QString());
-        pushButton_6->setText(QString());
+        mineButton->setText(QString());
+        linearAttackButton->setText(QString());
+        airDefanceButton->setText(QString());
+        trackerButton->setText(QString());
+        atomicBombButton->setText(QString());
+        label->setText(QCoreApplication::translate("DialogGetArm", "$10", nullptr));
+        label_2->setText(QCoreApplication::translate("DialogGetArm", "$5", nullptr));
+        label_3->setText(QCoreApplication::translate("DialogGetArm", "$15", nullptr));
+        label_4->setText(QCoreApplication::translate("DialogGetArm", "$12", nullptr));
+        label_5->setText(QCoreApplication::translate("DialogGetArm", "$100", nullptr));
+        airDefanceCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
+        mineCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
+        trackerCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
+        linearAttackCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
+        atomicBombCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
     } // retranslateUi
 
 };

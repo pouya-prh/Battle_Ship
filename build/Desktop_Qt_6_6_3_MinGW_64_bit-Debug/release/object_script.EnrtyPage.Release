@@ -11,6 +11,7 @@ release/dialogloginclicked.o
 release/dialogsignupclicked.o
 release/musicplayer.o
 release/ship.o
+release/user.o
 release/validator.o
 release/qrc_back.o
 release/qrc_font.o

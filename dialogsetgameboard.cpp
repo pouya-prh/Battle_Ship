@@ -3,10 +3,11 @@
 #include "draggablebutton.h"
 #include "dialoggetarm.h"
 
-DialogSetGameBoard::DialogSetGameBoard(QWidget *parent)
+DialogSetGameBoard::DialogSetGameBoard(User& user,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogSetGameBoard)
 {
+    this->user = user;
     ui->setupUi(this);
     setAcceptDrops(true);
 }
@@ -153,7 +154,7 @@ bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horize
 void DialogSetGameBoard::on_nextButton_clicked()
 {
     this->hide();
-    DialogGetArm* page2 = new DialogGetArm(ui->tableWidget,ui->tableWidget->returnCells());
+    DialogGetArm* page2 = new DialogGetArm(user,ui->tableWidget,ui->tableWidget->returnCells());
     page2->show();
 }
 

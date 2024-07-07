@@ -3,11 +3,11 @@
 #include <dialogsetgameboard.h>
 #include <windows.h>
 #include <QTimer>
-DialogPage1::DialogPage1(User user,QWidget *parent)
+DialogPage1::DialogPage1(User& user,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogPage1)
 {
-    this->user =user;
+    this->user = user;
     ui->setupUi(this);
     ui->wellcome_lable->hide();
     ui->WifiPushbutton->hide();
@@ -21,7 +21,6 @@ DialogPage1::DialogPage1(User user,QWidget *parent)
         if (progress > 100) {
             timer->stop();
             delete timer;
-
             ui->progressBar->hide();
             ui->wellcome_lable->setText("Wellcome");
             ui->wellcome_lable->show();
@@ -29,10 +28,10 @@ DialogPage1::DialogPage1(User user,QWidget *parent)
             ui->BotPushbutton->show();
             ui->FriendPushbutton->show();
             ui->widget->show();
-            ui->username_lable->setText("Captain "+user.name);
-            ui->level_label->setText("Level: "+QString::number(user.level));
-            ui->point_label->setText("point: "+QString::number(user.point));
-            ui->drop_label->setText("drop: "+QString::number(user.drop));
+            ui->username_lable->setText("Captain "+user.GetUsername());
+            ui->level_label->setText("Level: " + QString::number(user.GetLevel()));
+            ui->point_label->setText("point: "+QString::number(user.GetPoint()));
+            ui->drop_label->setText("drop: "+QString::number(user.GetDrop()));
 
         }
     });
@@ -53,7 +52,7 @@ DialogPage1::~DialogPage1()
 
 void DialogPage1::on_BotPushbutton_clicked()
 {
-    DialogSetGameBoard* setPage = new DialogSetGameBoard();
+    DialogSetGameBoard* setPage = new DialogSetGameBoard(user);
     this->close();
     setPage->show();
 

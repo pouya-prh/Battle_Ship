@@ -154,11 +154,8 @@ void DialogSignUpClicked::makeAccount()
     file<<Data.dump(5);
     file.close();
     this->close();
-    User user ;
-    user.name = username;
-    user.drop = 0;
-    user.level = 0;
-    user.point = 0;
+    User user(username,drop,point,level) ;
+
     emit Signup_finished(user,point,level,drop);
 
 }
