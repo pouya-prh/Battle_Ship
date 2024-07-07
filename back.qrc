@@ -13,7 +13,6 @@
         <file>Recommended Source Files/Recommended Source Files/Images/ship3.PNG</file>
         <file>Recommended Source Files/Recommended Source Files/Images/ship4.PNG</file>
         <file>Recommended Source Files/Recommended Source Files/Images/sea.png</file>
-        <file>Recommended Source Files/Recommended Source Files/Images/Back.jpg</file>
         <file>Recommended Source Files/Recommended Source Files/Images/flesh.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/redLine.jpg</file>
         <file>Recommended Source Files/Recommended Source Files/Images/blueLine.jpg</file>
@@ -24,10 +23,31 @@
         <file>Recommended Source Files/Recommended Source Files/Images/Vship1.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/square attack.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/tracker.png</file>
-        <file>Recommended Source Files/Recommended Source Files/Images/triple.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/airDefense.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/lineattac.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/mine2.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/atomic bomb.png</file>
         <file>Recommended Source Files/Recommended Source Files/Images/RedUnavailible.jpg</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Back.jpg</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/fleshP.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship21.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship22.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship31.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship32.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship41.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship42.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship43.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship44.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship11.PNG</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/ship33.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship22.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship31.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship32.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship33.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship41.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship21.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship42.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship43.png</file>
+        <file>Recommended Source Files/Recommended Source Files/Images/Vship44.png</file>
     </qresource>
 </RCC>

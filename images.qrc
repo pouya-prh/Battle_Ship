@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/">
+        <file>airDefense.png</file>
+        <file>atomic bomb.png</file>
+        <file>flesh.png</file>
+        <file>fleshP.png</file>
+        <file>mine2.png</file>
+        <file>ship1.PNG</file>
+        <file>ship2.PNG</file>
+        <file>ship3.PNG</file>
+        <file>ship4.png</file>
+        <file>ship11.PNG</file>
+        <file>ship21.png</file>
+        <file>ship22.png</file>
+        <file>ship31.png</file>
+        <file>ship32.png</file>
+        <file>ship33.png</file>
+        <file>ship41.png</file>
+        <file>ship42.png</file>
+        <file>ship43.png</file>
+        <file>Vship1.png</file>
+        <file>Vship2.png</file>
+        <file>Vship3.png</file>
+        <file>Vship4.png</file>
+        <file>Vship21.png</file>
+        <file>Vship22.png</file>
+        <file>Vship31.png</file>
+        <file>Vship32.png</file>
+        <file>Vship33.png</file>
+        <file>Vship41.png</file>
+        <file>Vship42.png</file>
+        <file>Vship43.png</file>
+        <file>Vship44.png</file>
+        <file>ship44.png</file>
+    </qresource>
+</RCC>

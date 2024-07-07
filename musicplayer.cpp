@@ -8,11 +8,15 @@ MusicPlayer::MusicPlayer()
     player->setAudioOutput(AudioOutput);
     connect(player, &QMediaPlayer::mediaStatusChanged, this, &MusicPlayer::handleMediaStatusChanged);
 }
+void MusicPlayer::sendOceanPath()
+{
+    playMusic("qrc:/Ocean.mp3");
+}
 
-void MusicPlayer::playMusic()
+void MusicPlayer::playMusic(QString Path)
 {
 
-    player->setSource(QUrl("qrc:/Ocean.mp3"));
+    player->setSource(QUrl(Path));
     player->play();
 
 }

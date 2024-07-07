@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     worker->moveToThread(thread);
 
 
-    connect(thread, &QThread::started, worker, &MusicPlayer::playMusic);
+    connect(thread, &QThread::started, worker, &MusicPlayer::sendOceanPath);
 
     thread->start();
 
