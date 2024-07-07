@@ -1,3 +1,4 @@
+debug/arms.o
 debug/dialoggetarm.o
 debug/dialogpage1.o
 debug/dialogsetgameboard.o

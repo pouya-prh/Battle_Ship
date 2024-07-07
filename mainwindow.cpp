@@ -49,10 +49,10 @@ void MainWindow::on_SignUppushButton_clicked()
     connect(page,&DialogSignUpClicked::Signup_finished,this,&MainWindow::OpenPage1);
 
 }
-void MainWindow::OpenPage1(QString username,int point,int level,int drop)
+void MainWindow::OpenPage1(User user)
 {
     this->close();
-    DialogPage1* page1 = new DialogPage1(username,point,level,drop);
+    DialogPage1* page1 = new DialogPage1(user);
     page1->show();
 
 }

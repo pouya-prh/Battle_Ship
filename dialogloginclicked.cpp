@@ -1,11 +1,16 @@
 #include "dialogloginclicked.h"
 #include "ui_dialogloginclicked.h"
+#include "mainwindow.h"
 #include "hashpassword.h"
 #include <fstream>
 #include "json.hpp"
 #include <QString>
 using namespace std;
 using json = nlohmann::json;
+
+
+
+
 DialogLoginClicked::DialogLoginClicked(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogLoginClicked)
@@ -61,7 +66,12 @@ bool DialogLoginClicked::CheckUser()
             int level = it["level"];
             int drop = it["drop"];
             this->close();
-            emit Login_finished(username,point,level,drop);
+            User user;
+            user.name = username;
+            user.point = point;
+            user.drop = drop;
+            user.level = level;
+            emit Login_finished(user,point,level,drop);
             return true;
            }
 

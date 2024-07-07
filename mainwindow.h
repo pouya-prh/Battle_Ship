@@ -4,6 +4,15 @@
 #include <QAudioOutput>
 #include <QMainWindow>
 
+typedef struct
+{
+    QString name;
+    int drop;
+    int point;
+    int level;
+}User;
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -17,7 +26,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void  OpenPage1(QString username,int point,int level,int drop);
+    void  OpenPage1(User user);
 
 private slots:
 
