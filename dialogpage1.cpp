@@ -3,10 +3,11 @@
 #include <dialogsetgameboard.h>
 #include <windows.h>
 #include <QTimer>
-DialogPage1::DialogPage1(QString username,int point,int level,int drop,QWidget *parent)
+DialogPage1::DialogPage1(User user,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogPage1)
 {
+    this->user =user;
     ui->setupUi(this);
     ui->wellcome_lable->hide();
     ui->WifiPushbutton->hide();
@@ -28,10 +29,10 @@ DialogPage1::DialogPage1(QString username,int point,int level,int drop,QWidget *
             ui->BotPushbutton->show();
             ui->FriendPushbutton->show();
             ui->widget->show();
-            ui->username_lable->setText("Captain "+username);
-            ui->level_label->setText("Level: "+QString::number(level));
-            ui->point_label->setText("point: "+QString::number(point));
-            ui->drop_label->setText("drop: "+QString::number(drop));
+            ui->username_lable->setText("Captain "+user.name);
+            ui->level_label->setText("Level: "+QString::number(user.level));
+            ui->point_label->setText("point: "+QString::number(user.point));
+            ui->drop_label->setText("drop: "+QString::number(user.drop));
 
         }
     });

@@ -1,7 +1,8 @@
 #ifndef DIALOGLOGINCLICKED_H
 #define DIALOGLOGINCLICKED_H
-
+#include "mainwindow.h"
 #include <QDialog>
+
 
 namespace Ui {
 class DialogLoginClicked;
@@ -17,7 +18,7 @@ public:
     bool CheckUser();
 
 signals:
-    void Login_finished(QString username,int point,int level,int drop);
+    void Login_finished(User,int point,int level,int drop);
 private slots:
     void on_OkButton_clicked();
 
