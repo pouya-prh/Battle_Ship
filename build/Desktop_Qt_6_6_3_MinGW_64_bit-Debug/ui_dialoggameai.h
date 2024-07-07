@@ -22,7 +22,7 @@ class Ui_DialogGameAI
 {
 public:
     GameBoard *tableWidget;
-    GameBoard *tableWidget_2;
+    GameBoard *botTableWidget;
     QLabel *label;
 
     void setupUi(QDialog *DialogGameAI)
@@ -97,68 +97,68 @@ public:
         tableWidget->horizontalHeader()->setDefaultSectionSize(40);
         tableWidget->verticalHeader()->setMinimumSectionSize(40);
         tableWidget->verticalHeader()->setDefaultSectionSize(40);
-        tableWidget_2 = new GameBoard(DialogGameAI);
-        if (tableWidget_2->columnCount() < 10)
-            tableWidget_2->setColumnCount(10);
-        if (tableWidget_2->rowCount() < 10)
-            tableWidget_2->setRowCount(10);
+        botTableWidget = new GameBoard(DialogGameAI);
+        if (botTableWidget->columnCount() < 10)
+            botTableWidget->setColumnCount(10);
+        if (botTableWidget->rowCount() < 10)
+            botTableWidget->setRowCount(10);
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
         __qtablewidgetitem11->setFont(font);
-        tableWidget_2->setVerticalHeaderItem(0, __qtablewidgetitem11);
+        botTableWidget->setVerticalHeaderItem(0, __qtablewidgetitem11);
         QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(1, __qtablewidgetitem12);
+        botTableWidget->setVerticalHeaderItem(1, __qtablewidgetitem12);
         QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(2, __qtablewidgetitem13);
+        botTableWidget->setVerticalHeaderItem(2, __qtablewidgetitem13);
         QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(3, __qtablewidgetitem14);
+        botTableWidget->setVerticalHeaderItem(3, __qtablewidgetitem14);
         QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(4, __qtablewidgetitem15);
+        botTableWidget->setVerticalHeaderItem(4, __qtablewidgetitem15);
         QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(5, __qtablewidgetitem16);
+        botTableWidget->setVerticalHeaderItem(5, __qtablewidgetitem16);
         QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(6, __qtablewidgetitem17);
+        botTableWidget->setVerticalHeaderItem(6, __qtablewidgetitem17);
         QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(7, __qtablewidgetitem18);
+        botTableWidget->setVerticalHeaderItem(7, __qtablewidgetitem18);
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(8, __qtablewidgetitem19);
+        botTableWidget->setVerticalHeaderItem(8, __qtablewidgetitem19);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
-        tableWidget_2->setVerticalHeaderItem(9, __qtablewidgetitem20);
+        botTableWidget->setVerticalHeaderItem(9, __qtablewidgetitem20);
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
-        tableWidget_2->setItem(0, 0, __qtablewidgetitem21);
-        tableWidget_2->setObjectName("tableWidget_2");
-        tableWidget_2->setEnabled(true);
-        tableWidget_2->setGeometry(QRect(590, 68, 431, 431));
-        sizePolicy.setHeightForWidth(tableWidget_2->sizePolicy().hasHeightForWidth());
-        tableWidget_2->setSizePolicy(sizePolicy);
-        tableWidget_2->setMinimumSize(QSize(381, 411));
-        tableWidget_2->setAcceptDrops(true);
-        tableWidget_2->setLayoutDirection(Qt::RightToLeft);
-        tableWidget_2->setStyleSheet(QString::fromUtf8("font: 15pt \"BYRIL_Sea_Battle2\";\n"
+        botTableWidget->setItem(0, 0, __qtablewidgetitem21);
+        botTableWidget->setObjectName("botTableWidget");
+        botTableWidget->setEnabled(true);
+        botTableWidget->setGeometry(QRect(590, 68, 431, 431));
+        sizePolicy.setHeightForWidth(botTableWidget->sizePolicy().hasHeightForWidth());
+        botTableWidget->setSizePolicy(sizePolicy);
+        botTableWidget->setMinimumSize(QSize(381, 411));
+        botTableWidget->setAcceptDrops(true);
+        botTableWidget->setLayoutDirection(Qt::RightToLeft);
+        botTableWidget->setStyleSheet(QString::fromUtf8("font: 15pt \"BYRIL_Sea_Battle2\";\n"
 "\n"
 "color: rgb(41, 134, 255);\n"
 "\n"
 "selection-background-color: rgb(0, 170, 255);\n"
 "\n"
 "gridline-color: rgb(48, 165, 255);"));
-        tableWidget_2->setFrameShape(QFrame::StyledPanel);
-        tableWidget_2->setLineWidth(0);
-        tableWidget_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        tableWidget_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        tableWidget_2->setAutoScroll(false);
-        tableWidget_2->setDragEnabled(true);
-        tableWidget_2->setDragDropMode(QAbstractItemView::DragDrop);
-        tableWidget_2->setDefaultDropAction(Qt::MoveAction);
-        tableWidget_2->setSelectionMode(QAbstractItemView::NoSelection);
-        tableWidget_2->setIconSize(QSize(40, 40));
-        tableWidget_2->setGridStyle(Qt::DashDotLine);
-        tableWidget_2->setCornerButtonEnabled(false);
-        tableWidget_2->setRowCount(10);
-        tableWidget_2->setColumnCount(10);
-        tableWidget_2->horizontalHeader()->setCascadingSectionResizes(false);
-        tableWidget_2->horizontalHeader()->setMinimumSectionSize(40);
-        tableWidget_2->horizontalHeader()->setDefaultSectionSize(40);
-        tableWidget_2->verticalHeader()->setMinimumSectionSize(40);
-        tableWidget_2->verticalHeader()->setDefaultSectionSize(40);
+        botTableWidget->setFrameShape(QFrame::StyledPanel);
+        botTableWidget->setLineWidth(0);
+        botTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        botTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        botTableWidget->setAutoScroll(false);
+        botTableWidget->setDragEnabled(true);
+        botTableWidget->setDragDropMode(QAbstractItemView::DragDrop);
+        botTableWidget->setDefaultDropAction(Qt::MoveAction);
+        botTableWidget->setSelectionMode(QAbstractItemView::NoSelection);
+        botTableWidget->setIconSize(QSize(40, 40));
+        botTableWidget->setGridStyle(Qt::DashDotLine);
+        botTableWidget->setCornerButtonEnabled(false);
+        botTableWidget->setRowCount(10);
+        botTableWidget->setColumnCount(10);
+        botTableWidget->horizontalHeader()->setCascadingSectionResizes(false);
+        botTableWidget->horizontalHeader()->setMinimumSectionSize(40);
+        botTableWidget->horizontalHeader()->setDefaultSectionSize(40);
+        botTableWidget->verticalHeader()->setMinimumSectionSize(40);
+        botTableWidget->verticalHeader()->setDefaultSectionSize(40);
         label = new QLabel(DialogGameAI);
         label->setObjectName("label");
         label->setGeometry(QRect(510, 250, 41, 101));
@@ -201,33 +201,33 @@ public:
 #if QT_CONFIG(accessibility)
         tableWidget->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
-        QTableWidgetItem *___qtablewidgetitem10 = tableWidget_2->verticalHeaderItem(0);
+        QTableWidgetItem *___qtablewidgetitem10 = botTableWidget->verticalHeaderItem(0);
         ___qtablewidgetitem10->setText(QCoreApplication::translate("DialogGameAI", "A", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = tableWidget_2->verticalHeaderItem(1);
+        QTableWidgetItem *___qtablewidgetitem11 = botTableWidget->verticalHeaderItem(1);
         ___qtablewidgetitem11->setText(QCoreApplication::translate("DialogGameAI", "B", nullptr));
-        QTableWidgetItem *___qtablewidgetitem12 = tableWidget_2->verticalHeaderItem(2);
+        QTableWidgetItem *___qtablewidgetitem12 = botTableWidget->verticalHeaderItem(2);
         ___qtablewidgetitem12->setText(QCoreApplication::translate("DialogGameAI", "C", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = tableWidget_2->verticalHeaderItem(3);
+        QTableWidgetItem *___qtablewidgetitem13 = botTableWidget->verticalHeaderItem(3);
         ___qtablewidgetitem13->setText(QCoreApplication::translate("DialogGameAI", "D", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = tableWidget_2->verticalHeaderItem(4);
+        QTableWidgetItem *___qtablewidgetitem14 = botTableWidget->verticalHeaderItem(4);
         ___qtablewidgetitem14->setText(QCoreApplication::translate("DialogGameAI", "E", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = tableWidget_2->verticalHeaderItem(5);
+        QTableWidgetItem *___qtablewidgetitem15 = botTableWidget->verticalHeaderItem(5);
         ___qtablewidgetitem15->setText(QCoreApplication::translate("DialogGameAI", "F", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = tableWidget_2->verticalHeaderItem(6);
+        QTableWidgetItem *___qtablewidgetitem16 = botTableWidget->verticalHeaderItem(6);
         ___qtablewidgetitem16->setText(QCoreApplication::translate("DialogGameAI", "G", nullptr));
-        QTableWidgetItem *___qtablewidgetitem17 = tableWidget_2->verticalHeaderItem(7);
+        QTableWidgetItem *___qtablewidgetitem17 = botTableWidget->verticalHeaderItem(7);
         ___qtablewidgetitem17->setText(QCoreApplication::translate("DialogGameAI", "H", nullptr));
-        QTableWidgetItem *___qtablewidgetitem18 = tableWidget_2->verticalHeaderItem(8);
+        QTableWidgetItem *___qtablewidgetitem18 = botTableWidget->verticalHeaderItem(8);
         ___qtablewidgetitem18->setText(QCoreApplication::translate("DialogGameAI", "I", nullptr));
-        QTableWidgetItem *___qtablewidgetitem19 = tableWidget_2->verticalHeaderItem(9);
+        QTableWidgetItem *___qtablewidgetitem19 = botTableWidget->verticalHeaderItem(9);
         ___qtablewidgetitem19->setText(QCoreApplication::translate("DialogGameAI", "J", nullptr));
 
-        const bool __sortingEnabled1 = tableWidget_2->isSortingEnabled();
-        tableWidget_2->setSortingEnabled(false);
-        tableWidget_2->setSortingEnabled(__sortingEnabled1);
+        const bool __sortingEnabled1 = botTableWidget->isSortingEnabled();
+        botTableWidget->setSortingEnabled(false);
+        botTableWidget->setSortingEnabled(__sortingEnabled1);
 
 #if QT_CONFIG(accessibility)
-        tableWidget_2->setAccessibleDescription(QString());
+        botTableWidget->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
         label->setText(QString());
     } // retranslateUi
