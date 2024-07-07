@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogPage1</class>
+ <widget class="QDialog" name="DialogPage1">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1025</width>
+    <height>596</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="back.qrc">
+    <normaloff>:/Recommended Source Files/Recommended Source Files/Images/mipmap-hdpi-v4/ic_launcher_round.png</normaloff>:/Recommended Source Files/Recommended Source Files/Images/mipmap-hdpi-v4/ic_launcher_round.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/textures/LoadingScreenBackground.png);</string>
+  </property>
+  <widget class="QProgressBar" name="progressBar">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>520</y>
+     <width>521</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 85, 0);</string>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+   <property name="textVisible">
+    <bool>false</bool>
+   </property>
+   <property name="format">
+    <string extracomment="Loading...">%p%</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BotPushbutton">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>172</y>
+     <width>181</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/AI_img.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="WifiPushbutton">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>176</y>
+     <width>181</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/online_img.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="FriendPushbutton">
+   <property name="geometry">
+    <rect>
+     <x>743</x>
+     <y>171</y>
+     <width>181</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/withFriend_img.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>301</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
+   </property>
+   <widget class="QLabel" name="username_lable">
+    <property name="geometry">
+     <rect>
+      <x>4</x>
+      <y>11</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 0, 255);
+font: 20pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="level_label">
+    <property name="geometry">
+     <rect>
+      <x>2</x>
+      <y>56</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 0, 255);
+font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>Level:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="point_label">
+    <property name="geometry">
+     <rect>
+      <x>107</x>
+      <y>56</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 0, 255);
+font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>point:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="drop_label">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>55</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 0, 255);
+font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>drop:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="wellcome_lable">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>521</y>
+     <width>521</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>BotPushbutton</zorder>
+  <zorder>progressBar</zorder>
+  <zorder>WifiPushbutton</zorder>
+  <zorder>FriendPushbutton</zorder>
+  <zorder>widget</zorder>
+  <zorder>wellcome_lable</zorder>
+ </widget>
+ <resources>
+  <include location="back.qrc"/>
+ </resources>
+ <connections/>
+</ui>

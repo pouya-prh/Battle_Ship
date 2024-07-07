@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogSignUpClicked</class>
+ <widget class="QDialog" name="DialogSignUpClicked">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>629</width>
+    <height>365</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Sign Up</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="back.qrc">
+    <normaloff>:/Recommended Source Files/Recommended Source Files/Images/mipmap-hdpi-v4/ic_launcher_round.png</normaloff>:/Recommended Source Files/Recommended Source Files/Images/mipmap-hdpi-v4/ic_launcher_round.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/textures/LoadingScreenBackground.png);</string>
+  </property>
+  <widget class="QLineEdit" name="namelineEdit">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>50</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+
+}
+
+
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>name</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lastNameLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>120</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>last name</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="emailLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>190</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>email</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="OkButton">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>260</y>
+     <width>551</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+QPushButton:hover {
+ 
+	color: rgb(0, 85, 0);
+	background-color: rgb(0, 85, 0);
+}
+
+</string>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhNone</set>
+   </property>
+   <property name="text">
+    <string>Sign Up</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="usernameLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>50</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>username</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passwordLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>121</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>password</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="numberLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>190</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>number</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="back.qrc"/>
+ </resources>
+ <connections/>
+</ui>
