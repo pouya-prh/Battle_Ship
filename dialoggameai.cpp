@@ -90,29 +90,29 @@ int** DialogGameAI::makeGameBoard()
     }
     else
     {
-        gameBoard[0][0] = 11;
-        gameBoard[0][8] = 12;
-        gameBoard[1][5] = 23;
-        gameBoard[1][6] = 23;
-        gameBoard[2][2] = 21;
+        gameBoard[0][1] = 11;
+        gameBoard[0][6] = 23;
+        gameBoard[0][7] = 23;
         gameBoard[2][1] = 21;
-        gameBoard[3][6] = 22;
-        gameBoard[3][7] = 22;
-        gameBoard[4][1] = 7;
-        gameBoard[4][8] = 8;
-        gameBoard[5][5] = 31;
-        gameBoard[5][6] = 31;
-        gameBoard[5][7] = 31;
-        gameBoard[7][1] = 32;
-        gameBoard[7][2] = 32;
-        gameBoard[7][3] = 33;
-        gameBoard[7][8] = 8;
-        gameBoard[9][1] = 41;
-        gameBoard[9][2] = 41;
-        gameBoard[9][3] = 41;
-        gameBoard[9][4] = 41;
-        gameBoard[9][6] = 7;
-        gameBoard[8][8] = 13;
+        gameBoard[2][2] = 21;
+        gameBoard[1][9] = 8;
+        gameBoard[3][4] = 22;
+        gameBoard[3][5] = 22;
+        gameBoard[4][0] = 32;
+        gameBoard[4][1] = 32;
+        gameBoard[4][2] = 32;
+        gameBoard[6][1] = 31;
+        gameBoard[6][2] = 31;
+        gameBoard[6][3] = 31;
+        gameBoard[6][5] = 41;
+        gameBoard[6][6] = 41;
+        gameBoard[6][7] = 41;
+        gameBoard[6][8] = 41;
+        gameBoard[6][9] = 8;
+        gameBoard[7][4] = 7;
+        gameBoard[8][2] = 12;
+        gameBoard[8][6] = 13;
+        gameBoard[9][0] = 7;
     }
     return gameBoard;
 }
@@ -365,10 +365,6 @@ void DialogGameAI::Display(int** cells)
                     item->setIcon(icon);
                     ui->botTableWidget->setItem(i, j, item);
                 }
-                else if(cells[i][j] == 0)
-                {
-                    ui->botTableWidget->takeItem(i,j);
-                }
                 else if (cells[i][j] == 21)
                 {
                     ship21Counter++;
@@ -531,7 +527,7 @@ void DialogGameAI::Display(int** cells)
 }
 
 
-static bool mineFlag = false;
+
 
 void DialogGameAI::makeEmptyAround(int** cells,int value)
 {
@@ -686,15 +682,134 @@ void DialogGameAI::Attack(int** cells,int i,int j)
         musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
         musicPlayer->play();
         cells[i][j] = -70 ;
-        turn = !turn ;
-        mineFlag = true;
-        play(i,j,0);
+        if(turn)
+            cells = Cells;
+        else
+            cells = botGameBoard;
+
+        if (cells[i][j] == 0 ||cells[i][j] == 8|| cells[i][j] == -110 || cells[i][j] == -210 ||
+            cells[i][j] == -220 || cells[i][j] == -230 || cells[i][j] == -310 || cells[i][j] == -320|| cells[i][j] == -410){
+            cells[i][j] = -11 ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
+            musicPlayer->play();
+            turn = !turn;
+        }
+        else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
+            cells[i][j] = -110 ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            makeEmptyAround(cells,-110);
+        }
+        else if ( cells[i][j] == 21 ){
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            cells[i][j] = -210 ;
+            botDestroyedShip21++ ;
+            if ( botDestroyedShip21 == 2 ){
+                makeEmptyAround(cells,-210);
+            }
+        }
+
+        else if ( cells[i][j] == 22 ){
+            cells[i][j] = -220 ;
+            botDestroyedShip22++ ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            if ( botDestroyedShip22 == 2 ){
+                makeEmptyAround(cells,-220);
+            }
+        }
+
+        else if ( cells[i][j] == 23 ){
+            cells[i][j] = -230 ;
+            botDestroyedShip23++ ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            if ( botDestroyedShip23 == 2 ){
+                makeEmptyAround(cells,-230);
+            }
+        }
+
+        else if ( cells[i][j] == 31 ){
+            cells[i][j] = -310 ;
+            botDestroyedShip31++ ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            if ( botDestroyedShip31 ==3 ){
+                makeEmptyAround(cells,-310);
+            }
+        }
+
+        else if ( cells[i][j] == 32 ){
+            cells[i][j] = -320 ;
+            botDestroyedShip32++ ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            if ( botDestroyedShip32 ==3 ){
+                makeEmptyAround(cells,-320);
+            }
+        }
+
+
+        else if ( cells[i][j] == 41 ){
+            cells[i][j] = -410 ;
+            botDestroyedShip4++ ;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            if ( botDestroyedShip4 == 4 ){
+                makeEmptyAround(cells,-410);
+            }
+        }
+
+        else if (cells[i][j] == 7 ){
+
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+            musicPlayer->play();
+            cells[i][j] = -70 ;
+            if(turn)
+                cells = Cells;
+            else
+                cells = botGameBoard;
+        }
+        if(turn)
+        {
+            botTurn = true;
+            Display(Cells);
+        }
+        else
+        {
+            botTurn = false;
+            Display(botGameBoard);
+        }
     }
-    if (mineFlag == true)
-    {
-        turn = !turn;
-        mineFlag = false;
-    }
+
 
 
 }
@@ -743,6 +858,7 @@ void DialogGameAI::play(int i , int j , int arm)
 
         }
     }
+
 
     Display(cells);
 
