@@ -17,6 +17,9 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     ui->setupUi(this);
 
     this->Cells = cells;
+    ui->botTableWidget->setAcceptDrops(true);
+    setAcceptDrops(true);
+    ui->trackerButton2->hide();
     ui->planeLabel->hide();
     ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
     ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
@@ -157,8 +160,8 @@ void DialogGameAI::on_trackerButton_clicked()
     if (arms.getTrackerCount()>0&&turn)
     {
         arms.trackerMinus();
-        ui->atomicBombCounter->setText(QString::number(arms.getTrackerCount()));
-       // userPlay(3);
+        ui->trackerCounter->setText(QString::number(arms.getTrackerCount()));
+        ui->trackerButton2->show();
     }
 }
 
@@ -878,14 +881,14 @@ void DialogGameAI::play(int i , int j , int arm)
 
     if (!turn)
     {
-        cells = botGameBoard;
+
         botTurn = false;
         ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
                                      "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
     }
     else
     {
-        cells = Cells;
+
         botTurn = true;
         ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
                                        "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
@@ -959,4 +962,86 @@ void DialogGameAI::userPlay(int row,int column,int arm)
     play(row,column,arm);
 }
 
+void DialogGameAI::dragEnterEvent(QDragEnterEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+        QWidget *sourceWidget = qobject_cast<QWidget *>(event->source());
+        if (sourceWidget) {
+            sourceWidget->hide();
+        }
+
+        event->acceptProposedAction();
+    }
+}
+
+void DialogGameAI::dragMoveEvent(QDragMoveEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+        event->acceptProposedAction();
+    }
+}
+void DialogGameAI::dropEvent(QDropEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+
+        DraggableButton *sourceButton = qobject_cast<DraggableButton*>(event->source());
+        QByteArray itemData = event->mimeData()->data("application/x-ship");
+        QDataStream dataStream(&itemData, QIODevice::ReadOnly);
+
+        QPoint initialPosition = sourceButton->pos();
+        QPoint droped = event->position().toPoint();
+
+        int row = ui->botTableWidget->rowAt((droped.y()-68)) ;
+        int column = ui->botTableWidget->columnAt((droped.x()-590));
+        bool isValid = true;
+        for(int i = row ; i <=row+1;i++)
+        {
+            for (int j = column ; j<=column+1 ;j++)
+            {
+                if (i>9||i<0||j>9||j<0)
+                    isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            sourceButton->move(initialPosition);
+            sourceButton->show();
+            event->ignore();
+            return;
+        }
+        else
+        {
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Radar.mp3"));
+            musicPlayer->play();
+
+            for (int i = row ; i <= row+1 ; i++)
+            {
+                for (int j = column ; j<=column+1 ; j++)
+                {
+                    if (botGameBoard[i][j] != 0 &&botGameBoard[i][j] !=7 && botGameBoard[i][j] != 8)
+                    {
+
+                        timer = new QTimer(this);
+                        connect(timer, &QTimer::timeout, this, [this,i,j]{
+
+                            ui->trackerButton2->hide();
+                            shipFind(i,j);
+                        });
+
+                        timer->start(1000);
+                    }
+                }
+            }
+        }
+         event->acceptProposedAction();
+    }
+}
+
+void DialogGameAI::shipFind(int row,int column)
+{
+    QTableWidgetItem *item = new QTableWidgetItem();
+    QIcon icon(":/ic_seabattle.png");
+    item->setIcon(icon);
+    ui->botTableWidget->setItem(row, column, item);
+}
 

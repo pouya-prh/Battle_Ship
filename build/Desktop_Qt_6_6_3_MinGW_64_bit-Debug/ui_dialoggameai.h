@@ -16,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <gameboard.h>
+#include "DraggableButton.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -32,6 +33,7 @@ public:
     QLabel *atomicBombCounter;
     QLabel *linearAttackCounter;
     QPushButton *planeLabel;
+    DraggableButton *trackerButton2;
 
     void setupUi(QDialog *DialogGameAI)
     {
@@ -210,6 +212,12 @@ public:
         planeLabel->setObjectName("planeLabel");
         planeLabel->setGeometry(QRect(90, 180, 101, 61));
         planeLabel->setStyleSheet(QString::fromUtf8("background-image: url(:/squareAttackFliped.png);"));
+        trackerButton2 = new DraggableButton(DialogGameAI);
+        trackerButton2->setObjectName("trackerButton2");
+        trackerButton2->setGeometry(QRect(490, 380, 80, 80));
+        trackerButton2->setAcceptDrops(true);
+        trackerButton2->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
+"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
 
         retranslateUi(DialogGameAI);
 
@@ -283,6 +291,7 @@ public:
         atomicBombCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
         linearAttackCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
         planeLabel->setText(QString());
+        trackerButton2->setText(QString());
     } // retranslateUi
 
 };

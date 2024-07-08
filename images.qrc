@@ -36,5 +36,7 @@
         <file>X.png</file>
         <file>emptyCell.png</file>
         <file>meteor.png</file>
+        <file>grinTracker.png</file>
+        <file>ic_seabattle.png</file>
     </qresource>
 </RCC>

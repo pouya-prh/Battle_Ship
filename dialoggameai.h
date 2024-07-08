@@ -23,7 +23,10 @@ public:
     void makeEmptyAround(int**,int);
     void Attack(int**,int,int);
     void Animation(int,int);
-
+    void dragEnterEvent(QDragEnterEvent *event)override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+    void shipFind(int,int);
 
 private slots:
     void on_linearAttackbutton_clicked();
