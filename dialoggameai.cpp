@@ -1,9 +1,11 @@
 #include "dialoggameai.h"
 #include "ui_dialoggameai.h"
 #include <stdlib.h>
+#include <QThread>
 #include <windows.h>
 #include <QMediaPlayer>
 #include<QAudioOutput>
+#include <QPropertyAnimation>
 
 DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     : QDialog(parent)
@@ -15,7 +17,7 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     ui->setupUi(this);
 
     this->Cells = cells;
-
+    ui->planeLabel->hide();
     ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
     ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
     ui->trackerCounter->setText(QString::number(arms.getTrackerCount()));
@@ -120,15 +122,17 @@ void DialogGameAI::on_linearAttackbutton_clicked()
 {
     if (arms.getLineAttackerCount()>0&&turn)
     {
+
+
         arms.linearAttackMinus();
         ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
         disconnect  (ui->botTableWidget,&QTableWidget::cellClicked,this,nullptr);
         connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row, int column) {
-            userPlay(row, column, 1);
+             Animation(row,column);
             disconnect(ui->botTableWidget,&QTableWidget::cellClicked,nullptr,nullptr);
 
             connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row,int column){
-                userPlay(row,column,0);
+               userPlay(row, column, 0);
             });
 
         });
@@ -337,6 +341,13 @@ void DialogGameAI::Display(int** cells)
                     item->setIcon(icon);
                     ui->tableWidget->setItem(i, j, item);
                 }
+                else if(cells[i][j] == -70)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/meteor.png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
 
             }
         }
@@ -506,6 +517,13 @@ void DialogGameAI::Display(int** cells)
                     item->setIcon(icon);
                     ui->botTableWidget->setItem(i, j, item);
                 }
+                else if(cells[i][j] == -70)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/meteor.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
             }
         }
      }
@@ -571,17 +589,22 @@ void DialogGameAI::Attack(int** cells,int i,int j)
         musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
         musicPlayer->play();
         turn = !turn;
-        if (mineFlag == true)
-        {
-            turn = !turn;
-        }
-
     }
     else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
         cells[i][j] = -110 ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         makeEmptyAround(cells,-110);
     }
     else if ( cells[i][j] == 21 ){
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         cells[i][j] = -210 ;
         botDestroyedShip21++ ;
         if ( botDestroyedShip21 == 2 ){
@@ -592,6 +615,11 @@ void DialogGameAI::Attack(int** cells,int i,int j)
     else if ( cells[i][j] == 22 ){
         cells[i][j] = -220 ;
         botDestroyedShip22++ ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         if ( botDestroyedShip22 == 2 ){
             makeEmptyAround(cells,-220);
         }
@@ -600,8 +628,12 @@ void DialogGameAI::Attack(int** cells,int i,int j)
     else if ( cells[i][j] == 23 ){
         cells[i][j] = -230 ;
         botDestroyedShip23++ ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         if ( botDestroyedShip23 == 2 ){
-
             makeEmptyAround(cells,-230);
         }
     }
@@ -609,6 +641,11 @@ void DialogGameAI::Attack(int** cells,int i,int j)
     else if ( cells[i][j] == 31 ){
         cells[i][j] = -310 ;
         botDestroyedShip31++ ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         if ( botDestroyedShip31 ==3 ){
             makeEmptyAround(cells,-310);
         }
@@ -617,6 +654,11 @@ void DialogGameAI::Attack(int** cells,int i,int j)
     else if ( cells[i][j] == 32 ){
         cells[i][j] = -320 ;
         botDestroyedShip32++ ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         if ( botDestroyedShip32 ==3 ){
             makeEmptyAround(cells,-320);
         }
@@ -626,6 +668,11 @@ void DialogGameAI::Attack(int** cells,int i,int j)
     else if ( cells[i][j] == 41 ){
         cells[i][j] = -410 ;
         botDestroyedShip4++ ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
         if ( botDestroyedShip4 == 4 ){
             makeEmptyAround(cells,-410);
         }
@@ -633,10 +680,20 @@ void DialogGameAI::Attack(int** cells,int i,int j)
 
     else if (cells[i][j] == 7 ){
 
-        cells[i][j] = -11 ;
-        turn = true ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
+        musicPlayer->play();
+        cells[i][j] = -70 ;
+        turn = !turn ;
         mineFlag = true;
         play(i,j,0);
+    }
+    if (mineFlag == true)
+    {
+        turn = !turn;
+        mineFlag = false;
     }
 
 
@@ -664,8 +721,6 @@ void DialogGameAI::play(int i , int j , int arm)
     {
         for(int j = 9 ; j >=0 ; j--)
         {
-
-
             if(cells[i][j] == 11||cells[i][j] ==12||cells[i][j] == 13 ||cells[i][j] == 21||cells[i][j] == 22 )
             {
                 Attack(cells,i,j);
@@ -685,6 +740,7 @@ void DialogGameAI::play(int i , int j , int arm)
                 turn  = false;
                 break;
             }
+
         }
     }
 
@@ -696,10 +752,7 @@ void DialogGameAI::play(int i , int j , int arm)
         connect(timer, &QTimer::timeout, this, &DialogGameAI::botPlay);
         timer->start(1000);
     }
-    if (mineFlag == true)
-    {
-        turn = !turn;
-    }
+
 }
 
 void DialogGameAI::botPlay()
@@ -714,6 +767,37 @@ void DialogGameAI::botPlay()
     int i = rand() % 9 + 1;
     int j = rand() % 9 + 1;
     play(i,j,0);
+}
+
+void DialogGameAI::Animation(int row,int column)
+{
+    ui->planeLabel->show();
+    QMediaPlayer* musicPlayer = new QMediaPlayer();
+    QAudioOutput* output = new QAudioOutput();
+    musicPlayer->setAudioOutput(output);
+    musicPlayer->setSource(QUrl("qrc:/Plane.mp3"));
+    musicPlayer->play();
+    QPropertyAnimation *animation = new QPropertyAnimation(ui->planeLabel, "geometry");
+    animation->setDuration(3000);
+    // Calculate the start and end positions based on mouse position
+    int mouseX = QCursor::pos().x();
+    int labelWidth = ui->planeLabel->width();
+    int labelHeight = ui->planeLabel->height();
+
+    // // End position: row of mouse, column end of the page
+    int endY = this->height();
+    int endX = this->width();
+
+    // Set start and end values for the animation
+    animation->setStartValue(QRect(mouseX-500, 0, labelWidth, labelHeight));
+    animation->setEndValue(QRect(endX,endY-100 , labelWidth, labelHeight));
+
+    connect(animation, &QPropertyAnimation::finished, this, [this,row, column]()
+        {
+            userPlay(row,column,1);
+        });
+    // Start the animation
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
 
 void DialogGameAI::userPlay(int row,int column,int arm)

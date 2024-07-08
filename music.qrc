@@ -3,5 +3,7 @@
         <file>Ocean.mp3</file>
         <file>ArsenalBuy.mp3</file>
         <file>Miss.mp3</file>
+        <file>Hit.mp3</file>
+        <file>Plane.mp3</file>
     </qresource>
 </RCC>
