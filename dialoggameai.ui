@@ -362,7 +362,7 @@ gridline-color: rgb(48, 165, 255);</string>
     </property>
    </item>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="turnLabel">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -372,7 +372,7 @@ gridline-color: rgb(48, 165, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);
 background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
    </property>
    <property name="text">

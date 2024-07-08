@@ -24,7 +24,7 @@ class Ui_DialogGameAI
 public:
     GameBoard *tableWidget;
     GameBoard *botTableWidget;
-    QLabel *label;
+    QLabel *turnLabel;
     QPushButton *linearAttackbutton;
     QPushButton *atomicBombButton;
     QPushButton *trackerButton;
@@ -168,10 +168,10 @@ public:
         botTableWidget->horizontalHeader()->setDefaultSectionSize(40);
         botTableWidget->verticalHeader()->setMinimumSectionSize(40);
         botTableWidget->verticalHeader()->setDefaultSectionSize(40);
-        label = new QLabel(DialogGameAI);
-        label->setObjectName("label");
-        label->setGeometry(QRect(510, 250, 41, 101));
-        label->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);\n"
+        turnLabel = new QLabel(DialogGameAI);
+        turnLabel->setObjectName("turnLabel");
+        turnLabel->setGeometry(QRect(510, 250, 41, 101));
+        turnLabel->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         linearAttackbutton = new QPushButton(DialogGameAI);
         linearAttackbutton->setObjectName("linearAttackbutton");
@@ -275,7 +275,7 @@ public:
 #if QT_CONFIG(accessibility)
         botTableWidget->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
-        label->setText(QString());
+        turnLabel->setText(QString());
         linearAttackbutton->setText(QString());
         atomicBombButton->setText(QString());
         trackerButton->setText(QString());
