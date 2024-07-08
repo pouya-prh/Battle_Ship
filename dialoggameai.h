@@ -15,11 +15,29 @@ public:
     explicit DialogGameAI(User&,Arms&,int**,QWidget *parent = nullptr);
     ~DialogGameAI();
     int** makeGameBoard();
-    User& user;
-    Arms& arms;
-    int** botGameBoard;
+    void Display(int** cells);
+    void userPlay(int);
+    void botPlay();
+private slots:
+    void on_linearAttackbutton_clicked();
+
+    void on_atomicBombButton_clicked();
+
+    void on_trackerButton_clicked();
+
 private:
     Ui::DialogGameAI *ui;
+    int** botGameBoard;
+    int** cells;
+    bool turn;
+    User& user;
+    Arms& arms;
+    int botDestroyedShip21;
+    int botDestroyedShip22;
+    int botDestroyedShip23;
+    int botDestroyedShip31;
+    int botDestroyedShip32;
+    int botDestroyedShip4;
 };
 
 #endif // DIALOGGAMEAI_H

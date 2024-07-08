@@ -39,6 +39,7 @@ public:
     QLabel *linearAttackCounter;
     QLabel *atomicBombCounter;
     QPushButton *nextButton;
+    QLabel *airDefanceCounter_2;
 
     void setupUi(QDialog *DialogGetArm)
     {
@@ -221,6 +222,13 @@ public:
 "}\n"
 "\n"
 ""));
+        airDefanceCounter_2 = new QLabel(DialogGetArm);
+        airDefanceCounter_2->setObjectName("airDefanceCounter_2");
+        airDefanceCounter_2->setGeometry(QRect(120, 560, 21, 21));
+        airDefanceCounter_2->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        airDefanceCounter_2->setAlignment(Qt::AlignCenter);
 
         retranslateUi(DialogGetArm);
 
@@ -274,6 +282,7 @@ public:
         linearAttackCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
         atomicBombCounter->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
         nextButton->setText(QCoreApplication::translate("DialogGetArm", "Next", nullptr));
+        airDefanceCounter_2->setText(QCoreApplication::translate("DialogGetArm", "0", nullptr));
     } // retranslateUi
 
 };

@@ -14,6 +14,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <gameboard.h>
 
 QT_BEGIN_NAMESPACE
@@ -24,6 +25,12 @@ public:
     GameBoard *tableWidget;
     GameBoard *botTableWidget;
     QLabel *label;
+    QPushButton *linearAttackbutton;
+    QPushButton *atomicBombButton;
+    QPushButton *trackerButton;
+    QLabel *trackerCounter;
+    QLabel *atomicBombCounter;
+    QLabel *linearAttackCounter;
 
     void setupUi(QDialog *DialogGameAI)
     {
@@ -164,6 +171,39 @@ public:
         label->setGeometry(QRect(510, 250, 41, 101));
         label->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
+        linearAttackbutton = new QPushButton(DialogGameAI);
+        linearAttackbutton->setObjectName("linearAttackbutton");
+        linearAttackbutton->setGeometry(QRect(400, 503, 81, 81));
+        linearAttackbutton->setStyleSheet(QString::fromUtf8("image: url(:/squareAttackFliped.png);"));
+        atomicBombButton = new QPushButton(DialogGameAI);
+        atomicBombButton->setObjectName("atomicBombButton");
+        atomicBombButton->setGeometry(QRect(230, 505, 81, 81));
+        atomicBombButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);"));
+        trackerButton = new QPushButton(DialogGameAI);
+        trackerButton->setObjectName("trackerButton");
+        trackerButton->setGeometry(QRect(50, 506, 81, 81));
+        trackerButton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);"));
+        trackerCounter = new QLabel(DialogGameAI);
+        trackerCounter->setObjectName("trackerCounter");
+        trackerCounter->setGeometry(QRect(109, 564, 21, 21));
+        trackerCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        trackerCounter->setAlignment(Qt::AlignCenter);
+        atomicBombCounter = new QLabel(DialogGameAI);
+        atomicBombCounter->setObjectName("atomicBombCounter");
+        atomicBombCounter->setGeometry(QRect(290, 564, 21, 21));
+        atomicBombCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        atomicBombCounter->setAlignment(Qt::AlignCenter);
+        linearAttackCounter = new QLabel(DialogGameAI);
+        linearAttackCounter->setObjectName("linearAttackCounter");
+        linearAttackCounter->setGeometry(QRect(459, 562, 21, 21));
+        linearAttackCounter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        linearAttackCounter->setAlignment(Qt::AlignCenter);
 
         retranslateUi(DialogGameAI);
 
@@ -230,6 +270,12 @@ public:
         botTableWidget->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
         label->setText(QString());
+        linearAttackbutton->setText(QString());
+        atomicBombButton->setText(QString());
+        trackerButton->setText(QString());
+        trackerCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
+        atomicBombCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
+        linearAttackCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
     } // retranslateUi
 
 };

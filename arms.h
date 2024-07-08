@@ -24,6 +24,9 @@ public:
     int getAtomicBombCount();
     int getTrackerCount();
     int getAirDefanceCount();
+    void linearAttackMinus();
+    void atomicBombMinus();
+    void trackerMinus();
 
 };
 
