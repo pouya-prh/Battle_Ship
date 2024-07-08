@@ -283,7 +283,8 @@ release/qrc_images.cpp: ../../images.qrc \
 release/qrc_music.cpp: ../../music.qrc \
 		C:/Qt/6.6.3/mingw_64/bin/rcc.exe \
 		../../ArsenalBuy.mp3 \
-		../../Ocean.mp3
+		../../Ocean.mp3 \
+		../../Miss.mp3
 	C:\Qt\6.6.3\mingw_64\bin\rcc.exe -name music --no-zstd ..\..\music.qrc -o release\qrc_music.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -3187,12 +3188,28 @@ release/dialoggameai.o: ../../dialoggameai.cpp ../../dialoggameai.h \
 		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.6.3/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.6.3/mingw_64/include/QtGui/qtextdocument.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qabstractbutton.h \
 		../../gameboard.h \
 		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtableview.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/QPoint \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/QHash
+		C:/Qt/6.6.3/mingw_64/include/QtCore/QHash \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/QMediaPlayer \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qmediaenumdebug.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qmetaobject.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qaudio.h \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/QAudioOutput \
+		C:/Qt/6.6.3/mingw_64/include/QtMultimedia/qaudiooutput.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\dialoggameai.o ..\..\dialoggameai.cpp
 
 release/dialoggetarm.o: ../../dialoggetarm.cpp ../../dialoggetarm.h \
@@ -4535,32 +4552,7 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		C:/Qt/6.6.3/mingw_64/include/QtGui/qguiapplication.h \
 		C:/Qt/6.6.3/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qlocale.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qguiapplication_platform.h \
-		../../dialogsetgameboard.h \
-		../../gameboard.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QTableWidget \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtablewidget.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtableview.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qframe.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qstyleoption.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qvalidator.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qslider.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qabstractslider.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qstyle.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/QPoint \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/QHash \
-		../../arms.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QDialog \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qdialog.h
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp
 
 release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \

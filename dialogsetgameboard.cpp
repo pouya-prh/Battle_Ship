@@ -230,10 +230,10 @@ bool DialogSetGameBoard::isDropValid(int row,int column,int shipSize,bool horize
 
 void DialogSetGameBoard::on_nextButton_clicked()
 {
-    this->hide();
+    this->close();
     int** cells = ui->tableWidget->returnCells();
-    DialogGameAI* page2 = new DialogGameAI(user,arms,cells);
-    page2->show();
+    DialogGameAI* Game = new DialogGameAI(user,arms,cells);
+    Game->show();
 }
 
 void DialogSetGameBoard::rotate(QPushButton* shipButton,int size)

@@ -1,7 +1,7 @@
 <RCC>
-    <qresource prefix="/sound"/>
     <qresource prefix="/">
         <file>Ocean.mp3</file>
         <file>ArsenalBuy.mp3</file>
+        <file>Miss.mp3</file>
     </qresource>
 </RCC>
