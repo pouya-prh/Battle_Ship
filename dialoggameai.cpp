@@ -33,6 +33,9 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     botGameBoard = makeGameBoard();
     Display(botGameBoard);
     turn = true;
+    connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row,int column){
+        userPlay(row,column,0);
+    });
 
 
 }
@@ -119,7 +122,16 @@ void DialogGameAI::on_linearAttackbutton_clicked()
     {
         arms.linearAttackMinus();
         ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
-        //userPlay(1);
+        disconnect  (ui->botTableWidget,&QTableWidget::cellClicked,this,nullptr);
+        connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row, int column) {
+            userPlay(row, column, 1);
+            disconnect(ui->botTableWidget,&QTableWidget::cellClicked,nullptr,nullptr);
+
+            connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row,int column){
+                userPlay(row,column,0);
+            });
+
+        });
     }
 }
 
@@ -309,7 +321,7 @@ void DialogGameAI::Display(int** cells)
                     QTableWidgetItem *item = new QTableWidgetItem();
                     QIcon icon(":/X.png");
                     item->setIcon(icon);
-                    ui->botTableWidget->setItem(i, j, item);
+                    ui->tableWidget->setItem(i, j, item);
                 }
                 else if(cells[i][j]==-310||cells[i][j] == -320)
                 {
@@ -503,363 +515,190 @@ void DialogGameAI::Display(int** cells)
 
 static bool mineFlag = false;
 
+void DialogGameAI::makeEmptyAround(int** cells,int value)
+{
+    for ( int x = 0 ; x <= 9 ; x++ ){
+        for ( int y = 0 ; y<= 9 ; y++ ) {
+
+            if ( cells[x][y] == value ){
+
+                if(x-1>=0)
+                    if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
+                        cells[x-1][y] = -11 ;
+                    }
+                if(x-1 >= 0 && y-1 >= 0)
+                    if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
+                        cells[x-1][y-1] = -11 ;
+                    }
+                if(y-1 >= 0)
+                    if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
+                        cells[x][y-1] = -11 ;
+                    }
+                if(x+1 <= 9)
+                    if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
+                        cells[x+1][y] = -11 ;
+                    }
+                if(x+1 <= 9 && y+1 <= 9)
+                    if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
+                        cells[x+1][y+1] = -11 ;
+                    }
+                if(y+1 <= 9)
+                    if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
+                        cells[x][y+1] = -11 ;
+                    }
+                if(y-1 >= 0&& x+1<=9)
+                    if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
+                        cells[x+1][y-1] = -11 ;
+                    }
+                if(x-1>=0 && y+1<=9)
+                    if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
+                        cells[x-1][y+1] = -11 ;
+                    }
+
+            }
+        }
+    }
+
+}
+void DialogGameAI::Attack(int** cells,int i,int j)
+{
+    if (cells[i][j] == 0 ||cells[i][j] == 8|| cells[i][j] == -110 || cells[i][j] == -210 ||
+           cells[i][j] == -220 || cells[i][j] == -230 || cells[i][j] == -310 || cells[i][j] == -320|| cells[i][j] == -410){
+        cells[i][j] = -11 ;
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
+        musicPlayer->play();
+        turn = !turn;
+        if (mineFlag == true)
+        {
+            turn = !turn;
+        }
+
+    }
+    else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
+        cells[i][j] = -110 ;
+        makeEmptyAround(cells,-110);
+    }
+    else if ( cells[i][j] == 21 ){
+        cells[i][j] = -210 ;
+        botDestroyedShip21++ ;
+        if ( botDestroyedShip21 == 2 ){
+            makeEmptyAround(cells,-210);
+        }
+    }
+
+    else if ( cells[i][j] == 22 ){
+        cells[i][j] = -220 ;
+        botDestroyedShip22++ ;
+        if ( botDestroyedShip22 == 2 ){
+            makeEmptyAround(cells,-220);
+        }
+    }
+
+    else if ( cells[i][j] == 23 ){
+        cells[i][j] = -230 ;
+        botDestroyedShip23++ ;
+        if ( botDestroyedShip23 == 2 ){
+
+            makeEmptyAround(cells,-230);
+        }
+    }
+
+    else if ( cells[i][j] == 31 ){
+        cells[i][j] = -310 ;
+        botDestroyedShip31++ ;
+        if ( botDestroyedShip31 ==3 ){
+            makeEmptyAround(cells,-310);
+        }
+    }
+
+    else if ( cells[i][j] == 32 ){
+        cells[i][j] = -320 ;
+        botDestroyedShip32++ ;
+        if ( botDestroyedShip32 ==3 ){
+            makeEmptyAround(cells,-320);
+        }
+    }
+
+
+    else if ( cells[i][j] == 41 ){
+        cells[i][j] = -410 ;
+        botDestroyedShip4++ ;
+        if ( botDestroyedShip4 == 4 ){
+            makeEmptyAround(cells,-410);
+        }
+    }
+
+    else if (cells[i][j] == 7 ){
+
+        cells[i][j] = -11 ;
+        turn = true ;
+        mineFlag = true;
+        play(i,j,0);
+    }
+
+
+}
 void DialogGameAI::play(int i , int j , int arm)
 {
 
     int** cells;
     if (turn)
     {
-      cells = botGameBoard;
+         cells = botGameBoard;
          botTurn = false;
     }
     else
     {
-
-
         cells = Cells;
          botTurn = true;
     }
 
     if(arm==0)
     {
-        if (cells[i][j] == 0 ||cells[i][j] == 8){
-            cells[i][j] = -11 ;
-            QMediaPlayer *musicPlayer = new QMediaPlayer();
-            QAudioOutput *output = new QAudioOutput();
-            musicPlayer->setAudioOutput(output);
-            musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
-            musicPlayer->play();
-            turn = !turn;
-            if (mineFlag == true)
+        Attack(cells,i,j);
+    }
+    else if(arm == 1)
+    {
+        for(int j = 9 ; j >=0 ; j--)
+        {
+
+
+            if(cells[i][j] == 11||cells[i][j] ==12||cells[i][j] == 13 ||cells[i][j] == 21||cells[i][j] == 22 )
             {
-                turn = !turn;
+                Attack(cells,i,j);
+                turn = true;
+                break;
             }
-
-        }
-        else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
-            cells[i][j] = -110 ;
-
-            for(int r = i-1 ; r<=i+1;r++)
+            if(cells[i][j] == 23 || cells[i][j] == 31 || cells[i][j] == 32 || cells[i][j] == 41 || cells[i][j] == 7)
             {
-                for (int c = j-1 ; c<= j+1 ; c++)
-                {
-                    if(r>=0&&r<=9&&r>=0&&r<=9)
-                        cells[r][c] = -11;
-                }
+                Attack(cells,i,j);
+                turn = true;
+                break;
             }
-             cells[i][j] = -110 ;
-        }
-        else if ( cells[i][j] == 21 ){
-            cells[i][j] = -210 ;
-            botDestroyedShip21++ ;
-            if ( botDestroyedShip21 == 2 ){
-                for ( int x = 0 ; x <= 9 ; x++ ){
-                    for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                        if ( cells[x][y] == -210 ){
-
-                            if(x-1>=0)
-                            if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
-                                cells[x-1][y] = -11 ;
-                            }
-                            if(x-1>=0&&y-1>=0)
-                            if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
-                                cells[x-1][y-1] = -11 ;
-                            }
-                            if(y-1>=0)
-                            if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
-                                cells[x][y-1] = -11 ;
-                            }
-                            if(x+1<=9)
-                            if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
-                                cells[x+1][y] = -11 ;
-                            }
-                            if(x+1<=9&&y+1<=9)
-                            if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
-                                cells[x+1][y+1] = -11 ;
-                            }
-                            if(y+1>=9)
-                            if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
-                                cells[x][y+1] = -11 ;
-                            }
-                            if(y+1>=9&&x-1>=0)
-                            if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
-                                cells[x+1][y-1] = -11 ;
-                            }
-                            if(x-1>=0&&y+1<=9)
-                            if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
-                                cells[x-1][y+1] = -11 ;
-                            }
-
-                        }
-                    }
-                }
+            Attack(cells,i,j);
+            turn = true;
+            if(j == 0)
+            {
+                turn  = false;
+                break;
             }
         }
+    }
 
-        else if ( cells[i][j] == 22 ){
-            cells[i][j] = -220 ;
-            botDestroyedShip22++ ;
-            if ( botDestroyedShip22 == 2 ){
+    Display(cells);
 
-                for ( int x = 0 ; x <= 9 ; x++ ){
-                    for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                        if ( cells[x][y] == -220 ){
-                            if(x-1>=0)
-                            if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
-                                cells[x-1][y] = -11 ;
-                            }
-                            if(x-1>=0&&y-1>=0)
-                            if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
-                                cells[x-1][y-1] = -11 ;
-                            }
-                            if(y-1>=0)
-                            if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
-                                cells[x][y-1] = -11 ;
-                            }
-                            if(x+1<=9)
-                            if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
-                                cells[x+1][y] = -11 ;
-                            }
-                            if(x+1<=9&&y+1<=9)
-                            if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
-                                cells[x+1][y+1] = -11 ;
-                            }
-                            if(y+1<=9)
-                            if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
-                                cells[x][y+1] = -11 ;
-                            }
-                            if(x+1<=9&&y-1>=0)
-                            if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
-                                cells[x+1][y-1] = -11 ;
-                            }
-                            if(x-1>=0&&y+1<=9)
-                            if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
-                                cells[x-1][y+1] = -11 ;
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-
-        else if ( cells[i][j] == 23 ){
-            cells[i][j] = -230 ;
-            botDestroyedShip23++ ;
-            if ( botDestroyedShip23 == 2 ){
-
-                for ( int x = 0 ; x <= 9 ; x++ ){
-                    for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                        if ( cells[x][y] == -230 ){
-                            if(x-1>=0)
-                            if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
-                                cells[x-1][y] = -11 ;
-                            }
-                            if(x-1>=0&&y-1>=0)
-                            if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
-                                cells[x-1][y-1] = -11 ;
-                            }
-                            if(y-1>=0)
-                            if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
-                                cells[x][y-1] = -11 ;
-                            }
-                            if(x+1<=9)
-                            if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
-                                cells[x+1][y] = -11 ;
-                            }
-                            if(x+1<=9&&y+1<=9)
-                            if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
-                                cells[x+1][y+1] = -11 ;
-                            }
-                            if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
-                                cells[x][y+1] = -11 ;
-                            }
-                            if(x+1<=9&&y-1>=0)
-                            if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
-                                cells[x+1][y-1] = -11 ;
-                            }
-                            if(x-1>=0&&y+1<=9)
-                            if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
-                                cells[x-1][y+1] = -11 ;
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-
-        else if ( cells[i][j] == 31 ){
-            cells[i][j] = -310 ;
-            botDestroyedShip31++ ;
-            if ( botDestroyedShip31 ==3 ){
-
-                for ( int x = 0 ; x <= 9 ; x++ ){
-                    for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                        if ( cells[x][y] == -310 ){
-                            if(x-1>=0)
-                            if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
-                                cells[x-1][y] = -11 ;
-                            }
-                            if(x-1>=0&&y-1>=0)
-                            if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
-                                cells[x-1][y-1] = -11 ;
-                            }
-                            if(y-1>=0)
-                            if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
-                                cells[x][y-1] = -11 ;
-                            }
-                            if(x+1<=9)
-                            if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
-                                cells[x+1][y] = -11 ;
-                            }
-                            if(x+1<=9&&y+1<=9)
-                            if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
-                                cells[x+1][y+1] = -11 ;
-                            }
-                            if(y+1<=9)
-                            if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
-                                cells[x][y+1] = -11 ;
-                            }
-                            if(x+1<=9&&y-1>=0)
-                            if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
-                                cells[x+1][y-1] = -11 ;
-                            }
-                            if(x-1>=0&&y+1<=9)
-                            if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
-                                cells[x-1][y+1] = -11 ;
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-
-        else if ( cells[i][j] == 32 ){
-            cells[i][j] = -320 ;
-            botDestroyedShip32++ ;
-            if ( botDestroyedShip32 ==3 ){
-
-                for ( int x = 0 ; x <= 9 ; x++ ){
-                    for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                        if ( cells[x][y] == -320 ){
-                            if(x-1>=0)
-                            if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
-                                cells[x-1][y] = -11 ;
-                            }
-                            if(x-1>=0&&y-1>=0)
-                            if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
-                                cells[x-1][y-1] = -11 ;
-                            }
-                            if(y-1>=0)
-                            if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
-                                cells[x][y-1] = -11 ;
-                            }
-                            if(x+1<=9)
-                            if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
-                                cells[x+1][y] = -11 ;
-                            }
-                            if(x+1<=9&&y+1<=9)
-                            if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
-                                cells[x+1][y+1] = -11 ;
-                            }
-                            if(y+1<=9)
-                            if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
-                                cells[x][y+1] = -11 ;
-                            }
-                            if(x+1<=9&&y-1>=0)
-                            if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
-                                cells[x+1][y-1] = -11 ;
-                            }
-                            if(x-1>=0&&y+1<=9)
-                            if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
-                                cells[x-1][y+1] = -11 ;
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-
-
-        else if ( cells[i][j] == 41 ){
-            cells[i][j] = -410 ;
-            botDestroyedShip4++ ;
-            if ( botDestroyedShip4 == 4 ){
-
-                for ( int x = 0 ; x <= 9 ; x++ ){
-                    for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                        if ( cells[x][y] == -410 ){
-                            if(x-1>=0)
-                            if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
-                                cells[x-1][y] = -11 ;
-                            }
-                            if(x-1>=0&&y-1>=0)
-                            if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
-                                cells[x-1][y-1] = -11 ;
-                            }
-                            if(y-1>=0)
-                            if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
-                                cells[x][y-1] = -11 ;
-                            }
-                            if(x+1<=9)
-                            if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
-                                cells[x+1][y] = -11 ;
-                            }
-                            if(x+1<=9&&y+1<=9)
-                            if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
-                                cells[x+1][y+1] = -11 ;
-                            }
-                            if(y+1<=9)
-                            if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
-                                cells[x][y+1] = -11 ;
-                            }
-                            if(x+1<=9&&y-1>=0)
-                            if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
-                                cells[x+1][y-1] = -11 ;
-                            }
-                            if(x-1>=0&&y+1<=9)
-                            if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
-                                cells[x-1][y+1] = -11 ;
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-
-        else if (cells[i][j] == 7 ){
-
-            cells[i][j] = -11 ;
-            turn = true ;
-            mineFlag = true;
-            play(i,j,0);
-        }
-
-       Display(cells);
-
-
-       if(!turn)
-       {
-           timer = new QTimer(this);
-           connect(timer, &QTimer::timeout, this, &DialogGameAI::botPlay);
-           timer->start(1000);
-
-       }
-
-      if (mineFlag == true)
-       {
-            turn = !turn;
-       }
+    if(!turn)
+    {
+        timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, &DialogGameAI::botPlay);
+        timer->start(1000);
+    }
+    if (mineFlag == true)
+    {
+        turn = !turn;
     }
 }
 
@@ -879,13 +718,8 @@ void DialogGameAI::botPlay()
 
 void DialogGameAI::userPlay(int row,int column,int arm)
 {
-    arm = 0;
+
     play(row,column,arm);
 }
 
-
-void DialogGameAI::on_botTableWidget_cellClicked(int row, int column)
-{
-    userPlay(row,column,0);
-}
 

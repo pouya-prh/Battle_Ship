@@ -17,9 +17,12 @@ public:
     ~DialogGameAI();
     int** makeGameBoard();
     void Display(int** cells);
-    void userPlay(int,int,int);
+    void userPlay(int,int,int arm = 0);
     void botPlay();
     void play(int,int,int);
+    void makeEmptyAround(int**,int);
+    void Attack(int**,int,int);
+
 
 private slots:
     void on_linearAttackbutton_clicked();
@@ -28,7 +31,6 @@ private slots:
 
     void on_trackerButton_clicked();
 
-    void on_botTableWidget_cellClicked(int row, int column);
 
 private:
     Ui::DialogGameAI *ui;

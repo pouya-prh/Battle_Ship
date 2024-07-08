@@ -152,6 +152,7 @@ public:
         botTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         botTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         botTableWidget->setAutoScroll(false);
+        botTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         botTableWidget->setDragEnabled(true);
         botTableWidget->setDragDropMode(QAbstractItemView::DragDrop);
         botTableWidget->setDefaultDropAction(Qt::MoveAction);
