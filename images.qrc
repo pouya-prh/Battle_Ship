@@ -32,5 +32,8 @@
         <file>Vship43.png</file>
         <file>Vship44.png</file>
         <file>ship44.png</file>
+        <file>squareAttackFliped.png</file>
+        <file>X.png</file>
+        <file>emptyCell.png</file>
     </qresource>
 </RCC>

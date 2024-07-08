@@ -376,6 +376,117 @@ background-image: url(:/Recommended Source Files/Recommended Source Files/Images
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="linearAttackbutton">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>503</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/squareAttackFliped.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="atomicBombButton">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>505</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="trackerButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>506</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="trackerCounter">
+   <property name="geometry">
+    <rect>
+     <x>109</x>
+     <y>564</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="atomicBombCounter">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>564</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="linearAttackCounter">
+   <property name="geometry">
+    <rect>
+     <x>459</x>
+     <y>562</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

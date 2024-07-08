@@ -510,6 +510,27 @@ QPushButton:hover {
     <string>Next</string>
    </property>
   </widget>
+  <widget class="QLabel" name="airDefanceCounter_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>560</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

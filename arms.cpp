@@ -112,5 +112,16 @@ int Arms::getTrackerCount()
 {
     return trackerCounter;
 }
-
+void Arms::linearAttackMinus()
+{
+    linearattackCounter--;
+}
+void Arms::trackerMinus()
+{
+    trackerCounter--;
+}
+void Arms::atomicBombMinus()
+{
+    atomicBombCounter--;
+}
 

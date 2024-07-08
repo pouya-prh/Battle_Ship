@@ -184,6 +184,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_back.cpp release\qrc_font.cpp release\qrc_images.cpp release\qrc_music.cpp
 release/qrc_back.cpp: ../../back.qrc \
 		C:/Qt/6.6.3/mingw_64/bin/rcc.exe \
+		../../squareAttackFliped.png \
 		../../Recommended\ Source\ Files/Recommended\ Source\ Files/Images/Vship43.png \
 		../../Recommended\ Source\ Files/Recommended\ Source\ Files/Images/ship43.png \
 		../../Recommended\ Source\ Files/Recommended\ Source\ Files/Images/Vship21.png \
@@ -251,6 +252,7 @@ release/qrc_images.cpp: ../../images.qrc \
 		../../ship31.png \
 		../../ship32.png \
 		../../ship44.png \
+		../../squareAttackFliped.png \
 		../../ship4.png \
 		../../ship33.png \
 		../../Vship3.png \
@@ -262,6 +264,7 @@ release/qrc_images.cpp: ../../images.qrc \
 		../../Vship1.png \
 		../../airDefense.png \
 		../../ship1.PNG \
+		../../X.png \
 		../../Vship22.png \
 		../../Vship33.png \
 		../../Vship42.png \
@@ -269,6 +272,7 @@ release/qrc_images.cpp: ../../images.qrc \
 		../../ship22.png \
 		../../ship21.png \
 		../../ship3.PNG \
+		../../emptyCell.png \
 		../../atomic\ bomb.png \
 		../../Vship4.png \
 		../../Vship41.png \
@@ -292,10 +296,11 @@ compiler_moc_header_make_all: release/moc_dialoggameai.cpp release/moc_dialogget
 compiler_moc_header_clean:
 	-$(DEL_FILE) release\moc_dialoggameai.cpp release\moc_dialoggetarm.cpp release\moc_dialogpage1.cpp release\moc_dialogsetgameboard.cpp release\moc_draggablebutton.cpp release\moc_gameboard.cpp release\moc_mainwindow.cpp release\moc_dialogloginclicked.cpp release\moc_dialogsignupclicked.cpp release\moc_musicplayer.cpp
 release/moc_dialoggameai.cpp: ../../dialoggameai.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QDialog \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiglobal.h \
+		../../arms.h \
+		../../user.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/QString \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qstring.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qchar.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qglobal.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qtversionchecks.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qtconfiginclude.h \
@@ -339,24 +344,11 @@ release/moc_dialoggameai.cpp: ../../dialoggameai.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qtresource.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qttranslation.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qversiontagging.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qwidget.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qnamespace.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qtmetamacros.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qobject.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qstring.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qchar.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qstringview.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qbytearray.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qrefcount.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qnamespace.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qtmetamacros.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qarraydata.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qpair.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -376,6 +368,21 @@ release/moc_dialoggameai.cpp: ../../dialoggameai.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qutf8stringview.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qstringtokenizer.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QDialog \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qwidget.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qobject.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qlist.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qiterator.h \
@@ -2968,10 +2975,11 @@ release/arms.o: ../../arms.cpp ../../arms.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\arms.o ..\..\arms.cpp
 
 release/dialoggameai.o: ../../dialoggameai.cpp ../../dialoggameai.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QDialog \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiglobal.h \
+		../../arms.h \
+		../../user.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/QString \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qstring.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qchar.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qglobal.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qtversionchecks.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qtconfiginclude.h \
@@ -3015,24 +3023,11 @@ release/dialoggameai.o: ../../dialoggameai.cpp ../../dialoggameai.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qtresource.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qttranslation.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qversiontagging.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qwidget.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qnamespace.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qtmetamacros.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
-		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qobject.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qstring.h \
-		C:/Qt/6.6.3/mingw_64/include/QtCore/qchar.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qstringview.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qbytearray.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qrefcount.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qnamespace.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qtmetamacros.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qarraydata.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qpair.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -3052,6 +3047,21 @@ release/dialoggameai.o: ../../dialoggameai.cpp ../../dialoggameai.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qutf8stringview.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qstringtokenizer.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/QDialog \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/Qt/6.6.3/mingw_64/include/QtWidgets/qwidget.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/6.6.3/mingw_64/include/QtCore/qobject.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qlist.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Qt/6.6.3/mingw_64/include/QtCore/qiterator.h \
