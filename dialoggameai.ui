@@ -243,6 +243,9 @@ gridline-color: rgb(48, 165, 255);</string>
    <property name="autoScroll">
     <bool>false</bool>
    </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
    <property name="dragEnabled">
     <bool>true</bool>
    </property>
