@@ -1,6 +1,9 @@
 #include "dialoggameai.h"
 #include "ui_dialoggameai.h"
 #include <stdlib.h>
+#include <windows.h>
+#include <QMediaPlayer>
+#include<QAudioOutput>
 
 DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     : QDialog(parent)
@@ -10,7 +13,8 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
 
 {
     ui->setupUi(this);
-    this->cells = cells;
+
+    this->Cells = cells;
 
     ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
     ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
@@ -23,22 +27,12 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     botDestroyedShip32 = 0;
     botDestroyedShip4 = 0;
 
-    Display(cells);
+    botTurn = true;
+    Display(Cells);
+    botTurn = false ;
     botGameBoard = makeGameBoard();
-    while(true)
-    {
-        if(turn)
-        {
-
-        }
-        else
-        {
-            botPlay();
-        }
-
-    }
-
-
+    Display(botGameBoard);
+    turn = true;
 
 
 }
@@ -47,6 +41,8 @@ DialogGameAI::~DialogGameAI()
 {
     delete ui;
 }
+
+
 
 int** DialogGameAI::makeGameBoard()
 {
@@ -90,28 +86,28 @@ int** DialogGameAI::makeGameBoard()
     else
     {
         gameBoard[0][0] = 11;
-        gameBoard[0][9] = 12;
+        gameBoard[0][8] = 12;
         gameBoard[1][5] = 23;
         gameBoard[1][6] = 23;
         gameBoard[2][2] = 21;
-        gameBoard[2][3] = 21;
+        gameBoard[2][1] = 21;
+        gameBoard[3][6] = 22;
         gameBoard[3][7] = 22;
-        gameBoard[3][8] = 22;
-        gameBoard[4][2] = 7;
-        gameBoard[4][9] = 8;
+        gameBoard[4][1] = 7;
+        gameBoard[4][8] = 8;
+        gameBoard[5][5] = 31;
         gameBoard[5][6] = 31;
         gameBoard[5][7] = 31;
-        gameBoard[5][8] = 31;
+        gameBoard[7][1] = 32;
         gameBoard[7][2] = 32;
-        gameBoard[7][3] = 32;
-        gameBoard[7][4] = 33;
-        gameBoard[7][9] = 8;
+        gameBoard[7][3] = 33;
+        gameBoard[7][8] = 8;
+        gameBoard[9][1] = 41;
         gameBoard[9][2] = 41;
         gameBoard[9][3] = 41;
         gameBoard[9][4] = 41;
-        gameBoard[9][5] = 41;
-        gameBoard[9][7] = 7;
-        gameBoard[9][9] = 13;
+        gameBoard[9][6] = 7;
+        gameBoard[8][8] = 13;
     }
     return gameBoard;
 }
@@ -123,7 +119,7 @@ void DialogGameAI::on_linearAttackbutton_clicked()
     {
         arms.linearAttackMinus();
         ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
-        userPlay(1);
+        //userPlay(1);
     }
 }
 
@@ -134,7 +130,7 @@ void DialogGameAI::on_atomicBombButton_clicked()
     {
         arms.atomicBombMinus();
         ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
-        userPlay(2);
+       // userPlay(2);
     }
 }
 
@@ -146,219 +142,451 @@ void DialogGameAI::on_trackerButton_clicked()
     {
         arms.trackerMinus();
         ui->atomicBombCounter->setText(QString::number(arms.getTrackerCount()));
-        userPlay(3);
+       // userPlay(3);
     }
 }
 
 void DialogGameAI::Display(int** cells)
 {
-    for(int i = 0; i <10;i++)
+    int ship21Counter = 0;
+    int ship22Counter = 0;
+    int ship23Counter = 0;
+    int ship31Counter = 0;
+    int ship32Counter = 0;
+    int ship41Counter = 0;
+    int Vship21Counter = 0;
+    int Vship22Counter = 0;
+    int Vship23Counter = 0;
+    int Vship31Counter = 0;
+    int Vship32Counter = 0;
+    int Vship41Counter = 0;
+    if (botTurn)
     {
-        for(int j = 0 ; j <10;j++)
+        for(int i = 0; i <10;i++)
         {
-            if (cells[i][j] == 11||cells[i][j] ==12||cells[i][j]==13)
+            for(int j = 0 ; j <10;j++)
             {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/ship11.PNG");
-                item->setIcon(icon);
+                if (cells[i][j] == 11||cells[i][j] ==12||cells[i][j]==13)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship11.PNG");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j] == 0)
+                {
+                    ui->tableWidget->takeItem(i,j);
+                }
+                else if (cells[i][j] == 21)
+                {
+                    ship21Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship2" + QString::number(ship21Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
 
-                ui->tableWidget->setItem(i, j, item);
-                cells[i][j] *=10;
-            }
-            else if (cells[i][j] == 21 ||cells[i][j] == 22||cells[i][j] == 23)
-            {
-                for(int k = 0; k<2;k++)
+                }
+                else if (cells[i][j] == 22)
+                {
+                    ship22Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship2" + QString::number(ship22Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+
+                }
+                else if (cells[i][j] == 23)
+                {
+                    ship23Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship2" + QString::number(ship23Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+
+                }
+                else if (cells[i][j] == -21)
+                {
+                    Vship21Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship2" + QString::number(Vship21Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -22)
+                {
+                    Vship22Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship2" + QString::number(Vship22Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -23)
+                {
+                    Vship23Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship2" + QString::number(Vship23Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == 31)
+                {
+                    ship31Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship3" + QString::number(ship31Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == 32)
+                {
+                    ship32Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship3" + QString::number(ship32Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -31)
+                {
+                    Vship31Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship3" + QString::number(Vship31Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -32)
+                {
+                    Vship32Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship3" + QString::number(Vship32Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == 41)
+                {
+                    ship41Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship4" + QString::number(ship41Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -41)
+                {
+                    Vship41Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship4" + QString::number(Vship41Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j] == 7)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon(":/ship2" + QString::number(k+1) + ".png");
+                    QIcon icon(":/mine2.png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k, item);
-                    cells[i][j+k] *= 10;
+                    ui->tableWidget->setItem(i, j, item);
                 }
-            }
-            else if (cells[i][j] == -21||cells[i][j] == -22||cells[i][j] == -23)
-            {
-                for(int k = 0; k<2;k++)
+                else if(cells[i][j] == 8)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon(":/Vship2" + QString::number(k+1) + ".png");
+                    QIcon icon(":/airDefense.png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k, j, item);
-                    cells[i+k][j] *= (-10);
+                    ui->tableWidget->setItem(i, j, item);
                 }
-            }
-            else if (cells[i][j] == 31||cells[i][j] == 32)
-            {
-                for(int k = 0; k<3;k++)
+                else if(cells[i][j] == -11)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon(":/ship3" + QString::number(k+1) + ".png");
+                    QIcon icon(":/emptyCell.png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k, item);
-                    cells[i][j+k] *= 10;
+                    ui->tableWidget->setItem(i, j, item);
                 }
-            }
-            else if (cells[i][j] == -31||cells[i][j] == -32)
-            {
-                for(int k = 0; k<3;k++)
+                else if (cells[i][j] == -210||cells[i][j] == -220||cells[i][j] == -230)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon(":/Vship3" + QString::number(k+1) + ".png");
+                    QIcon icon(":/X.png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k, j, item);
-                    cells[i+k][j] *= (-10);
+                    ui->tableWidget->setItem(i, j, item);
                 }
-            }
-            else if (cells[i][j] == 41)
-            {
-                for(int k = 0; k<4;k++)
+                else if (cells[i][j] == -110)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon(":/ship4" + QString::number(k+1) + ".png");
+                    QIcon icon(":/X.png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i, j+k, item);
-                    cells[i][j+k] *= 10;
+                    ui->botTableWidget->setItem(i, j, item);
                 }
-            }
-            else if (cells[i][j] == -41)
-            {
-                for(int k = 0; k<4;k++)
+                else if(cells[i][j]==-310||cells[i][j] == -320)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
-                    QIcon icon(":/Vship4" + QString::number(k+1) + ".png");
+                    QIcon icon(":/X.png");
                     item->setIcon(icon);
-                    ui->tableWidget->setItem(i+k, j, item);
-                    cells[i+k][j] *= (-10);
+                    ui->tableWidget->setItem(i, j, item);
                 }
-            }
-            else if(cells[i][j] == 7)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/mine2.png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
-            }
-            else if(cells[i][j] == 8)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/airDefense.png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
-            }
-            else if(cells[i][j] == -11)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/emptyCell.png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
-            }
-            else if (cells[i][j] == -210||cells[i][j] == -220||cells[i][j] == -230)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/X.png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
-            }
-            else if(cells[i][j]==-310||cells[i][j] == -320)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/X.png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
-            }
-            else if (cells[i][j] == -410)
-            {
-                QTableWidgetItem *item = new QTableWidgetItem();
-                QIcon icon(":/X.png");
-                item->setIcon(icon);
-                ui->tableWidget->setItem(i, j, item);
+                else if (cells[i][j] == -410)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/X.png");
+                    item->setIcon(icon);
+                    ui->tableWidget->setItem(i, j, item);
+                }
+
             }
         }
     }
-    for(int i = 0; i <10;i++)
+    else
     {
-        for(int j = 0 ; j <10 ;j++)
+        for(int i = 0; i <10;i++)
         {
-            if (cells[i][j] == 110)
-                cells[i][j] =11;
-            else if (cells[i][j]==120)
-                cells[i][j]=12;
-            else if(cells[i][j] == 130)
-                cells[i][j] = 13;
-            else if (cells[i][j] ==210)
-                cells[i][j] = 21;
-            else if (cells[i][j] ==220)
-                cells[i][j] = 22;
-            else if (cells[i][j] ==230)
-                cells[i][j] = 23;
-            else if(cells[i][j] == 310)
-                cells[i][j] = 31;
-            else if(cells[i][j] == 320)
-                cells[i][j] = 32;
-            else if(cells[i][j] == 410)
-                cells[i][j] = 41;
+            for(int j = 0 ; j <10;j++)
+            {
+                if (cells[i][j] == 11||cells[i][j] ==12||cells[i][j]==13)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship11.PNG");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j] == 0)
+                {
+                    ui->botTableWidget->takeItem(i,j);
+                }
+                else if (cells[i][j] == 21)
+                {
+                    ship21Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship2" + QString::number(ship21Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+
+                }
+                else if (cells[i][j] == 22)
+                {
+                    ship22Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship2" + QString::number(ship22Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+
+                }
+                else if (cells[i][j] == 23)
+                {
+                    ship23Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship2" + QString::number(ship23Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+
+                }
+                else if (cells[i][j] == -21)
+                {
+                    Vship21Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship2" + QString::number(Vship21Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -22)
+                {
+                    Vship22Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship2" + QString::number(Vship22Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -23)
+                {
+                    Vship23Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship2" + QString::number(Vship23Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == 31)
+                {
+                    ship31Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship3" + QString::number(ship31Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == 32)
+                {
+                    ship32Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship3" + QString::number(ship32Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -31)
+                {
+                    Vship31Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship3" + QString::number(Vship31Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -32)
+                {
+                    Vship32Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship3" + QString::number(Vship32Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == 41)
+                {
+                    ship41Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/ship4" + QString::number(ship41Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -41)
+                {
+                    Vship41Counter++;
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/Vship4" + QString::number(Vship41Counter) + ".png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j] == 7)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/mine2.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j] == 8)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/airDefense.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j] == -11)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/emptyCell.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] ==-110)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/X.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -210||cells[i][j] == -220||cells[i][j] == -230)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/X.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if(cells[i][j]==-310||cells[i][j] == -320)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/X.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -410)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/X.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+            }
         }
-    }
+     }
+
 }
 
-void DialogGameAI::botPlay()
+
+static bool mineFlag = false;
+
+void DialogGameAI::play(int i , int j , int arm)
 {
-    int** cells2 = botGameBoard;
-    while (!turn){
-        int i = rand() % 9 + 1;
-        int j = rand() % 9 + 1;
 
-        if (cells[i][j] == 0 ){
+    int** cells;
+    if (turn)
+    {
+      cells = botGameBoard;
+         botTurn = false;
+    }
+    else
+    {
+
+
+        cells = Cells;
+         botTurn = true;
+    }
+
+    if(arm==0)
+    {
+        if (cells[i][j] == 0 ||cells[i][j] == 8){
             cells[i][j] = -11 ;
-            turn = false ;
-            return;
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
+            musicPlayer->play();
+            turn = !turn;
+            if (mineFlag == true)
+            {
+                turn = !turn;
+            }
+
         }
+        else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
+            cells[i][j] = -110 ;
 
-        else if ( cells[i][j] == 1 ) {
-            cells[i][j] = -10 ;
-
-            cells[i-1][j] = -11 ;
-            cells[i-1][j-1] = -11 ;
-            cells[i][j-1] = -11 ;
-            cells[i+1][j] = -11 ;
-            cells[i+1][j+1] = -11 ;
-            cells[i][j+1] = -11 ;
-            cells[i+1][j-1] = -11 ;
-            cells[i-1][j+1] = -11 ;
+            for(int r = i-1 ; r<=i+1;r++)
+            {
+                for (int c = j-1 ; c<= j+1 ; c++)
+                {
+                    if(r>=0&&r<=9&&r>=0&&r<=9)
+                        cells[r][c] = -11;
+                }
+            }
+             cells[i][j] = -110 ;
         }
-
-
         else if ( cells[i][j] == 21 ){
             cells[i][j] = -210 ;
-              botDestroyedShip21++ ;
+            botDestroyedShip21++ ;
             if ( botDestroyedShip21 == 2 ){
-
                 for ( int x = 0 ; x <= 9 ; x++ ){
                     for ( int y = 0 ; y<= 9 ; y++ ) {
 
                         if ( cells[x][y] == -210 ){
 
+                            if(x-1>=0)
                             if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
                                 cells[x-1][y] = -11 ;
                             }
+                            if(x-1>=0&&y-1>=0)
                             if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
                                 cells[x-1][y-1] = -11 ;
                             }
+                            if(y-1>=0)
                             if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
                                 cells[x][y-1] = -11 ;
                             }
+                            if(x+1<=9)
                             if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
                                 cells[x+1][y] = -11 ;
                             }
+                            if(x+1<=9&&y+1<=9)
                             if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
                                 cells[x+1][y+1] = -11 ;
                             }
+                            if(y+1>=9)
                             if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
                                 cells[x][y+1] = -11 ;
                             }
+                            if(y+1>=9&&x-1>=0)
                             if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
                                 cells[x+1][y-1] = -11 ;
                             }
+                            if(x-1>=0&&y+1<=9)
                             if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
                                 cells[x-1][y+1] = -11 ;
                             }
@@ -378,28 +606,35 @@ void DialogGameAI::botPlay()
                     for ( int y = 0 ; y<= 9 ; y++ ) {
 
                         if ( cells[x][y] == -220 ){
-
+                            if(x-1>=0)
                             if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
                                 cells[x-1][y] = -11 ;
                             }
+                            if(x-1>=0&&y-1>=0)
                             if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
                                 cells[x-1][y-1] = -11 ;
                             }
+                            if(y-1>=0)
                             if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
                                 cells[x][y-1] = -11 ;
                             }
+                            if(x+1<=9)
                             if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
                                 cells[x+1][y] = -11 ;
                             }
+                            if(x+1<=9&&y+1<=9)
                             if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
                                 cells[x+1][y+1] = -11 ;
                             }
+                            if(y+1<=9)
                             if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
                                 cells[x][y+1] = -11 ;
                             }
+                            if(x+1<=9&&y-1>=0)
                             if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
                                 cells[x+1][y-1] = -11 ;
                             }
+                            if(x-1>=0&&y+1<=9)
                             if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
                                 cells[x-1][y+1] = -11 ;
                             }
@@ -419,28 +654,34 @@ void DialogGameAI::botPlay()
                     for ( int y = 0 ; y<= 9 ; y++ ) {
 
                         if ( cells[x][y] == -230 ){
-
+                            if(x-1>=0)
                             if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
                                 cells[x-1][y] = -11 ;
                             }
+                            if(x-1>=0&&y-1>=0)
                             if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
                                 cells[x-1][y-1] = -11 ;
                             }
+                            if(y-1>=0)
                             if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
                                 cells[x][y-1] = -11 ;
                             }
+                            if(x+1<=9)
                             if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
                                 cells[x+1][y] = -11 ;
                             }
+                            if(x+1<=9&&y+1<=9)
                             if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
                                 cells[x+1][y+1] = -11 ;
                             }
                             if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
                                 cells[x][y+1] = -11 ;
                             }
+                            if(x+1<=9&&y-1>=0)
                             if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
                                 cells[x+1][y-1] = -11 ;
                             }
+                            if(x-1>=0&&y+1<=9)
                             if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
                                 cells[x-1][y+1] = -11 ;
                             }
@@ -460,28 +701,35 @@ void DialogGameAI::botPlay()
                     for ( int y = 0 ; y<= 9 ; y++ ) {
 
                         if ( cells[x][y] == -310 ){
-
+                            if(x-1>=0)
                             if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
                                 cells[x-1][y] = -11 ;
                             }
+                            if(x-1>=0&&y-1>=0)
                             if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
                                 cells[x-1][y-1] = -11 ;
                             }
+                            if(y-1>=0)
                             if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
                                 cells[x][y-1] = -11 ;
                             }
+                            if(x+1<=9)
                             if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
                                 cells[x+1][y] = -11 ;
                             }
+                            if(x+1<=9&&y+1<=9)
                             if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
                                 cells[x+1][y+1] = -11 ;
                             }
+                            if(y+1<=9)
                             if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
                                 cells[x][y+1] = -11 ;
                             }
+                            if(x+1<=9&&y-1>=0)
                             if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
                                 cells[x+1][y-1] = -11 ;
                             }
+                            if(x-1>=0&&y+1<=9)
                             if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
                                 cells[x-1][y+1] = -11 ;
                             }
@@ -501,28 +749,35 @@ void DialogGameAI::botPlay()
                     for ( int y = 0 ; y<= 9 ; y++ ) {
 
                         if ( cells[x][y] == -320 ){
-
+                            if(x-1>=0)
                             if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
                                 cells[x-1][y] = -11 ;
                             }
+                            if(x-1>=0&&y-1>=0)
                             if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
                                 cells[x-1][y-1] = -11 ;
                             }
+                            if(y-1>=0)
                             if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
                                 cells[x][y-1] = -11 ;
                             }
+                            if(x+1<=9)
                             if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
                                 cells[x+1][y] = -11 ;
                             }
+                            if(x+1<=9&&y+1<=9)
                             if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
                                 cells[x+1][y+1] = -11 ;
                             }
+                            if(y+1<=9)
                             if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
                                 cells[x][y+1] = -11 ;
                             }
+                            if(x+1<=9&&y-1>=0)
                             if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
                                 cells[x+1][y-1] = -11 ;
                             }
+                            if(x-1>=0&&y+1<=9)
                             if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
                                 cells[x-1][y+1] = -11 ;
                             }
@@ -534,37 +789,44 @@ void DialogGameAI::botPlay()
         }
 
 
-        else if ( cells[i][j] == 4 ){
+        else if ( cells[i][j] == 41 ){
             cells[i][j] = -410 ;
             botDestroyedShip4++ ;
-            if ( botDestroyedShip4 ==4 ){
+            if ( botDestroyedShip4 == 4 ){
 
                 for ( int x = 0 ; x <= 9 ; x++ ){
                     for ( int y = 0 ; y<= 9 ; y++ ) {
 
                         if ( cells[x][y] == -410 ){
-
+                            if(x-1>=0)
                             if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
                                 cells[x-1][y] = -11 ;
                             }
+                            if(x-1>=0&&y-1>=0)
                             if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
                                 cells[x-1][y-1] = -11 ;
                             }
+                            if(y-1>=0)
                             if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
                                 cells[x][y-1] = -11 ;
                             }
+                            if(x+1<=9)
                             if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
                                 cells[x+1][y] = -11 ;
                             }
+                            if(x+1<=9&&y+1<=9)
                             if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
                                 cells[x+1][y+1] = -11 ;
                             }
+                            if(y+1<=9)
                             if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
                                 cells[x][y+1] = -11 ;
                             }
+                            if(x+1<=9&&y-1>=0)
                             if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
                                 cells[x+1][y-1] = -11 ;
                             }
+                            if(x-1>=0&&y+1<=9)
                             if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
                                 cells[x-1][y+1] = -11 ;
                             }
@@ -578,289 +840,52 @@ void DialogGameAI::botPlay()
         else if (cells[i][j] == 7 ){
 
             cells[i][j] = -11 ;
-            turn = false ;
-            if (cells2[i][j] == 0 ){
-                cells2[i][j] = -11 ;
-
-            }
-            else if ( cells2[i][j] == 1 ) {
-                cells2[i][j] = -10 ;
-
-                cells2[i-1][j] = -11 ;
-                cells2[i-1][j-1] = -11 ;
-                cells2[i][j-1] = -11 ;
-                cells2[i+1][j] = -11 ;
-                cells2[i+1][j+1] = -11 ;
-                cells2[i][j+1] = -11 ;
-                cells2[i+1][j-1] = -11 ;
-                cells2[i-1][j+1] = -11 ;
-
-            }
-
-            else if ( cells2[i][j] == 21 ){
-                cells2[i][j] = -210 ;
-                botDestroyedShip21++ ;
-                if ( botDestroyedShip21 == 2 ){
-
-                    for ( int x = 0 ; x <= 9 ; x++ ){
-                        for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                            if ( cells2[x][y] == -210 ){
-
-                                if ( cells2[x-1][y] == 0 || cells2[x-1][y] == 7  ){
-                                    cells2[x-1][y] = -11 ;
-                                }
-                                if ( cells2[x-1][y-1] ==0 || cells2[x-1][y-1] == 7 ){
-                                    cells2[x-1][y-1] = -11 ;
-                                }
-                                if ( cells2[x][y-1] ==0 || cells2[x][y-1] == 7 ){
-                                    cells2[x][y-1] = -11 ;
-                                }
-                                if ( cells2[x+1][y] == 0 ||cells2[x+1][y] == 7 ){
-                                    cells2[x+1][y] = -11 ;
-                                }
-                                if ( cells2[x+1][y+1] == 0 ||cells2[x+1][y+1] == 7 ){
-                                    cells2[x+1][y+1] = -11 ;
-                                }
-                                if ( cells2[x][y+1] == 0 ||cells2[x][y+1] == 7 ){
-                                    cells2[x][y+1] = -11 ;
-                                }
-                                if (cells[x+1][y-1] == 0 || cells2[x+1][y-1] == 7 ){
-                                    cells[x+1][y-1] = -11 ;
-                                }
-                                if ( cells2[x-1][y+1] == 0 || cells2[x-1][y+1] == 7 ) {
-                                    cells2[x-1][y+1] = -11 ;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            else if ( cells2[i][j] == 22 ){
-                cells2[i][j] = -220 ;
-                botDestroyedShip22++ ;
-                if ( botDestroyedShip22 == 2 ){
-
-                    for ( int x = 0 ; x <= 9 ; x++ ){
-                        for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                            if ( cells2[x][y] == -220 ){
-
-                                if ( cells2[x-1][y] == 0 || cells2[x-1][y] == 7  ){
-                                    cells2[x-1][y] = -11 ;
-                                }
-                                if ( cells2[x-1][y-1] ==0 || cells2[x-1][y-1] == 7 ){
-                                    cells2[x-1][y-1] = -11 ;
-                                }
-                                if ( cells2[x][y-1] ==0 || cells2[x][y-1] == 7 ){
-                                    cells2[x][y-1] = -11 ;
-                                }
-                                if ( cells2[x+1][y] == 0 ||cells2[x+1][y] == 7 ){
-                                    cells2[x+1][y] = -11 ;
-                                }
-                                if ( cells2[x+1][y+1] == 0 ||cells2[x+1][y+1] == 7 ){
-                                    cells2[x+1][y+1] = -11 ;
-                                }
-                                if ( cells2[x][y+1] == 0 ||cells2[x][y+1] == 7 ){
-                                    cells2[x][y+1] = -11 ;
-                                }
-                                if (cells2[x+1][y-1] == 0 || cells2[x+1][y-1] == 7 ){
-                                    cells[x+1][y-1] = -11 ;
-                                }
-                                if ( cells2[x-1][y+1] == 0 || cells2[x-1][y+1] == 7 ) {
-                                    cells2[x-1][y+1] = -11 ;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            else if ( cells2[i][j] == 23 ){
-                cells2[i][j] = -230 ;
-                botDestroyedShip23++ ;
-                if ( botDestroyedShip23 == 2 ){
-
-                    for ( int x = 0 ; x <= 9 ; x++ ){
-                        for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                            if ( cells2[x][y] == -230 ){
-
-                                if ( cells2[x-1][y] == 0 || cells2[x-1][y] == 7  ){
-                                    cells2[x-1][y] = -11 ;
-                                }
-                                if ( cells2[x-1][y-1] ==0 || cells2[x-1][y-1] == 7 ){
-                                    cells2[x-1][y-1] = -11 ;
-                                }
-                                if ( cells2[x][y-1] ==0 || cells2[x][y-1] == 7 ){
-                                    cells2[x][y-1] = -11 ;
-                                }
-                                if ( cells2[x+1][y] == 0 ||cells2[x+1][y] == 7 ){
-                                    cells2[x+1][y] = -11 ;
-                                }
-                                if ( cells2[x+1][y+1] == 0 ||cells2[x+1][y+1] == 7 ){
-                                    cells2[x+1][y+1] = -11 ;
-                                }
-                                if ( cells2[x][y+1] == 0 ||cells2[x][y+1] == 7 ){
-                                    cells2[x][y+1] = -11 ;
-                                }
-                                if (cells2[x+1][y-1] == 0 || cells2[x+1][y-1] == 7 ){
-                                    cells2[x+1][y-1] = -11 ;
-                                }
-                                if ( cells2[x-1][y+1] == 0 || cells2[x-1][y+1] == 7 ) {
-                                    cells2[x-1][y+1] = -11 ;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            else if ( cells2[i][j] == 31 ){
-                cells2[i][j] = -310 ;
-                botDestroyedShip31++ ;
-                if ( botDestroyedShip31 ==3 ){
-
-                    for ( int x = 0 ; x <= 9 ; x++ ){
-                        for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                            if ( cells2[x][y] == -310 ){
-
-                                if ( cells2[x-1][y] == 0 || cells2[x-1][y] == 7  ){
-                                    cells2[x-1][y] = -11 ;
-                                }
-                                if ( cells2[x-1][y-1] ==0 || cells2[x-1][y-1] == 7 ){
-                                    cells2[x-1][y-1] = -11 ;
-                                }
-                                if ( cells2[x][y-1] ==0 || cells2[x][y-1] == 7 ){
-                                    cells2[x][y-1] = -11 ;
-                                }
-                                if ( cells2[x+1][y] == 0 ||cells2[x+1][y] == 7 ){
-                                    cells2[x+1][y] = -11 ;
-                                }
-                                if ( cells2[x+1][y+1] == 0 ||cells2[x+1][y+1] == 7 ){
-                                    cells2[x+1][y+1] = -11 ;
-                                }
-                                if ( cells2[x][y+1] == 0 ||cells2[x][y+1] == 7 ){
-                                    cells2[x][y+1] = -11 ;
-                                }
-                                if (cells2[x+1][y-1] == 0 || cells2[x+1][y-1] == 7 ){
-                                    cells2[x+1][y-1] = -11 ;
-                                }
-                                if ( cells2[x-1][y+1] == 0 || cells2[x-1][y+1] == 7 ) {
-                                    cells2[x-1][y+1] = -11 ;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            else if ( cells2[i][j] == 32 ){
-                cells2[i][j] = -320 ;
-                botDestroyedShip32++ ;
-                if ( botDestroyedShip32 ==3 ){
-
-                    for ( int x = 0 ; x <= 9 ; x++ ){
-                        for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                            if ( cells2[x][y] == -320 ){
-
-                                if ( cells2[x-1][y] == 0 || cells2[x-1][y] == 7  ){
-                                    cells2[x-1][y] = -11 ;
-                                }
-                                if ( cells2[x-1][y-1] ==0 || cells2[x-1][y-1] == 7 ){
-                                    cells2[x-1][y-1] = -11 ;
-                                }
-                                if ( cells2[x][y-1] ==0 || cells2[x][y-1] == 7 ){
-                                    cells2[x][y-1] = -11 ;
-                                }
-                                if ( cells2[x+1][y] == 0 ||cells2[x+1][y] == 7 ){
-                                    cells2[x+1][y] = -11 ;
-                                }
-                                if ( cells2[x+1][y+1] == 0 ||cells2[x+1][y+1] == 7 ){
-                                    cells2[x+1][y+1] = -11 ;
-                                }
-                                if ( cells2[x][y+1] == 0 ||cells2[x][y+1] == 7 ){
-                                    cells2[x][y+1] = -11 ;
-                                }
-                                if (cells2[x+1][y-1] == 0 || cells2[x+1][y-1] == 7 ){
-                                    cells2[x+1][y-1] = -11 ;
-                                }
-                                if ( cells2[x-1][y+1] == 0 || cells2[x-1][y+1] == 7 ) {
-                                    cells2[x-1][y+1] = -11 ;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            else if ( cells2[i][j] == 4 ){
-                cells2[i][j] = -410 ;
-                botDestroyedShip4++ ;
-                if ( botDestroyedShip4 ==4 ){
-
-                    for ( int x = 0 ; x <= 9 ; x++ ){
-                        for ( int y = 0 ; y<= 9 ; y++ ) {
-
-                            if ( cells2[x][y] == -410 ){
-
-                                if ( cells2[x-1][y] == 0 || cells2[x-1][y] == 7  ){
-                                    cells2[x-1][y] = -11 ;
-                                }
-                                if ( cells2[x-1][y-1] ==0 || cells2[x-1][y-1] == 7 ){
-                                    cells2[x-1][y-1] = -11 ;
-                                }
-                                if ( cells2[x][y-1] ==0 || cells2[x][y-1] == 7 ){
-                                    cells2[x][y-1] = -11 ;
-                                }
-                                if ( cells2[x+1][y] == 0 ||cells2[x+1][y] == 7 ){
-                                    cells2[x+1][y] = -11 ;
-                                }
-                                if ( cells2[x+1][y+1] == 0 ||cells2[x+1][y+1] == 7 ){
-                                    cells2[x+1][y+1] = -11 ;
-                                }
-                                if ( cells2[x][y+1] == 0 ||cells2[x][y+1] == 7 ){
-                                    cells2[x][y+1] = -11 ;
-                                }
-                                if (cells2[x+1][y-1] == 0 || cells2[x+1][y-1] == 7 ){
-                                    cells2[x+1][y-1] = -11 ;
-                                }
-                                if ( cells2[x-1][y+1] == 0 || cells2[x-1][y+1] == 7 ) {
-                                    cells2[x-1][y+1] = -11 ;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            else if ( cells2[i][j] == 7 ) {
-                cells2[i][j] = -11 ;
-            }
-
-
+            turn = true ;
+            mineFlag = true;
+            play(i,j,0);
         }
 
+       Display(cells);
 
+
+       if(!turn)
+       {
+           timer = new QTimer(this);
+           connect(timer, &QTimer::timeout, this, &DialogGameAI::botPlay);
+           timer->start(1000);
+
+       }
+
+      if (mineFlag == true)
+       {
+            turn = !turn;
+       }
     }
+}
 
+void DialogGameAI::botPlay()
+{
 
+    if (timer)
+    {
+        timer->stop();
+        timer->deleteLater();
+        timer = nullptr;
+    }
+    int i = rand() % 9 + 1;
+    int j = rand() % 9 + 1;
+    play(i,j,0);
+}
 
+void DialogGameAI::userPlay(int row,int column,int arm)
+{
+    arm = 0;
+    play(row,column,arm);
 }
 
 
-void DialogGameAI::userPlay(int arm)
+void DialogGameAI::on_botTableWidget_cellClicked(int row, int column)
 {
-
+    userPlay(row,column,0);
 }
 

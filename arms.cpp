@@ -68,7 +68,7 @@ bool Arms::BuyLinearAttack(User& user)
         player->play();
         int drop = user.GetDrop() - 12;
         user.SetDrop(drop);
-        trackerCounter++;
+        linearattackCounter++;
         return true;
     }
     return false;
@@ -86,7 +86,7 @@ bool Arms::BuyAtomicBomb(User& user)
         player->play();
         int drop = user.GetDrop() - 100;
         user.SetDrop(drop);
-        trackerCounter++;
+        atomicBombCounter++;
         return true;
     }
     return false;

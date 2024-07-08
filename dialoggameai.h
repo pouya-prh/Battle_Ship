@@ -3,6 +3,7 @@
 #include "arms.h"
 #include <QDialog>
 #include "user.h"
+#include <QTimer>
 namespace Ui {
 class DialogGameAI;
 }
@@ -16,8 +17,10 @@ public:
     ~DialogGameAI();
     int** makeGameBoard();
     void Display(int** cells);
-    void userPlay(int);
+    void userPlay(int,int,int);
     void botPlay();
+    void play(int,int,int);
+
 private slots:
     void on_linearAttackbutton_clicked();
 
@@ -25,11 +28,15 @@ private slots:
 
     void on_trackerButton_clicked();
 
+    void on_botTableWidget_cellClicked(int row, int column);
+
 private:
     Ui::DialogGameAI *ui;
+    QTimer* timer;
     int** botGameBoard;
-    int** cells;
+    int** Cells;
     bool turn;
+    bool botTurn;
     User& user;
     Arms& arms;
     int botDestroyedShip21;

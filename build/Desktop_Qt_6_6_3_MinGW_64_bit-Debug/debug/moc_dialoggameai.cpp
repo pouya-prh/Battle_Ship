@@ -42,16 +42,22 @@ constexpr auto qt_meta_stringdata_CLASSDialogGameAIENDCLASS = QtMocHelpers::stri
     "on_linearAttackbutton_clicked",
     "",
     "on_atomicBombButton_clicked",
-    "on_trackerButton_clicked"
+    "on_trackerButton_clicked",
+    "on_botTableWidget_cellClicked",
+    "row",
+    "column"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDialogGameAIENDCLASS_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[16];
     char stringdata0[13];
     char stringdata1[30];
     char stringdata2[1];
     char stringdata3[28];
     char stringdata4[25];
+    char stringdata5[30];
+    char stringdata6[4];
+    char stringdata7[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDialogGameAIENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -61,13 +67,19 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogGameAIENDCLASS_t qt_meta_
         QT_MOC_LITERAL(13, 29),  // "on_linearAttackbutton_clicked"
         QT_MOC_LITERAL(43, 0),  // ""
         QT_MOC_LITERAL(44, 27),  // "on_atomicBombButton_clicked"
-        QT_MOC_LITERAL(72, 24)   // "on_trackerButton_clicked"
+        QT_MOC_LITERAL(72, 24),  // "on_trackerButton_clicked"
+        QT_MOC_LITERAL(97, 29),  // "on_botTableWidget_cellClicked"
+        QT_MOC_LITERAL(127, 3),  // "row"
+        QT_MOC_LITERAL(131, 6)   // "column"
     },
     "DialogGameAI",
     "on_linearAttackbutton_clicked",
     "",
     "on_atomicBombButton_clicked",
-    "on_trackerButton_clicked"
+    "on_trackerButton_clicked",
+    "on_botTableWidget_cellClicked",
+    "row",
+    "column"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -79,7 +91,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogGameAIENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,14 +99,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogGameAIENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x08,    1 /* Private */,
-       3,    0,   33,    2, 0x08,    2 /* Private */,
-       4,    0,   34,    2, 0x08,    3 /* Private */,
+       1,    0,   38,    2, 0x08,    1 /* Private */,
+       3,    0,   39,    2, 0x08,    2 /* Private */,
+       4,    0,   40,    2, 0x08,    3 /* Private */,
+       5,    2,   41,    2, 0x08,    4 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    6,    7,
 
        0        // eod
 };
@@ -113,7 +127,11 @@ Q_CONSTINIT const QMetaObject DialogGameAI::staticMetaObject = { {
         // method 'on_atomicBombButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_trackerButton_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_botTableWidget_cellClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -127,10 +145,10 @@ void DialogGameAI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 0: _t->on_linearAttackbutton_clicked(); break;
         case 1: _t->on_atomicBombButton_clicked(); break;
         case 2: _t->on_trackerButton_clicked(); break;
+        case 3: _t->on_botTableWidget_cellClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *DialogGameAI::metaObject() const
@@ -152,13 +170,13 @@ int DialogGameAI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
