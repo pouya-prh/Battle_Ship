@@ -31,6 +31,7 @@ public:
     QLabel *trackerCounter;
     QLabel *atomicBombCounter;
     QLabel *linearAttackCounter;
+    QPushButton *planeLabel;
 
     void setupUi(QDialog *DialogGameAI)
     {
@@ -205,6 +206,10 @@ public:
 "font: 10pt \"BYRIL_Sea_Battle2\";\n"
 "color: rgb(85, 85, 85);"));
         linearAttackCounter->setAlignment(Qt::AlignCenter);
+        planeLabel = new QPushButton(DialogGameAI);
+        planeLabel->setObjectName("planeLabel");
+        planeLabel->setGeometry(QRect(90, 180, 101, 61));
+        planeLabel->setStyleSheet(QString::fromUtf8("background-image: url(:/squareAttackFliped.png);"));
 
         retranslateUi(DialogGameAI);
 
@@ -277,6 +282,7 @@ public:
         trackerCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
         atomicBombCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
         linearAttackCounter->setText(QCoreApplication::translate("DialogGameAI", "0", nullptr));
+        planeLabel->setText(QString());
     } // retranslateUi
 
 };

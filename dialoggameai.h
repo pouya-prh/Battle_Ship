@@ -22,6 +22,7 @@ public:
     void play(int,int,int);
     void makeEmptyAround(int**,int);
     void Attack(int**,int,int);
+    void Animation(int,int);
 
 
 private slots:
