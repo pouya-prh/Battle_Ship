@@ -821,11 +821,13 @@ void DialogGameAI::play(int i , int j , int arm)
     {
          cells = botGameBoard;
          botTurn = false;
+
     }
     else
     {
         cells = Cells;
-         botTurn = true;
+        botTurn = true;
+
     }
 
     if(arm==0)
@@ -834,33 +836,60 @@ void DialogGameAI::play(int i , int j , int arm)
     }
     else if(arm == 1)
     {
-        for(int j = 9 ; j >=0 ; j--)
+        bool isDefense = false;
+        for(int j = 9 ; j >= 0 ; j--)
         {
-            if(cells[i][j] == 11||cells[i][j] ==12||cells[i][j] == 13 ||cells[i][j] == 21||cells[i][j] == 22 )
+            if (cells[i][j] == 8)
             {
+                cells[i][j] = 0;
+                isDefense = true;
+            }
+        }
+        if(!isDefense)
+        {
+            for(int j = 9 ; j >=0 ; j--)
+            {
+                if(cells[i][j] == 11||cells[i][j] ==12||cells[i][j] == 13 ||cells[i][j] == 21||cells[i][j] == 22 )
+                {
+                    Attack(cells,i,j);
+                    turn = true;
+                    break;
+                }
+                if(cells[i][j] == 23 || cells[i][j] == 31 || cells[i][j] == 32 || cells[i][j] == 41 || cells[i][j] == 7)
+                {
+                    Attack(cells,i,j);
+                    turn = true;
+                    break;
+                }
                 Attack(cells,i,j);
                 turn = true;
-                break;
-            }
-            if(cells[i][j] == 23 || cells[i][j] == 31 || cells[i][j] == 32 || cells[i][j] == 41 || cells[i][j] == 7)
-            {
-                Attack(cells,i,j);
-                turn = true;
-                break;
-            }
-            Attack(cells,i,j);
-            turn = true;
-            if(j == 0)
-            {
-                turn  = false;
-                break;
-            }
+                if(j == 0)
+                {
+                    turn  = false;
+                    break;
+                }
 
+            }
         }
     }
 
 
     Display(cells);
+
+    if (!turn)
+    {
+        cells = botGameBoard;
+        botTurn = false;
+        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+    }
+    else
+    {
+        cells = Cells;
+        botTurn = true;
+        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                       "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+    }
 
     if(!turn)
     {
@@ -868,6 +897,7 @@ void DialogGameAI::play(int i , int j , int arm)
         connect(timer, &QTimer::timeout, this, &DialogGameAI::botPlay);
         timer->start(1000);
     }
+
 
 }
 
@@ -880,8 +910,15 @@ void DialogGameAI::botPlay()
         timer->deleteLater();
         timer = nullptr;
     }
-    int i = rand() % 9 + 1;
-    int j = rand() % 9 + 1;
+    int i , j ;
+    do
+    {
+        i = rand() % 9 + 1;
+        j  = rand() % 9 + 1;
+    }
+    while (Cells[i][j] == -11 ||Cells[i][j] == -110||Cells[i][j] == -210||Cells[i][j] == -220||
+             Cells[i][j] == -230||Cells[i][j] == -310||Cells[i][j] == -320||Cells[i][j] == -410);
+
     play(i,j,0);
 }
 
