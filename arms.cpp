@@ -8,10 +8,17 @@ int Arms::trackerCounter = 0;
 int Arms::airDefanceCounter = 0;
 
 Arms::Arms() {}
-
+Arms::Arms(int mineCounter,int airDefenseCounter,int atomicBombCounter,int linearAttackCounter,int trackerCounter)
+{
+    this->mineCounter = mineCounter;
+    this->linearattackCounter = linearAttackCounter;
+    this->airDefanceCounter = airDefenseCounter;
+    this->atomicBombCounter = atomicBombCounter;
+    this->trackerCounter = trackerCounter;
+}
 bool Arms::BuyMine(User& user)
 {
-    if (user.GetDrop()>=5)
+    if (user.GetDrop()>=5&&airDefanceCounter<=2)
     {
         QMediaPlayer* player = new QMediaPlayer();
         QAudioOutput* output = new QAudioOutput();
@@ -27,7 +34,7 @@ bool Arms::BuyMine(User& user)
 }
 bool Arms::BuyAirDefance(User& user)
 {
-    if (user.GetLevel()>=2 && user.GetDrop()>=10)
+    if (user.GetLevel()>=2 && user.GetDrop()>=10 && airDefanceCounter<=2)
     {
         QMediaPlayer* player = new QMediaPlayer();
         QAudioOutput* output = new QAudioOutput();

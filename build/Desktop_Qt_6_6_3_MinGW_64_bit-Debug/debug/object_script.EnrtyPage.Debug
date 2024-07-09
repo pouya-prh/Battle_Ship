@@ -2,6 +2,7 @@ debug/arms.o
 debug/dialoggameai.o
 debug/dialoggetarm.o
 debug/dialoglost.o
+debug/dialogondevice.o
 debug/dialogpage1.o
 debug/dialogsetgameboard.o
 debug/dialogwon.o
@@ -24,6 +25,7 @@ debug/qrc_music.o
 debug/moc_dialoggameai.o
 debug/moc_dialoggetarm.o
 debug/moc_dialoglost.o
+debug/moc_dialogondevice.o
 debug/moc_dialogpage1.o
 debug/moc_dialogsetgameboard.o
 debug/moc_dialogwon.o

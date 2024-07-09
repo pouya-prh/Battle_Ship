@@ -13,7 +13,7 @@ class DialogSetGameBoard : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogSetGameBoard(User&,Arms&,QWidget *parent = nullptr);
+    explicit DialogSetGameBoard(User&,Arms&,int which = 1,QWidget *parent = nullptr);
     ~DialogSetGameBoard();
 protected:
     void dragEnterEvent(QDragEnterEvent *event) override;
@@ -38,6 +38,7 @@ private:
     GameBoard *gameBoard;
     User user;
     Arms& arms;
+    int which;
 };
 
 #endif // DIALOGSETGAMEBOARD_H

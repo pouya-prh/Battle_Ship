@@ -42,7 +42,7 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     turn = true;
 
     connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row,int column){
-        userPlay(row,column,0);
+         userPlay(row,column,0);
     });
 
 
@@ -544,42 +544,41 @@ void DialogGameAI::Display(int** cells)
 
 
 void DialogGameAI::makeEmptyAround(int** cells,int value)
-{
-    for ( int x = 0 ; x <= 9 ; x++ ){
+{    for ( int x = 0 ; x <= 9 ; x++ ){
         for ( int y = 0 ; y<= 9 ; y++ ) {
 
             if ( cells[x][y] == value ){
 
                 if(x-1>=0)
-                    if ( cells[x-1][y] == 0 || cells[x-1][y] == 7  ){
+                    if(cells[x-1][y] >=  0)
                         cells[x-1][y] = -11 ;
-                    }
+
                 if(x-1 >= 0 && y-1 >= 0)
-                    if ( cells[x-1][y-1] ==0 || cells[x-1][y-1] == 7 ){
+                    if ( cells[x-1][y-1] >=0 ){
                         cells[x-1][y-1] = -11 ;
                     }
                 if(y-1 >= 0)
-                    if ( cells[x][y-1] ==0 || cells[x][y-1] == 7 ){
+                    if ( cells[x][y-1] >=0 ){
                         cells[x][y-1] = -11 ;
                     }
                 if(x+1 <= 9)
-                    if ( cells[x+1][y] == 0 ||cells[x+1][y] == 7 ){
+                    if ( cells[x+1][y] >= 0){
                         cells[x+1][y] = -11 ;
                     }
                 if(x+1 <= 9 && y+1 <= 9)
-                    if ( cells[x+1][y+1] == 0 ||cells[x+1][y+1] == 7 ){
+                    if ( cells[x+1][y+1] >= 0 ){
                         cells[x+1][y+1] = -11 ;
                     }
                 if(y+1 <= 9)
-                    if ( cells[x][y+1] == 0 ||cells[x][y+1] == 7 ){
+                    if ( cells[x][y+1] >= 0 ){
                         cells[x][y+1] = -11 ;
                     }
                 if(y-1 >= 0&& x+1<=9)
-                    if (cells[x+1][y-1] == 0 || cells[x+1][y-1] == 7 ){
+                    if (cells[x+1][y-1] >= 0 ){
                         cells[x+1][y-1] = -11 ;
                     }
                 if(x-1>=0 && y+1<=9)
-                    if ( cells[x-1][y+1] == 0 || cells[x-1][y+1] == 7 ) {
+                    if ( cells[x-1][y+1] >= 0  ) {
                         cells[x-1][y+1] = -11 ;
                     }
 
@@ -1138,7 +1137,7 @@ void DialogGameAI::Animation(int row,int column,int which)
 
 void DialogGameAI::userPlay(int row,int column,int arm)
 {
-
+    if (turn)
     play(row,column,arm);
 }
 
