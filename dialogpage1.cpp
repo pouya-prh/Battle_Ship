@@ -59,3 +59,17 @@ void DialogPage1::on_BotPushbutton_clicked()
 
 }
 
+
+void DialogPage1::on_WifiPushbutton_clicked()
+{
+
+}
+
+
+void DialogPage1::on_FriendPushbutton_clicked()
+{
+    this->close();
+    DialogGetArm* getArm = new DialogGetArm(user,3);
+    getArm->show();
+}
+

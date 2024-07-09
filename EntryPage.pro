@@ -15,6 +15,7 @@ SOURCES += \
     dialoggameai.cpp \
     dialoggetarm.cpp \
     dialoglost.cpp \
+    dialogondevice.cpp \
     dialogpage1.cpp \
     dialogsetgameboard.cpp \
     dialogwon.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     dialoggameai.h \
     dialoggetarm.h \
     dialoglost.h \
+    dialogondevice.h \
     dialogpage1.h \
     dialogsetgameboard.h \
     dialogwon.h \
@@ -57,6 +59,7 @@ FORMS += \
     dialoggameai.ui \
     dialoggetarm.ui \
     dialoglost.ui \
+    dialogondevice.ui \
     dialogpage1.ui \
     dialogsetgameboard.ui \
     dialogwon.ui \

@@ -13,6 +13,7 @@ private:
 
 public:
     Arms();
+    Arms(int,int,int,int,int);
 
     bool BuyMine(User&);
     bool BuyLinearAttack(User&);

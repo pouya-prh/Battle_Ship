@@ -2,14 +2,19 @@
 #include "ui_dialogsetgameboard.h"
 #include "draggablebutton.h"
 #include "dialoggameai.h"
-
-DialogSetGameBoard::DialogSetGameBoard(User& user,Arms& arms,QWidget *parent)
+#include "dialoggetarm.h"
+#include "dialogondevice.h"
+#include <fstream>
+#include "json.hpp"
+#include <vector>
+using json = nlohmann::json;
+DialogSetGameBoard::DialogSetGameBoard(User& user,Arms& arms,int which,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogSetGameBoard),
     arms(arms)
 {
     this->user = user;
-
+    this->which = which;
     ui->setupUi(this);
     setAcceptDrops(true);
     ui->mine1->hide();
@@ -232,8 +237,57 @@ void DialogSetGameBoard::on_nextButton_clicked()
 {
     this->close();
     int** cells = ui->tableWidget->returnCells();
-    DialogGameAI* Game = new DialogGameAI(user,arms,cells);
-    Game->show();
+    if(which == 1)
+    {
+        DialogGameAI* Game = new DialogGameAI(user,arms,cells);
+        Game->show();
+    }
+    else if (which == 3)
+    {
+        std::fstream file ("OnDevice.json",std::ios::out);
+        json data;
+        data["airDefenseCounter"] = arms.getAirDefanceCount();
+        data["mineCounter"] = arms.getMineCount();
+        data["atomicBombCounter"] = arms.getAtomicBombCount();
+        data["trackerCounter"] = arms.getTrackerCount();
+        data["linearAttackCounter"] = arms.getLineAttackerCount();
+        if(file.is_open())
+          file<<data.dump(5);
+        file.close();
+        std::ofstream File ("Coordinates.bin",std::ios::binary);
+        for (int i = 0 ; i < 10 ; i++)
+        {
+            for (int j =0 ; j < 10 ; j++)
+            {
+                File.write(reinterpret_cast<const char*>(&cells[i][j]), sizeof(int));
+            }
+        }
+        File.close();
+        this->close();
+        DialogGetArm* getArmPlayer2 = new DialogGetArm(user,32);
+        getArmPlayer2 ->show();
+    }
+    else if (which == 32)
+    {
+        std::fstream file ("OnDevice.json",std::ios::in);
+        json data;
+        file>>data;
+        file.close();
+        std::ifstream File ("Coordinates.bin",std::ios::binary);
+        int** array = new int*[10];
+        for (int i = 0; i < 10; ++i) {
+            array[i] = new int[10];
+            for (int j = 0; j < 10; ++j) {
+                File.read(reinterpret_cast<char*>(&array[i][j]), sizeof(int));
+            }
+        }
+        File.close();
+        Arms player1_arms(data["mineCounter"],data["airDefenseCounter"],data["atomicBombCounter"],data["linearAttackCounter"],data["trackerCounter"]);
+        this->close();
+        DialogOnDevice* onDevicePage = new DialogOnDevice(player1_arms,arms,array,cells);
+        onDevicePage->show();
+    }
+
 }
 
 void DialogSetGameBoard::rotate(QPushButton* shipButton,int size)

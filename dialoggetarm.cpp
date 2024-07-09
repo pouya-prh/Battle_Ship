@@ -1,13 +1,31 @@
 #include "dialoggetarm.h"
 #include "ui_dialoggetarm.h"
 #include "dialogsetgameboard.h"
-DialogGetArm::DialogGetArm(User& user,QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::DialogGetArm),
-    user(user)
-{
 
-    int drop =user.GetDrop();
+DialogGetArm::DialogGetArm(User user,int which,QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::DialogGetArm)
+{
+    this->which = which;
+    if (which == 1)
+    {
+        this->user = user;
+    }
+    else if ( which == 3)
+    {
+        this->user.SetUsername("player1");
+        this->user.SetDrop(500);
+        this->user.SetLevel(5);
+        this->user.SetPoint(0);
+    }
+    else if (which == 32)
+    {
+        this->user.SetUsername("player2");
+        this->user.SetDrop(500);
+        this->user.SetLevel(5);
+        this->user.SetPoint(0);
+    }
+    int drop =this->user.GetDrop();
     drop +=30;
     user.SetDrop(drop);
     ui->setupUi(this);
@@ -91,7 +109,7 @@ void DialogGetArm::on_atomicBombButton_clicked()
 void DialogGetArm::on_nextButton_clicked()
 {
     this->close();
-    DialogSetGameBoard *setPage = new DialogSetGameBoard(user,arms);
+    DialogSetGameBoard *setPage = new DialogSetGameBoard(user,arms,which);
     setPage->show();
 
 

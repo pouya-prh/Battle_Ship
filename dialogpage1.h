@@ -21,6 +21,10 @@ private slots:
 
     void on_BotPushbutton_clicked();
 
+    void on_WifiPushbutton_clicked();
+
+    void on_FriendPushbutton_clicked();
+
 private:
     Ui::DialogPage1 *ui;
     User user;

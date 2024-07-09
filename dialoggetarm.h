@@ -13,7 +13,7 @@ class DialogGetArm : public QDialog
     Q_OBJECT
 
 public:
-     DialogGetArm(User&,QWidget *parent = nullptr);
+     DialogGetArm(User,int wich = 1,QWidget *parent = nullptr);
     ~DialogGetArm();
 
 private slots:
@@ -32,7 +32,8 @@ private slots:
 private:
     Ui::DialogGetArm *ui;
     Arms arms;
-    User& user;
+    User user;
+    int which;
 };
 
 #endif // DIALOGGETARM_H

@@ -2,6 +2,7 @@ release/arms.o
 release/dialoggameai.o
 release/dialoggetarm.o
 release/dialoglost.o
+release/dialogondevice.o
 release/dialogpage1.o
 release/dialogsetgameboard.o
 release/dialogwon.o
@@ -24,6 +25,7 @@ release/qrc_music.o
 release/moc_dialoggameai.o
 release/moc_dialoggetarm.o
 release/moc_dialoglost.o
+release/moc_dialogondevice.o
 release/moc_dialogpage1.o
 release/moc_dialogsetgameboard.o
 release/moc_dialogwon.o
