@@ -22,11 +22,13 @@ public:
     void play(int,int,int);
     void makeEmptyAround(int**,int);
     void Attack(int**,int,int);
-    void Animation(int,int);
+    void Animation(int,int,int);
     void dragEnterEvent(QDragEnterEvent *event)override;
     void dragMoveEvent(QDragMoveEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void shipFind(int,int);
+    void AtomicBomb(int,int);
+    void WonOrLost();
 
 private slots:
     void on_linearAttackbutton_clicked();
@@ -51,6 +53,7 @@ private:
     int botDestroyedShip31;
     int botDestroyedShip32;
     int botDestroyedShip4;
+    int Drop;
 };
 
 #endif // DIALOGGAMEAI_H

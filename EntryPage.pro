@@ -14,8 +14,10 @@ SOURCES += \
     arms.cpp \
     dialoggameai.cpp \
     dialoggetarm.cpp \
+    dialoglost.cpp \
     dialogpage1.cpp \
     dialogsetgameboard.cpp \
+    dialogwon.cpp \
     draggablebutton.cpp \
     gameboard.cpp \
     hashpassword.cpp \
@@ -25,6 +27,7 @@ SOURCES += \
     dialogsignupclicked.cpp \
     musicplayer.cpp \
     ship.cpp \
+    updatefile.cpp \
     user.cpp \
     validator.cpp
 
@@ -33,8 +36,10 @@ HEADERS += \
     arms.h \
     dialoggameai.h \
     dialoggetarm.h \
+    dialoglost.h \
     dialogpage1.h \
     dialogsetgameboard.h \
+    dialogwon.h \
     draggablebutton.h \
     gameboard.h \
     hashpassword.h \
@@ -43,6 +48,7 @@ HEADERS += \
     dialogsignupclicked.h \
     musicplayer.h \
     ship.h \
+    updatefile.h \
     user.h \
     validator.h
 
@@ -50,8 +56,10 @@ HEADERS += \
 FORMS += \
     dialoggameai.ui \
     dialoggetarm.ui \
+    dialoglost.ui \
     dialogpage1.ui \
     dialogsetgameboard.ui \
+    dialogwon.ui \
     mainwindow.ui \
     dialogloginclicked.ui \
     dialogsignupclicked.ui

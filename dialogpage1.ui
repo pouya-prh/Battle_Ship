@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/AI_img.png);</string>
+    <string notr="true">image: url(:/WithAI.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -71,7 +71,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/online_img.png);</string>
+    <string notr="true">image: url(:/online.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -87,7 +87,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/withFriend_img.png);</string>
+    <string notr="true">image: url(:/on_DEvice.png);</string>
    </property>
    <property name="text">
     <string/>

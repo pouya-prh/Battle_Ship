@@ -38,5 +38,15 @@
         <file>meteor.png</file>
         <file>grinTracker.png</file>
         <file>ic_seabattle.png</file>
+        <file>redBox.png</file>
+        <file>atomPlane.png</file>
+        <file>fire.png</file>
+        <file>Lost.jpg</file>
+        <file>ShipBackGround.png</file>
+        <file>online_img.png</file>
+        <file>LostShipBackG.png</file>
+        <file>on_DEvice.png</file>
+        <file>online.png</file>
+        <file>WithAI.png</file>
     </qresource>
 </RCC>

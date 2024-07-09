@@ -52,15 +52,15 @@ public:
         BotPushbutton = new QPushButton(DialogPage1);
         BotPushbutton->setObjectName("BotPushbutton");
         BotPushbutton->setGeometry(QRect(110, 172, 181, 181));
-        BotPushbutton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/AI_img.png);"));
+        BotPushbutton->setStyleSheet(QString::fromUtf8("image: url(:/WithAI.png);"));
         WifiPushbutton = new QPushButton(DialogPage1);
         WifiPushbutton->setObjectName("WifiPushbutton");
         WifiPushbutton->setGeometry(QRect(410, 176, 181, 181));
-        WifiPushbutton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/online_img.png);"));
+        WifiPushbutton->setStyleSheet(QString::fromUtf8("image: url(:/online.png);"));
         FriendPushbutton = new QPushButton(DialogPage1);
         FriendPushbutton->setObjectName("FriendPushbutton");
         FriendPushbutton->setGeometry(QRect(743, 171, 181, 181));
-        FriendPushbutton->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/withFriend_img.png);"));
+        FriendPushbutton->setStyleSheet(QString::fromUtf8("image: url(:/on_DEvice.png);"));
         widget = new QWidget(DialogPage1);
         widget->setObjectName("widget");
         widget->setGeometry(QRect(0, -10, 301, 91));
