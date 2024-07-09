@@ -6,7 +6,6 @@
 #include "dialogondevice.h"
 #include <fstream>
 #include "json.hpp"
-#include <vector>
 using json = nlohmann::json;
 DialogSetGameBoard::DialogSetGameBoard(User& user,Arms& arms,int which,QWidget *parent)
     : QDialog(parent)
@@ -244,6 +243,9 @@ void DialogSetGameBoard::on_nextButton_clicked()
     }
     else if (which == 3)
     {
+        std::ofstream playerAccount ("playerAccount.bin" , std::ios::binary);
+        playerAccount.write(reinterpret_cast<const char*>(&user),sizeof(user));
+        playerAccount.close();
         std::fstream file ("OnDevice.json",std::ios::out);
         json data;
         data["airDefenseCounter"] = arms.getAirDefanceCount();
