@@ -13,11 +13,6 @@ Arms::Arms()
 }
 Arms::Arms(int mineCounter,int airDefenseCounter,int atomicBombCounter,int linearAttackCounter,int trackerCounter)
 {
-    mineCounter = 0;
-    linearattackCounter = 0;
-    atomicBombCounter = 0;
-    trackerCounter = 0;
-    airDefanceCounter = 0;
     this->mineCounter = mineCounter;
     this->linearattackCounter = linearAttackCounter;
     this->airDefanceCounter = airDefenseCounter;

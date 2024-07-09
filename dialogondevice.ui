@@ -601,7 +601,7 @@ color: rgb(85, 85, 85);</string>
   <widget class="DraggableButton" name="atomicZone1">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>140</x>
      <y>440</y>
      <width>160</width>
      <height>160</height>
@@ -636,7 +636,7 @@ background-image: url(:/Recommended Source Files/Recommended Source Files/Images
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>510</y>
+     <y>480</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -652,8 +652,8 @@ background-image: url(:/Recommended Source Files/Recommended Source Files/Images
   <widget class="DraggableButton" name="trackerButton2_D">
    <property name="geometry">
     <rect>
-     <x>942</x>
-     <y>510</y>
+     <x>950</x>
+     <y>470</y>
      <width>80</width>
      <height>80</height>
     </rect>

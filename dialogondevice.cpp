@@ -3,7 +3,11 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QTimer>
+#include <QThread>
 #include <QPropertyAnimation>
+#include "dialogwon.h"
+#include "fstream"
+#include "user.h"
 DialogOnDevice::DialogOnDevice(Arms player1, Arms player2,int** player1_cells,int** player2_cells,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogOnDevice)
@@ -157,6 +161,20 @@ void DialogOnDevice::Display(int** cells)
                     ui->player2_table->setItem(i, j, item);
                 }
             }
+            else
+            {
+                QTableWidgetItem *item = new QTableWidgetItem();
+                QIcon icon("");
+                item->setIcon(icon);
+                if (turn %2 == 0)
+                {
+                    ui->player1_table->setItem(i, j, item);
+                }
+                else
+                {
+                    ui->player2_table->setItem(i, j, item);
+                }
+            }
 
         }
     }
@@ -187,12 +205,34 @@ void DialogOnDevice::player1_Play(int row , int column , int arm)
                 if(player2_cells[row][j] == 11||player2_cells[row][j] ==12||player2_cells[row][j] == 13 ||player2_cells[row][j] == 21||player2_cells[row][j] == 22 )
                 {
                     Attack(player2_cells,row,j);
+
+                    if (turn %2 == 0)
+                    {
+                        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    else
+                    {
+                        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
                     turn ++;
                     break;
                 }
                 if(player2_cells[row][j] == 23 || player2_cells[row][j] == 31 || player2_cells[row][j] == 32 || player2_cells[row][j] == 41 || player2_cells[row][j] == 7)
                 {
                     Attack(player2_cells,row,j);
+
+                    if (turn %2 == 0)
+                    {
+                        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    else
+                    {
+                        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
                     turn ++;
                     break;
                 }
@@ -200,6 +240,17 @@ void DialogOnDevice::player1_Play(int row , int column , int arm)
                 turn ++;
                 if(j == 0)
                 {
+
+                    if (turn %2 == 0)
+                    {
+                        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    else
+                    {
+                        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
                     turn ++;
                     break;
                 }
@@ -214,19 +265,38 @@ void DialogOnDevice::player1_Play(int row , int column , int arm)
         QAudioOutput *output = new QAudioOutput();
         musicPlayer->setAudioOutput(output);
         musicPlayer->setSource(QUrl("qrc:/AtomicBomb.mp3"));
-
+        musicPlayer->play();
         for(int i = row ; i< row +4 ; i++)
         {
             for (int j = column ; j < column+4 ; j++)
             {
                 player2_cells[i][j] = -100;
-
-
             }
-            musicPlayer->play();
+
         }
-        turn ++;
+
+        if (turn %2 == 0)
+        {
+            ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+        else
+        {
+            ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
         Display(player2_cells);
+        turn ++;
+        if (turn %2 == 0)
+        {
+            ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+        else
+        {
+            ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
     }
 
 
@@ -256,20 +326,54 @@ void DialogOnDevice::player2_Play(int row , int column , int arm)
                 if(player1_cells[row][j] == 11||player1_cells[row][j] ==12||player1_cells[row][j] == 13 ||player1_cells[row][j] == 21||player1_cells[row][j] == 22 )
                 {
                     Attack(player1_cells,row,j);
-                    turn = true;
+
+                    if (turn %2 == 0)
+                    {
+                        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    else
+                    {
+                        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    turn ++;
                     break;
                 }
                 if(player1_cells[row][j] == 23 || player1_cells[row][j] == 31 || player1_cells[row][j] == 32 || player1_cells[row][j] == 41 || player1_cells[row][j] == 7)
                 {
-                    Attack(player1_cells,row,j);
-                    turn = true;
+                     Attack(player1_cells,row,j);
+                     turn ++;
+                      if (turn %2 == 0)
+                    {
+                        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    else
+                    {
+                        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+
                     break;
                 }
                 Attack(player1_cells,row,j);
-                turn = true;
+                turn ++;
                 if(j == 0)
                 {
-                    turn  = false;
+                     turn ++;
+                    if (turn %2 == 0)
+                    {
+                        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+                    else
+                    {
+                        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                    }
+
+
                     break;
                 }
 
@@ -283,19 +387,39 @@ void DialogOnDevice::player2_Play(int row , int column , int arm)
         QAudioOutput *output = new QAudioOutput();
         musicPlayer->setAudioOutput(output);
         musicPlayer->setSource(QUrl("qrc:/AtomicBomb.mp3"));
-
+        musicPlayer->play();
         for(int i = row ; i< row +4 ; i++)
         {
             for (int j = column ; j < column+4 ; j++)
             {
                 player1_cells[i][j] = -100;
-
-
             }
-            musicPlayer->play();
+
         }
-        turn ++;
+
+        if (turn %2 == 0)
+        {
+            ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+        else
+        {
+            ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+
         Display(player1_cells);
+        turn ++;
+        if (turn %2 == 0)
+        {
+            ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+        else
+        {
+            ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
     }
 
 
@@ -311,6 +435,27 @@ void DialogOnDevice::Attack(int** cells,int i , int j )
         musicPlayer->setAudioOutput(output);
         musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
         musicPlayer->play();
+        if (turn %2 == 0)
+        {
+            Display(player1_cells);
+        }
+        else
+        {
+            Display(player2_cells);
+        }
+
+
+        if (turn %2 == 0)
+        {
+            ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+        else
+        {
+            ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                         "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+        }
+        turn++;
     }
     else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
         cells[i][j] = -110 ;
@@ -456,7 +601,7 @@ void DialogOnDevice::Attack(int** cells,int i , int j )
         musicPlayer->setSource(QUrl("qrc:/Hit.mp3"));
         musicPlayer->play();
         cells[i][j] = -70 ;
-        if(turn%2 == 0)
+        if(turn%2 != 0)
         {
             player1_Play(i,j,0);
         }
@@ -474,7 +619,7 @@ void DialogOnDevice::Attack(int** cells,int i , int j )
     {
         Display(player2_cells);
     }
-    turn++;
+
 
     if (turn %2 == 0)
     {
@@ -486,6 +631,7 @@ void DialogOnDevice::Attack(int** cells,int i , int j )
         ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
                                      "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
     }
+    WonOrLost();
 
 }
 void DialogOnDevice::makeEmptyAround(int** cells,int value)
@@ -563,7 +709,7 @@ void DialogOnDevice::dropEvent(QDropEvent *event) {
         if(turn % 2 == 0)
         {
             row = ui->player1_table->rowAt((droped.y()-68)) ;
-            column = ui->player1_table->columnAt((droped.x()-590));
+            column = ui->player1_table->columnAt((droped.x()-50));
         }
         else
         {
@@ -588,57 +734,78 @@ void DialogOnDevice::dropEvent(QDropEvent *event) {
                 event->ignore();
                 return;
             }
+            QMediaPlayer *musicPlayer = new QMediaPlayer();
+            QAudioOutput *output = new QAudioOutput();
+            musicPlayer->setAudioOutput(output);
+            musicPlayer->setSource(QUrl("qrc:/Radar.mp3"));
+            musicPlayer->play();
             if (turn %2 == 0)
             {
-                QMediaPlayer *musicPlayer = new QMediaPlayer();
-                QAudioOutput *output = new QAudioOutput();
-                musicPlayer->setAudioOutput(output);
-                musicPlayer->setSource(QUrl("qrc:/Radar.mp3"));
-                musicPlayer->play();
-                if (turn %2 == 0)
+                for (int i = row ; i <= row+1 ; i++)
                 {
-                    for (int i = row ; i <= row+1 ; i++)
+                    for (int j = column ; j<=column+1 ; j++)
                     {
-                        for (int j = column ; j<=column+1 ; j++)
+                        if (player1_cells[i][j] == 11 ||player1_cells[i][j] ==12 || player1_cells[i][j] == 13||player1_cells[i][j] == 21 ||player1_cells[i][j] ==22 || player1_cells[i][j] == 23||
+                            player1_cells[i][j] == 31 ||player1_cells[i][j] ==32 || player1_cells[i][j] == 33||player1_cells[i][j] == -21||player1_cells[i][j] == -22||player1_cells[i][j] == -23||
+                            player1_cells[i][j] == -31||player1_cells[i][j] == -32||player1_cells[i][j] == -41)
                         {
-                            if (player1_cells[i][j] != 0 &&player1_cells[i][j] !=7 && player1_cells[i][j] != 8)
-                            {
 
-                                QTimer* timer = new QTimer(this);
-                                connect(timer, &QTimer::timeout, this, [this,i,j]{
+                            QTimer* timer = new QTimer(this);
+                            connect(timer, &QTimer::timeout, this, [this,i,j]{
 
-                                    ui->trackerButton2_D->hide();
-                                    shipFind(i,j);
-                                });
+                                ui->trackerButton2_D->hide();
+                                QTableWidgetItem *item = new QTableWidgetItem();
+                                QIcon icon(":/ic_seabattle.png");
+                                item->setIcon(icon);
+                                ui->player1_table->setItem(i, j, item);
 
-                                timer->start(1000);
-                            }
-                        }
-                    }
-                }
-                else
-                {
+                            });
 
-                    for (int i = row ; i <= row+1 ; i++)
-                    {
-                        for (int j = column ; j<=column+1 ; j++)
-                        {
-                            if (player2_cells[i][j] != 0 &&player2_cells[i][j] !=7 && player2_cells[i][j] != 8)
-                            {
-
-                                QTimer* timer = new QTimer(this);
-                                connect(timer, &QTimer::timeout, this, [this,i,j]{
-
-                                    ui->trackerButton1_D->hide();
-                                    shipFind(i,j);
-                                });
-
-                                timer->start(1000);
-                            }
+                            timer->start(1000);
                         }
                     }
                 }
             }
+            else
+            {
+                for (int i = row ; i <= row+1 ; i++)
+                {
+                    for (int j = column ; j<=column+1 ; j++)
+                    {
+                        if (player2_cells[i][j] == 11 ||player2_cells[i][j] ==12 || player2_cells[i][j] == 13 || player2_cells[i][j] == 21||
+                            player2_cells[i][j] == 22|| player2_cells[i][j] == 23|| player2_cells[i][j] == 32|| player2_cells[i][j] == 41
+                            ||player2_cells[i][j] == -21||player2_cells[i][j] == -22||player2_cells[i][j] == -23||player2_cells[i][j] == -31||player2_cells[i][j] == -32||player2_cells[i][j] == -41)
+                        {
+
+                            QTimer* timer = new QTimer(this);
+                            connect(timer, &QTimer::timeout, this, [this,i,j]{
+
+                                ui->trackerButton1_D->hide();
+                                QTableWidgetItem *item = new QTableWidgetItem();
+                                QIcon icon(":/ic_seabattle.png");
+                                item->setIcon(icon);
+                                ui->player2_table->setItem(i, j, item);
+
+                            });
+
+                            timer->start(1000);
+                        }
+                    }
+                }
+            }
+            turn++;
+            if (turn %2 == 0)
+            {
+                ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                             "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+            }
+            else
+            {
+                ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                             "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+            }
+
+
         }
         else if (sourceButton->width() == 160)
         {
@@ -661,7 +828,7 @@ void DialogOnDevice::dropEvent(QDropEvent *event) {
             if(turn % 2 == 0)
             {
                 ui->atomicZone2->hide();
-                Animation(row-1,column,2);
+                Animation(row-1,column-1,2);
             }
             else
             {
@@ -671,16 +838,6 @@ void DialogOnDevice::dropEvent(QDropEvent *event) {
             event->acceptProposedAction();
         }
     }
-}
-void DialogOnDevice::shipFind(int row,int column)
-{
-    QTableWidgetItem *item = new QTableWidgetItem();
-    QIcon icon(":/ic_seabattle.png");
-    item->setIcon(icon);
-    if(turn % 2 == 0)
-       ui->player1_table->setItem(row, column, item);
-    else
-         ui->player2_table->setItem(row, column, item);
 }
 
 void DialogOnDevice::Animation(int row,int column,int which)
@@ -707,14 +864,14 @@ void DialogOnDevice::Animation(int row,int column,int which)
 
         connect(animation, &QPropertyAnimation::finished, this, [this,row, column,which]()
                 {
-
+                    ui->planeLabel2->hide();
                     if(which == 1) {
-                       ui->planeLabel2->hide();
+
                         player2_Play(row,column,1);
                     }
                     else
                     {
-                        ui->trackerButton2_D->hide();
+
                         player2_Play(row,column,2);
                     }
 
@@ -737,14 +894,14 @@ void DialogOnDevice::Animation(int row,int column,int which)
 
         connect(animation, &QPropertyAnimation::finished, this, [this,row, column,which]()
                 {
-
+                    ui->planeLabel2->hide();
                     if(which == 1) {
-                        ui->planeLabel2->hide();
+
                         player1_Play(row,column,1);
                     }
                     else
                     {
-                        ui->trackerButton1_D->hide();
+
                         player1_Play(row,column,2);
                     }
 
@@ -822,20 +979,84 @@ void DialogOnDevice::on_trackerButton1_clicked()
 {
     if (player1_arms.getTrackerCount()>0&&turn%2 !=0)
     {
+        ui->trackerButton1_D->show();
         player1_arms.trackerMinus();
         ui->tracker1_Counter->setText(QString::number(player1_arms.getTrackerCount()));
-        ui->trackerButton2->show();
+
     }
 }
 
 
 void DialogOnDevice::on_trackerButton2_clicked()
 {
-    if (player2_arms.getTrackerCount()>0&&turn%2 == 0)
+    if (player2_arms.getTrackerCount()>0&& turn%2 == 0)
     {
+        ui->trackerButton2_D->show();
         player2_arms.trackerMinus();
         ui->tracker2_Counter->setText(QString::number(player2_arms.getTrackerCount()));
-        ui->trackerButton2->show();
+
     }
 }
+void DialogOnDevice::WonOrLost()
+{
+    bool player1Won = true;
+    bool player2Won = true;
 
+    for (int i = 0 ; i < 10 ;i++)
+    {
+        if (!player2Won)
+            break;
+        for (int j = 0 ; j <10 ; j++)
+        {
+            if (player1_cells[i][j] == 11 || player1_cells[i][j] == 12 ||player1_cells[i][j] == 13 ||player1_cells[i][j] == 21
+                ||player1_cells[i][j] == 22||player1_cells[i][j] == 23 ||player1_cells[i][j] == 31||player1_cells[i][j] == 32||player1_cells[i][j] == 41)
+            {
+                player2Won = false;
+                break;
+            }
+            if (player1_cells[i][j] == -21||player1_cells[i][j] == -22||player1_cells[i][j] == -23 ||player1_cells[i][j] == -31||player1_cells[i][j] == -32||player1_cells[i][j] == -41)
+            {
+                player2Won = false;
+                break;
+            }
+        }
+    }
+    if (player2Won)
+    {
+        this->close();
+        std::ifstream playerAccount("playerAccount.bin",std::ios::in);
+        User user;
+        playerAccount.read(reinterpret_cast<char*>(&user),sizeof(user));
+        DialogWon* lostPage = new DialogWon(user);
+        lostPage->show();
+    }
+    for (int i = 0 ; i < 10 ;i++)
+    {
+        for (int j = 0 ; j <10 ; j++)
+        {
+            if (!player1Won)
+                break;
+            if (player2_cells[i][j] == 11 || player2_cells[i][j] == 12 ||player2_cells[i][j] == 13 ||player2_cells[i][j] == 21
+                ||player2_cells[i][j] == 22||player2_cells[i][j] == 23 ||player2_cells[i][j] == 31||player2_cells[i][j] == 32||player2_cells[i][j] == 41)
+            {
+                player1Won = false;
+                break;
+            }
+            if (player2_cells[i][j] == -21||player2_cells[i][j] == -22||player2_cells[i][j] == -23 ||player2_cells[i][j] == -31||player2_cells[i][j] == -32||player2_cells[i][j] == -41)
+            {
+                player1Won = false;
+                break;
+            }
+        }
+    }
+    if (player1Won)
+    {
+        this->close();
+        std::ifstream playerAccount("playerAccount.bin",std::ios::in);
+        User user;
+        playerAccount.read(reinterpret_cast<char*>(&user),sizeof(user));
+        this->close();
+        DialogWon* wonPage = new DialogWon(user);
+        wonPage->show();
+    }
+}

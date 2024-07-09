@@ -252,7 +252,7 @@ public:
         linearAttackCounter2->setAlignment(Qt::AlignCenter);
         atomicZone1 = new DraggableButton(DialogOnDevice);
         atomicZone1->setObjectName("atomicZone1");
-        atomicZone1->setGeometry(QRect(150, 440, 160, 160));
+        atomicZone1->setGeometry(QRect(140, 440, 160, 160));
         atomicZone1->setStyleSheet(QString::fromUtf8("image: url(:/redBox.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         atomicZone2 = new DraggableButton(DialogOnDevice);
@@ -262,12 +262,12 @@ public:
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         trackerButton1_D = new DraggableButton(DialogOnDevice);
         trackerButton1_D->setObjectName("trackerButton1_D");
-        trackerButton1_D->setGeometry(QRect(50, 510, 80, 80));
+        trackerButton1_D->setGeometry(QRect(50, 480, 80, 80));
         trackerButton1_D->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         trackerButton2_D = new DraggableButton(DialogOnDevice);
         trackerButton2_D->setObjectName("trackerButton2_D");
-        trackerButton2_D->setGeometry(QRect(942, 510, 80, 80));
+        trackerButton2_D->setGeometry(QRect(950, 470, 80, 80));
         trackerButton2_D->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         planeLabel1 = new QPushButton(DialogOnDevice);

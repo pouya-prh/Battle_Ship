@@ -24,6 +24,7 @@ public:
     void dropEvent(QDropEvent *event) override;
     void shipFind(int ,int );
     void Animation(int ,int ,int );
+    void WonOrLost();
 
 private slots:
     void on_linearAttack1_clicked();
