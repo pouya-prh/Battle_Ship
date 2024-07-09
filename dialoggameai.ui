@@ -506,12 +506,51 @@ color: rgb(85, 85, 85);</string>
     <string/>
    </property>
   </widget>
+  <widget class="DraggableButton" name="atomicZone">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>430</y>
+     <width>160</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/redBox.png);
+background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="DraggableButton" name="trackerButton2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>510</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/grinTracker.png);
+background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
    <class>GameBoard</class>
    <extends>QTableWidget</extends>
    <header location="global">gameboard.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DraggableButton</class>
+   <extends>QPushButton</extends>
+   <header>draggablebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

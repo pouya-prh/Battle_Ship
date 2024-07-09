@@ -1,8 +1,10 @@
 release/arms.o
 release/dialoggameai.o
 release/dialoggetarm.o
+release/dialoglost.o
 release/dialogpage1.o
 release/dialogsetgameboard.o
+release/dialogwon.o
 release/draggablebutton.o
 release/gameboard.o
 release/hashpassword.o
@@ -12,6 +14,7 @@ release/dialogloginclicked.o
 release/dialogsignupclicked.o
 release/musicplayer.o
 release/ship.o
+release/updatefile.o
 release/user.o
 release/validator.o
 release/qrc_back.o
@@ -20,8 +23,10 @@ release/qrc_images.o
 release/qrc_music.o
 release/moc_dialoggameai.o
 release/moc_dialoggetarm.o
+release/moc_dialoglost.o
 release/moc_dialogpage1.o
 release/moc_dialogsetgameboard.o
+release/moc_dialogwon.o
 release/moc_draggablebutton.o
 release/moc_gameboard.o
 release/moc_mainwindow.o

@@ -6,7 +6,8 @@
 #include <QMediaPlayer>
 #include<QAudioOutput>
 #include <QPropertyAnimation>
-
+#include "dialoglost.h"
+#include "dialogwon.h"
 DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     : QDialog(parent)
     ,ui(new Ui::DialogGameAI),
@@ -15,9 +16,13 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
 
 {
     ui->setupUi(this);
-
+    Drop = 0;
     this->Cells = cells;
+    ui->botTableWidget->setAcceptDrops(true);
+    setAcceptDrops(true);
+    ui->trackerButton2->hide();
     ui->planeLabel->hide();
+    ui->atomicZone->hide();
     ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
     ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
     ui->trackerCounter->setText(QString::number(arms.getTrackerCount()));
@@ -35,6 +40,7 @@ DialogGameAI::DialogGameAI(User& user,Arms& arms,int** cells,QWidget *parent)
     botGameBoard = makeGameBoard();
     Display(botGameBoard);
     turn = true;
+
     connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row,int column){
         userPlay(row,column,0);
     });
@@ -128,7 +134,7 @@ void DialogGameAI::on_linearAttackbutton_clicked()
         ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
         disconnect  (ui->botTableWidget,&QTableWidget::cellClicked,this,nullptr);
         connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row, int column) {
-             Animation(row,column);
+             Animation(row,column,1);
             disconnect(ui->botTableWidget,&QTableWidget::cellClicked,nullptr,nullptr);
 
             connect(ui->botTableWidget, &QTableWidget::cellClicked, this, [this](int row,int column){
@@ -146,7 +152,7 @@ void DialogGameAI::on_atomicBombButton_clicked()
     {
         arms.atomicBombMinus();
         ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
-       // userPlay(2);
+        ui->atomicZone->show();
     }
 }
 
@@ -157,8 +163,8 @@ void DialogGameAI::on_trackerButton_clicked()
     if (arms.getTrackerCount()>0&&turn)
     {
         arms.trackerMinus();
-        ui->atomicBombCounter->setText(QString::number(arms.getTrackerCount()));
-       // userPlay(3);
+        ui->trackerCounter->setText(QString::number(arms.getTrackerCount()));
+        ui->trackerButton2->show();
     }
 }
 
@@ -349,6 +355,7 @@ void DialogGameAI::Display(int** cells)
                     ui->tableWidget->setItem(i, j, item);
                 }
 
+
             }
         }
     }
@@ -517,6 +524,13 @@ void DialogGameAI::Display(int** cells)
                 {
                     QTableWidgetItem *item = new QTableWidgetItem();
                     QIcon icon(":/meteor.png");
+                    item->setIcon(icon);
+                    ui->botTableWidget->setItem(i, j, item);
+                }
+                else if (cells[i][j] == -100)
+                {
+                    QTableWidgetItem *item = new QTableWidgetItem();
+                    QIcon icon(":/fire.png");
                     item->setIcon(icon);
                     ui->botTableWidget->setItem(i, j, item);
                 }
@@ -872,25 +886,44 @@ void DialogGameAI::play(int i , int j , int arm)
             }
         }
     }
+    else if (arm == 2)
+    {
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/AtomicBomb.mp3"));
+
+        for(int row = i ; row< i +4 ; row++)
+        {
+            for (int column = j ; column < j+4 ; column++)
+            {
+                cells[row][column] = -100;
+
+
+            }
+            musicPlayer->play();
+        }
+        turn = !turn;
+    }
 
 
     Display(cells);
 
     if (!turn)
     {
-        cells = botGameBoard;
+
         botTurn = false;
         ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
                                      "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
     }
     else
     {
-        cells = Cells;
+
         botTurn = true;
         ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
                                        "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
     }
-
+    WonOrLost();
     if(!turn)
     {
         timer = new QTimer(this);
@@ -899,7 +932,152 @@ void DialogGameAI::play(int i , int j , int arm)
     }
 
 
+
 }
+
+void DialogGameAI::WonOrLost()
+{
+    bool lost = true;
+    bool won = true;
+
+    for (int i = 0 ; i < 10 ;i++)
+    {
+        if (!lost)
+            break;
+        for (int j = 0 ; j <10 ; j++)
+        {
+            if (Cells[i][j] == 11 || Cells[i][j] == 12 ||Cells[i][j] == 13 ||Cells[i][j] == 21
+                ||Cells[i][j] == 22||Cells[i][j] == 23 ||Cells[i][j] == 31||Cells[i][j] == 32||Cells[i][j] == 41)
+            {
+                lost = false;
+                break;
+            }
+            if (Cells[i][j] == -21||Cells[i][j] == -22||Cells[i][j] == -23 ||Cells[i][j] == -31||Cells[i][j] == -32||Cells[i][j] == -41)
+            {
+                lost = false;
+                break;
+            }
+        }
+    }
+    if (lost)
+    {
+        int point = user.GetPoint();
+        if (user.GetLevel()==0)
+        {
+
+            user.SetPoint(point -5);
+        }
+        else if (user.GetLevel() == 1)
+        {
+            user.SetPoint(point - 10);
+        }
+        else if (user.GetLevel() == 2)
+        {
+            user.SetPoint(point  -15);
+        }
+        else if (user.GetLevel() == 3)
+        {
+            user.SetPoint(point - 20);
+        }
+        else if (user.GetLevel() == 4)
+        {
+            user.SetPoint(point - 25);
+        }
+        this->close();
+        DialogLost* lostPage = new DialogLost(user);
+        lostPage->show();
+    }
+    for (int i = 0 ; i < 10 ;i++)
+    {
+        for (int j = 0 ; j <10 ; j++)
+        {
+            if (!won)
+                break;
+            if (botGameBoard[i][j] == 11 || botGameBoard[i][j] == 12 ||botGameBoard[i][j] == 13 ||botGameBoard[i][j] == 21
+                ||botGameBoard[i][j] == 22||botGameBoard[i][j] == 23 ||botGameBoard[i][j] == 31||botGameBoard[i][j] == 32||botGameBoard[i][j] == 41)
+            {
+                won = false;
+                break;
+            }
+            if (botGameBoard[i][j] == -21||botGameBoard[i][j] == -22||botGameBoard[i][j] == -23 ||botGameBoard[i][j] == -31||botGameBoard[i][j] == -32||botGameBoard[i][j] == -41)
+            {
+                won = false;
+                break;
+            }
+        }
+    }
+    if (won)
+    {
+        for (int i = 0 ; i <10;i++)
+        {
+            for (int j = 0 ; j <10;j++)
+            {
+                if (Cells[i][j] == 41 || Cells[i][j] == -41)
+                    Drop +=20;
+                else if (Cells[i][j] == 32|| Cells[i][j] == 32 || Cells[i][j] == -31 || Cells[i][j] == -32)
+                    Drop += 15;
+                else if (Cells[i][j] == 21 || Cells[i][j] == 22 || Cells[i][j] == 23 || Cells[i][j] == -21 || Cells[i][j] == -22 || Cells[i][j] == -23)
+                    Drop += 10;
+                else if (Cells[i][j] == 11 || Cells[i][j] == 12 || Cells[i][j] == 13)
+                    Drop += 5;
+            }
+        }
+        int drop = user.GetDrop();
+        user.SetDrop(drop + Drop);
+        int point = user.GetPoint();
+        if (user.GetLevel()==0)
+        {
+
+            user.SetPoint(point + 10);
+        }
+        else if (user.GetLevel() == 1)
+        {
+            user.SetPoint(point + 20);
+        }
+        else if (user.GetLevel() == 2)
+        {
+             user.SetPoint(point + 30);
+        }
+        else if (user.GetLevel() == 3)
+        {
+            user.SetPoint(point + 40);
+        }
+        else if (user.GetLevel() == 4)
+        {
+            user.SetPoint(point + 50);
+        }
+        point = user.GetPoint();
+        if (point >=50 && user.GetLevel() == 0)
+        {
+            point -= 50 ;
+            user.SetPoint(point);
+            user.SetLevel(1);
+        }
+        else if (point >=75 && user.GetLevel() == 1)
+        {
+            point -= 75 ;
+            user.SetPoint(point);
+            user.SetLevel(2);
+        }
+        else if (point >=125 && user.GetLevel() == 2)
+        {
+            point -= 125 ;
+            user.SetPoint(point);
+            user.SetLevel(3);
+        }
+        else if (point >=200 && user.GetLevel() == 3)
+        {
+            point -= 200 ;
+            user.SetPoint(point);
+            user.SetLevel(4);
+        }
+
+        this->close();
+        DialogWon* wonPage = new DialogWon(user);
+        wonPage->show();
+    }
+}
+
 
 void DialogGameAI::botPlay()
 {
@@ -922,8 +1100,10 @@ void DialogGameAI::botPlay()
     play(i,j,0);
 }
 
-void DialogGameAI::Animation(int row,int column)
+void DialogGameAI::Animation(int row,int column,int which)
 {
+
+
     ui->planeLabel->show();
     QMediaPlayer* musicPlayer = new QMediaPlayer();
     QAudioOutput* output = new QAudioOutput();
@@ -932,25 +1112,28 @@ void DialogGameAI::Animation(int row,int column)
     musicPlayer->play();
     QPropertyAnimation *animation = new QPropertyAnimation(ui->planeLabel, "geometry");
     animation->setDuration(3000);
-    // Calculate the start and end positions based on mouse position
     int mouseX = QCursor::pos().x();
     int labelWidth = ui->planeLabel->width();
     int labelHeight = ui->planeLabel->height();
-
-    // // End position: row of mouse, column end of the page
     int endY = this->height();
     int endX = this->width();
-
-    // Set start and end values for the animation
     animation->setStartValue(QRect(mouseX-500, 0, labelWidth, labelHeight));
     animation->setEndValue(QRect(endX,endY-100 , labelWidth, labelHeight));
 
-    connect(animation, &QPropertyAnimation::finished, this, [this,row, column]()
+    connect(animation, &QPropertyAnimation::finished, this, [this,row, column,which]()
         {
+        if(which == 1) {
             userPlay(row,column,1);
+            }
+        else
+        {
+            userPlay(row,column,2);
+        }
+
         });
-    // Start the animation
+
     animation->start(QAbstractAnimation::DeleteWhenStopped);
+
 }
 
 void DialogGameAI::userPlay(int row,int column,int arm)
@@ -959,4 +1142,112 @@ void DialogGameAI::userPlay(int row,int column,int arm)
     play(row,column,arm);
 }
 
+void DialogGameAI::dragEnterEvent(QDragEnterEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+        QWidget *sourceWidget = qobject_cast<QWidget *>(event->source());
+        if (sourceWidget) {
+            sourceWidget->hide();
+        }
+
+        event->acceptProposedAction();
+    }
+}
+
+void DialogGameAI::dragMoveEvent(QDragMoveEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+        event->acceptProposedAction();
+    }
+}
+void DialogGameAI::dropEvent(QDropEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+
+        DraggableButton *sourceButton = qobject_cast<DraggableButton*>(event->source());
+        QByteArray itemData = event->mimeData()->data("application/x-ship");
+        QDataStream dataStream(&itemData, QIODevice::ReadOnly);
+
+        QPoint initialPosition = sourceButton->pos();
+        QPoint droped = event->position().toPoint();
+
+        int row = ui->botTableWidget->rowAt((droped.y()-68)) ;
+        int column = ui->botTableWidget->columnAt((droped.x()-590));
+        bool isValid = true;
+        if(sourceButton->width() == 80)
+        {
+            for(int i = row ; i <=row+1;i++)
+            {
+                for (int j = column ; j<=column+1 ;j++)
+                {
+                    if (i>9||i<0||j>9||j<0)
+                        isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                sourceButton->move(initialPosition);
+                sourceButton->show();
+                event->ignore();
+                return;
+            }
+            else
+            {
+                QMediaPlayer *musicPlayer = new QMediaPlayer();
+                QAudioOutput *output = new QAudioOutput();
+                musicPlayer->setAudioOutput(output);
+                musicPlayer->setSource(QUrl("qrc:/Radar.mp3"));
+                musicPlayer->play();
+
+                for (int i = row ; i <= row+1 ; i++)
+                {
+                    for (int j = column ; j<=column+1 ; j++)
+                    {
+                        if (botGameBoard[i][j] != 0 &&botGameBoard[i][j] !=7 && botGameBoard[i][j] != 8)
+                        {
+
+                            timer = new QTimer(this);
+                            connect(timer, &QTimer::timeout, this, [this,i,j]{
+
+                                ui->trackerButton2->hide();
+                                shipFind(i,j);
+                            });
+
+                            timer->start(1000);
+                        }
+                    }
+                }
+            }
+        }
+        else if (sourceButton->width() == 160)
+        {
+            for(int i = row ; i <=row+3;i++)
+            {
+                for (int j = column ; j<=column+3 ;j++)
+                {
+                    if (i>9||i<0||j>9||j<0)
+                        isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                sourceButton->move(initialPosition);
+                sourceButton->show();
+                event->ignore();
+                return;
+
+            }
+            else
+            {
+                ui->atomicZone->hide();
+                Animation(row-1,column,2);
+            }
+           event->acceptProposedAction();
+        }
+    }
+}
+void DialogGameAI::shipFind(int row,int column)
+{
+    QTableWidgetItem *item = new QTableWidgetItem();
+    QIcon icon(":/ic_seabattle.png");
+    item->setIcon(icon);
+    ui->botTableWidget->setItem(row, column, item);
+}
 
