@@ -2,11 +2,24 @@
 #include "ui_dialogondevice.h"
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QTimer>
+#include <QPropertyAnimation>
 DialogOnDevice::DialogOnDevice(Arms player1, Arms player2,int** player1_cells,int** player2_cells,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogOnDevice)
 {
     ui->setupUi(this);
+    setAcceptDrops(true);
+    this->player1_cells = player1_cells;
+    this->player2_cells = player2_cells;
+    this->player1_arms = player1;
+    this->player2_arms = player2;
+    ui->planeLabel1->hide();
+    ui->planeLabel2->hide();
+    ui->trackerButton1_D->hide();
+    ui->trackerButton2_D->hide();
+    ui->atomicZone1->hide();
+    ui->atomicZone2->hide();
     player1DestroyedShip21 = 0;
     player1DestroyedShip22 = 0;
     player1DestroyedShip23 = 0;
@@ -19,9 +32,14 @@ DialogOnDevice::DialogOnDevice(Arms player1, Arms player2,int** player1_cells,in
     player2DestroyedShip31 = 0;
     player2DestroyedShip32 = 0;
     player2DestroyedShip4 = 0;
+    ui->AtomicBombCounter1->setText(QString::number(player1_arms.getAtomicBombCount()));
+    ui->AtomicBombCounter2->setText(QString::number(player2_arms.getAtomicBombCount()));
+    ui->linearAttackCounter1->setText(QString::number(player1_arms.getLineAttackerCount()));
+    ui->linearAttackCounter2->setText(QString::number(player2_arms.getLineAttackerCount()));
+    ui->tracker1_Counter->setText(QString::number(player1_arms.getTrackerCount()));
+    ui->tracker2_Counter->setText(QString::number(player2_arms.getTrackerCount()));
     turn = 1;
-    this->player1_cells = player1_cells;
-    this->player2_cells = player2_cells;
+
     connect(ui->player1_table, &QTableWidget::cellClicked, this, [this](int row,int column){
         player2_Play(row,column,0);
     });
@@ -125,7 +143,20 @@ void DialogOnDevice::Display(int** cells)
                     ui->player2_table->setItem(i, j, item);
                 }
             }
-
+            else if (cells[i][j] == -100)
+            {
+                QTableWidgetItem *item = new QTableWidgetItem();
+                QIcon icon(":/fire.png");
+                item->setIcon(icon);
+                if (turn %2 == 0)
+                {
+                    ui->player1_table->setItem(i, j, item);
+                }
+                else
+                {
+                    ui->player2_table->setItem(i, j, item);
+                }
+            }
 
         }
     }
@@ -134,14 +165,139 @@ void DialogOnDevice::Display(int** cells)
 void DialogOnDevice::player1_Play(int row , int column , int arm)
 {
     if (arm == 0&&turn%2 !=0)
-       Attack(player2_cells,row,column);
+    {
+        Attack(player2_cells,row,column);
+
+    }
+    else if(arm == 1)
+    {
+        bool isDefense = false;
+        for(int j = 9 ; j >= 0 ; j--)
+        {
+            if (player2_cells[row][j] == 8)
+            {
+                player2_cells[column][j] = 0;
+                isDefense = true;
+            }
+        }
+        if(!isDefense)
+        {
+            for(int j = 9 ; j >=0 ; j--)
+            {
+                if(player2_cells[row][j] == 11||player2_cells[row][j] ==12||player2_cells[row][j] == 13 ||player2_cells[row][j] == 21||player2_cells[row][j] == 22 )
+                {
+                    Attack(player2_cells,row,j);
+                    turn ++;
+                    break;
+                }
+                if(player2_cells[row][j] == 23 || player2_cells[row][j] == 31 || player2_cells[row][j] == 32 || player2_cells[row][j] == 41 || player2_cells[row][j] == 7)
+                {
+                    Attack(player2_cells,row,j);
+                    turn ++;
+                    break;
+                }
+                Attack(player2_cells,row,j);
+                turn ++;
+                if(j == 0)
+                {
+                    turn ++;
+                    break;
+                }
+
+            }
+
+        }
+    }
+    else if (arm == 2)
+    {
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/AtomicBomb.mp3"));
+
+        for(int i = row ; i< row +4 ; i++)
+        {
+            for (int j = column ; j < column+4 ; j++)
+            {
+                player2_cells[i][j] = -100;
+
+
+            }
+            musicPlayer->play();
+        }
+        turn ++;
+        Display(player2_cells);
+    }
 
 
 }
 void DialogOnDevice::player2_Play(int row , int column , int arm)
 {
     if (arm == 0&&turn%2 == 0)
-       Attack(player1_cells,row,column);
+    {
+        Attack(player1_cells,row,column);
+
+    }
+    else if(arm == 1)
+    {
+        bool isDefense = false;
+        for(int j = 9 ; j >= 0 ; j--)
+        {
+            if (player1_cells[row][j] == 8)
+            {
+                player1_cells[column][j] = 0;
+                isDefense = true;
+            }
+        }
+        if(!isDefense)
+        {
+            for(int j = 9 ; j >=0 ; j--)
+            {
+                if(player1_cells[row][j] == 11||player1_cells[row][j] ==12||player1_cells[row][j] == 13 ||player1_cells[row][j] == 21||player1_cells[row][j] == 22 )
+                {
+                    Attack(player1_cells,row,j);
+                    turn = true;
+                    break;
+                }
+                if(player1_cells[row][j] == 23 || player1_cells[row][j] == 31 || player1_cells[row][j] == 32 || player1_cells[row][j] == 41 || player1_cells[row][j] == 7)
+                {
+                    Attack(player1_cells,row,j);
+                    turn = true;
+                    break;
+                }
+                Attack(player1_cells,row,j);
+                turn = true;
+                if(j == 0)
+                {
+                    turn  = false;
+                    break;
+                }
+
+            }
+        }
+
+    }
+    else if (arm == 2)
+    {
+        QMediaPlayer *musicPlayer = new QMediaPlayer();
+        QAudioOutput *output = new QAudioOutput();
+        musicPlayer->setAudioOutput(output);
+        musicPlayer->setSource(QUrl("qrc:/AtomicBomb.mp3"));
+
+        for(int i = row ; i< row +4 ; i++)
+        {
+            for (int j = column ; j < column+4 ; j++)
+            {
+                player1_cells[i][j] = -100;
+
+
+            }
+            musicPlayer->play();
+        }
+        turn ++;
+        Display(player1_cells);
+    }
+
 
 }
 
@@ -155,12 +311,6 @@ void DialogOnDevice::Attack(int** cells,int i , int j )
         musicPlayer->setAudioOutput(output);
         musicPlayer->setSource(QUrl("qrc:/Miss.mp3"));
         musicPlayer->play();
-        if (turn%2 == 0)
-            Display(player1_cells);
-        else
-            Display(player2_cells);
-        turn++;
-        return;
     }
     else if ( cells[i][j] == 11|| cells[i][j] == 12||cells[i][j] == 13) {
         cells[i][j] = -110 ;
@@ -315,10 +465,27 @@ void DialogOnDevice::Attack(int** cells,int i , int j )
             player2_Play(i,j,0);
         }
     }
-    if (turn%2 == 0)
+
+    if (turn %2 == 0)
+    {
         Display(player1_cells);
+    }
     else
+    {
         Display(player2_cells);
+    }
+    turn++;
+
+    if (turn %2 == 0)
+    {
+        ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+    }
+    else
+    {
+        ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                     "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+    }
 
 }
 void DialogOnDevice::makeEmptyAround(int** cells,int value)
@@ -366,3 +533,309 @@ void DialogOnDevice::makeEmptyAround(int** cells,int value)
     }
 
 }
+
+void DialogOnDevice::dragEnterEvent(QDragEnterEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+        QWidget *sourceWidget = qobject_cast<QWidget *>(event->source());
+        if (sourceWidget) {
+            sourceWidget->hide();
+        }
+
+        event->acceptProposedAction();
+    }
+}
+
+void DialogOnDevice::dragMoveEvent(QDragMoveEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+        event->acceptProposedAction();
+    }
+}
+void DialogOnDevice::dropEvent(QDropEvent *event) {
+    if (event->mimeData()->hasFormat("application/x-ship")) {
+
+        DraggableButton *sourceButton = qobject_cast<DraggableButton*>(event->source());
+        QByteArray itemData = event->mimeData()->data("application/x-ship");
+        QDataStream dataStream(&itemData, QIODevice::ReadOnly);
+
+        QPoint initialPosition = sourceButton->pos();
+        QPoint droped = event->position().toPoint();
+        int row , column;
+        if(turn % 2 == 0)
+        {
+            row = ui->player1_table->rowAt((droped.y()-68)) ;
+            column = ui->player1_table->columnAt((droped.x()-590));
+        }
+        else
+        {
+            row = ui->player2_table->rowAt((droped.y()-68)) ;
+            column = ui->player2_table->columnAt((droped.x()-590));
+        }
+        bool isValid = true;
+        if(sourceButton->width() == 80)
+        {
+            for(int i = row ; i <=row+1;i++)
+            {
+                for (int j = column ; j<=column+1 ;j++)
+                {
+                    if (i>9||i<0||j>9||j<0)
+                        isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                sourceButton->move(initialPosition);
+                sourceButton->show();
+                event->ignore();
+                return;
+            }
+            if (turn %2 == 0)
+            {
+                QMediaPlayer *musicPlayer = new QMediaPlayer();
+                QAudioOutput *output = new QAudioOutput();
+                musicPlayer->setAudioOutput(output);
+                musicPlayer->setSource(QUrl("qrc:/Radar.mp3"));
+                musicPlayer->play();
+                if (turn %2 == 0)
+                {
+                    for (int i = row ; i <= row+1 ; i++)
+                    {
+                        for (int j = column ; j<=column+1 ; j++)
+                        {
+                            if (player1_cells[i][j] != 0 &&player1_cells[i][j] !=7 && player1_cells[i][j] != 8)
+                            {
+
+                                QTimer* timer = new QTimer(this);
+                                connect(timer, &QTimer::timeout, this, [this,i,j]{
+
+                                    ui->trackerButton2_D->hide();
+                                    shipFind(i,j);
+                                });
+
+                                timer->start(1000);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+
+                    for (int i = row ; i <= row+1 ; i++)
+                    {
+                        for (int j = column ; j<=column+1 ; j++)
+                        {
+                            if (player2_cells[i][j] != 0 &&player2_cells[i][j] !=7 && player2_cells[i][j] != 8)
+                            {
+
+                                QTimer* timer = new QTimer(this);
+                                connect(timer, &QTimer::timeout, this, [this,i,j]{
+
+                                    ui->trackerButton1_D->hide();
+                                    shipFind(i,j);
+                                });
+
+                                timer->start(1000);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else if (sourceButton->width() == 160)
+        {
+            for(int i = row ; i <=row+3;i++)
+            {
+                for (int j = column ; j<=column+3 ;j++)
+                {
+                    if (i>9||i<0||j>9||j<0)
+                        isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                sourceButton->move(initialPosition);
+                sourceButton->show();
+                event->ignore();
+                return;
+
+            }
+            if(turn % 2 == 0)
+            {
+                ui->atomicZone2->hide();
+                Animation(row-1,column,2);
+            }
+            else
+            {
+                ui->atomicZone2->hide();
+                Animation(row-1,column,2);
+            }
+            event->acceptProposedAction();
+        }
+    }
+}
+void DialogOnDevice::shipFind(int row,int column)
+{
+    QTableWidgetItem *item = new QTableWidgetItem();
+    QIcon icon(":/ic_seabattle.png");
+    item->setIcon(icon);
+    if(turn % 2 == 0)
+       ui->player1_table->setItem(row, column, item);
+    else
+         ui->player2_table->setItem(row, column, item);
+}
+
+void DialogOnDevice::Animation(int row,int column,int which)
+{
+
+    QMediaPlayer* musicPlayer = new QMediaPlayer();
+    QAudioOutput* output = new QAudioOutput();
+    musicPlayer->setAudioOutput(output);
+    musicPlayer->setSource(QUrl("qrc:/Plane.mp3"));
+    musicPlayer->play();
+
+    if(turn %2 == 0)
+    {
+        ui->planeLabel2->show();
+        QPropertyAnimation *animation = new QPropertyAnimation(ui->planeLabel2, "geometry");
+        animation->setDuration(3000);
+        int mouseX = QCursor::pos().x();
+        int labelWidth = ui->planeLabel2->width();
+        int labelHeight = ui->planeLabel2->height();
+        int endY = this->height();
+        //int endX = this->width();
+        animation->setStartValue(QRect(mouseX+500, 0, labelWidth, labelHeight));
+        animation->setEndValue(QRect(0,endY-100 , labelWidth, labelHeight));
+
+        connect(animation, &QPropertyAnimation::finished, this, [this,row, column,which]()
+                {
+
+                    if(which == 1) {
+                       ui->planeLabel2->hide();
+                        player2_Play(row,column,1);
+                    }
+                    else
+                    {
+                        ui->trackerButton2_D->hide();
+                        player2_Play(row,column,2);
+                    }
+
+                });
+
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
+    else
+    {
+        ui->planeLabel1->show();
+        QPropertyAnimation *animation = new QPropertyAnimation(ui->planeLabel1, "geometry");
+        animation->setDuration(3000);
+        int mouseX = QCursor::pos().x();
+        int labelWidth = ui->planeLabel1->width();
+        int labelHeight = ui->planeLabel1->height();
+        int endY = this->height();
+        int endX = this->width();
+        animation->setStartValue(QRect(mouseX-800, 0, labelWidth, labelHeight));
+        animation->setEndValue(QRect(endX,endY-100 , labelWidth, labelHeight));
+
+        connect(animation, &QPropertyAnimation::finished, this, [this,row, column,which]()
+                {
+
+                    if(which == 1) {
+                        ui->planeLabel2->hide();
+                        player1_Play(row,column,1);
+                    }
+                    else
+                    {
+                        ui->trackerButton1_D->hide();
+                        player1_Play(row,column,2);
+                    }
+
+                });
+
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
+}
+
+void DialogOnDevice::on_linearAttack1_clicked()
+{
+    if (player1_arms.getLineAttackerCount()>0&& turn%2 != 0)
+    {
+        player1_arms.linearAttackMinus();
+        ui->linearAttackCounter1->setText(QString::number(player1_arms.getLineAttackerCount()));
+        disconnect  (ui->player2_table,&QTableWidget::cellClicked,this,nullptr);
+        connect(ui->player2_table, &QTableWidget::cellClicked, this, [this](int row, int column) {
+            Animation(row,column,1);
+            disconnect(ui->player2_table,&QTableWidget::cellClicked,nullptr,nullptr);
+
+            connect(ui->player2_table, &QTableWidget::cellClicked, this, [this](int row,int column){
+                player1_Play(row, column, 0);
+            });
+
+        });
+    }
+}
+
+
+void DialogOnDevice::on_linearAttackbutton2_clicked()
+{
+    if (player2_arms.getLineAttackerCount()>0&& turn%2 == 0)
+    {
+
+
+        player2_arms.linearAttackMinus();
+        ui->linearAttackCounter2->setText(QString::number(player2_arms.getLineAttackerCount()));
+        disconnect  (ui->player1_table,&QTableWidget::cellClicked,this,nullptr);
+        connect(ui->player1_table, &QTableWidget::cellClicked, this, [this](int row, int column) {
+            Animation(row,column,1);
+            disconnect(ui->player1_table,&QTableWidget::cellClicked,nullptr,nullptr);
+
+            connect(ui->player1_table, &QTableWidget::cellClicked, this, [this](int row,int column){
+                player2_Play(row, column, 0);
+            });
+
+        });
+    }
+}
+
+
+void DialogOnDevice::on_atomicBomb1_clicked()
+{
+    if (player1_arms.getAtomicBombCount()>0&&turn%2 != 0)
+    {
+        player1_arms.atomicBombMinus();
+        ui->AtomicBombCounter1->setText(QString::number(player1_arms.getAtomicBombCount()));
+        ui->atomicZone1->show();
+    }
+}
+
+
+void DialogOnDevice::on_atomicBomb2_clicked()
+{
+    if (player2_arms.getAtomicBombCount()>0&&turn%2 == 0)
+    {
+        player2_arms.atomicBombMinus();
+        ui->AtomicBombCounter2->setText(QString::number(player2_arms.getAtomicBombCount()));
+        ui->atomicZone2->show();
+    }
+}
+
+
+void DialogOnDevice::on_trackerButton1_clicked()
+{
+    if (player1_arms.getTrackerCount()>0&&turn%2 !=0)
+    {
+        player1_arms.trackerMinus();
+        ui->tracker1_Counter->setText(QString::number(player1_arms.getTrackerCount()));
+        ui->trackerButton2->show();
+    }
+}
+
+
+void DialogOnDevice::on_trackerButton2_clicked()
+{
+    if (player2_arms.getTrackerCount()>0&&turn%2 == 0)
+    {
+        player2_arms.trackerMinus();
+        ui->tracker2_Counter->setText(QString::number(player2_arms.getTrackerCount()));
+        ui->trackerButton2->show();
+    }
+}
+

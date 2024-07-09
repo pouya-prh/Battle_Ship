@@ -510,7 +510,7 @@ color: rgb(85, 85, 85);</string>
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>430</y>
+     <y>440</y>
      <width>160</width>
      <height>160</height>
     </rect>
@@ -527,7 +527,7 @@ background-image: url(:/Recommended Source Files/Recommended Source Files/Images
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>510</y>
+     <y>508</y>
      <width>80</width>
      <height>80</height>
     </rect>

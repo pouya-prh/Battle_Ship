@@ -2,7 +2,7 @@
 #define DIALOGONDEVICE_H
 #include "arms.h"
 #include <QDialog>
-
+#include "draggablebutton.h"
 namespace Ui {
 class DialogOnDevice;
 }
@@ -19,6 +19,24 @@ public:
     void player1_Play(int,int,int);
     void player2_Play(int,int,int);
     void makeEmptyAround(int** ,int );
+    void dragEnterEvent(QDragEnterEvent *event)override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+    void shipFind(int ,int );
+    void Animation(int ,int ,int );
+
+private slots:
+    void on_linearAttack1_clicked();
+
+    void on_linearAttackbutton2_clicked();
+
+    void on_atomicBomb1_clicked();
+
+    void on_atomicBomb2_clicked();
+
+    void on_trackerButton1_clicked();
+
+    void on_trackerButton2_clicked();
 
 private:
     Ui::DialogOnDevice *ui;

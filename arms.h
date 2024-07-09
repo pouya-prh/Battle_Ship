@@ -5,11 +5,11 @@
 class Arms
 {
 private:
-    static int mineCounter;
-    static int linearattackCounter;
-    static int atomicBombCounter;
-    static int trackerCounter;
-    static int airDefanceCounter;
+     int mineCounter;
+     int linearattackCounter;
+     int atomicBombCounter;
+     int trackerCounter;
+     int airDefanceCounter;
 
 public:
     Arms();

@@ -1,15 +1,23 @@
 #include "arms.h"
 #include <QMediaPlayer>
 #include <QAudioOutput>
-int Arms::mineCounter = 0;
-int Arms::linearattackCounter = 0;
-int Arms::atomicBombCounter = 0;
-int Arms::trackerCounter = 0;
-int Arms::airDefanceCounter = 0;
 
-Arms::Arms() {}
+
+Arms::Arms()
+{
+    mineCounter = 0;
+    linearattackCounter = 0;
+    atomicBombCounter = 0;
+    trackerCounter = 0;
+    airDefanceCounter = 0;
+}
 Arms::Arms(int mineCounter,int airDefenseCounter,int atomicBombCounter,int linearAttackCounter,int trackerCounter)
 {
+    mineCounter = 0;
+    linearattackCounter = 0;
+    atomicBombCounter = 0;
+    trackerCounter = 0;
+    airDefanceCounter = 0;
     this->mineCounter = mineCounter;
     this->linearattackCounter = linearAttackCounter;
     this->airDefanceCounter = airDefenseCounter;
@@ -18,7 +26,7 @@ Arms::Arms(int mineCounter,int airDefenseCounter,int atomicBombCounter,int linea
 }
 bool Arms::BuyMine(User& user)
 {
-    if (user.GetDrop()>=5&&airDefanceCounter<=2)
+    if (user.GetDrop()>=5&&mineCounter<2)
     {
         QMediaPlayer* player = new QMediaPlayer();
         QAudioOutput* output = new QAudioOutput();
@@ -34,7 +42,7 @@ bool Arms::BuyMine(User& user)
 }
 bool Arms::BuyAirDefance(User& user)
 {
-    if (user.GetLevel()>=2 && user.GetDrop()>=10 && airDefanceCounter<=2)
+    if (user.GetLevel()>=2 && user.GetDrop()>=10 && airDefanceCounter<2)
     {
         QMediaPlayer* player = new QMediaPlayer();
         QAudioOutput* output = new QAudioOutput();
