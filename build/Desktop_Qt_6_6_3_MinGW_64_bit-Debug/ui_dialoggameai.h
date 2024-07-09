@@ -215,12 +215,12 @@ public:
         planeLabel->setStyleSheet(QString::fromUtf8("background-image: url(:/squareAttackFliped.png);"));
         atomicZone = new DraggableButton(DialogGameAI);
         atomicZone->setObjectName("atomicZone");
-        atomicZone->setGeometry(QRect(190, 430, 160, 160));
+        atomicZone->setGeometry(QRect(190, 440, 160, 160));
         atomicZone->setStyleSheet(QString::fromUtf8("image: url(:/redBox.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         trackerButton2 = new DraggableButton(DialogGameAI);
         trackerButton2->setObjectName("trackerButton2");
-        trackerButton2->setGeometry(QRect(50, 510, 80, 80));
+        trackerButton2->setGeometry(QRect(50, 508, 80, 80));
         trackerButton2->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
 

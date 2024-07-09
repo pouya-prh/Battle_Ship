@@ -14,7 +14,9 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <gameboard.h>
+#include "draggablebutton.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -24,6 +26,24 @@ public:
     GameBoard *player1_table;
     GameBoard *player2_table;
     QLabel *turnLabel;
+    QPushButton *trackerButton1;
+    QPushButton *trackerButton2;
+    QLabel *tracker1_Counter;
+    QLabel *tracker2_Counter;
+    QPushButton *atomicBomb1;
+    QPushButton *atomicBomb2;
+    QLabel *AtomicBombCounter1;
+    QLabel *AtomicBombCounter2;
+    QPushButton *linearAttack1;
+    QPushButton *linearAttackbutton2;
+    QLabel *linearAttackCounter1;
+    QLabel *linearAttackCounter2;
+    DraggableButton *atomicZone1;
+    DraggableButton *atomicZone2;
+    DraggableButton *trackerButton1_D;
+    DraggableButton *trackerButton2_D;
+    QPushButton *planeLabel1;
+    QPushButton *planeLabel2;
 
     void setupUi(QDialog *DialogOnDevice)
     {
@@ -164,6 +184,100 @@ public:
         turnLabel->setGeometry(QRect(512, 250, 41, 101));
         turnLabel->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
+        trackerButton1 = new QPushButton(DialogOnDevice);
+        trackerButton1->setObjectName("trackerButton1");
+        trackerButton1->setGeometry(QRect(44, 509, 81, 81));
+        trackerButton1->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);"));
+        trackerButton2 = new QPushButton(DialogOnDevice);
+        trackerButton2->setObjectName("trackerButton2");
+        trackerButton2->setGeometry(QRect(942, 507, 81, 81));
+        trackerButton2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);"));
+        tracker1_Counter = new QLabel(DialogOnDevice);
+        tracker1_Counter->setObjectName("tracker1_Counter");
+        tracker1_Counter->setGeometry(QRect(101, 567, 21, 21));
+        tracker1_Counter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        tracker1_Counter->setAlignment(Qt::AlignCenter);
+        tracker2_Counter = new QLabel(DialogOnDevice);
+        tracker2_Counter->setObjectName("tracker2_Counter");
+        tracker2_Counter->setGeometry(QRect(944, 563, 21, 21));
+        tracker2_Counter->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        tracker2_Counter->setAlignment(Qt::AlignCenter);
+        atomicBomb1 = new QPushButton(DialogOnDevice);
+        atomicBomb1->setObjectName("atomicBomb1");
+        atomicBomb1->setGeometry(QRect(190, 509, 81, 81));
+        atomicBomb1->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);"));
+        atomicBomb2 = new QPushButton(DialogOnDevice);
+        atomicBomb2->setObjectName("atomicBomb2");
+        atomicBomb2->setGeometry(QRect(820, 510, 81, 81));
+        atomicBomb2->setStyleSheet(QString::fromUtf8("image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);"));
+        AtomicBombCounter1 = new QLabel(DialogOnDevice);
+        AtomicBombCounter1->setObjectName("AtomicBombCounter1");
+        AtomicBombCounter1->setGeometry(QRect(248, 567, 21, 21));
+        AtomicBombCounter1->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        AtomicBombCounter1->setAlignment(Qt::AlignCenter);
+        AtomicBombCounter2 = new QLabel(DialogOnDevice);
+        AtomicBombCounter2->setObjectName("AtomicBombCounter2");
+        AtomicBombCounter2->setGeometry(QRect(820, 570, 21, 21));
+        AtomicBombCounter2->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        AtomicBombCounter2->setAlignment(Qt::AlignCenter);
+        linearAttack1 = new QPushButton(DialogOnDevice);
+        linearAttack1->setObjectName("linearAttack1");
+        linearAttack1->setGeometry(QRect(330, 510, 81, 81));
+        linearAttack1->setStyleSheet(QString::fromUtf8("image: url(:/squareAttackFliped.png);"));
+        linearAttackbutton2 = new QPushButton(DialogOnDevice);
+        linearAttackbutton2->setObjectName("linearAttackbutton2");
+        linearAttackbutton2->setGeometry(QRect(690, 510, 81, 81));
+        linearAttackbutton2->setStyleSheet(QString::fromUtf8("image: url(:/squareAttackFliped.png);"));
+        linearAttackCounter1 = new QLabel(DialogOnDevice);
+        linearAttackCounter1->setObjectName("linearAttackCounter1");
+        linearAttackCounter1->setGeometry(QRect(390, 570, 21, 21));
+        linearAttackCounter1->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        linearAttackCounter1->setAlignment(Qt::AlignCenter);
+        linearAttackCounter2 = new QLabel(DialogOnDevice);
+        linearAttackCounter2->setObjectName("linearAttackCounter2");
+        linearAttackCounter2->setGeometry(QRect(691, 570, 21, 21));
+        linearAttackCounter2->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);\n"
+"font: 10pt \"BYRIL_Sea_Battle2\";\n"
+"color: rgb(85, 85, 85);"));
+        linearAttackCounter2->setAlignment(Qt::AlignCenter);
+        atomicZone1 = new DraggableButton(DialogOnDevice);
+        atomicZone1->setObjectName("atomicZone1");
+        atomicZone1->setGeometry(QRect(150, 440, 160, 160));
+        atomicZone1->setStyleSheet(QString::fromUtf8("image: url(:/redBox.png);\n"
+"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
+        atomicZone2 = new DraggableButton(DialogOnDevice);
+        atomicZone2->setObjectName("atomicZone2");
+        atomicZone2->setGeometry(QRect(780, 440, 160, 160));
+        atomicZone2->setStyleSheet(QString::fromUtf8("image: url(:/redBox.png);\n"
+"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
+        trackerButton1_D = new DraggableButton(DialogOnDevice);
+        trackerButton1_D->setObjectName("trackerButton1_D");
+        trackerButton1_D->setGeometry(QRect(50, 510, 80, 80));
+        trackerButton1_D->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
+"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
+        trackerButton2_D = new DraggableButton(DialogOnDevice);
+        trackerButton2_D->setObjectName("trackerButton2_D");
+        trackerButton2_D->setGeometry(QRect(942, 510, 80, 80));
+        trackerButton2_D->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
+"background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
+        planeLabel1 = new QPushButton(DialogOnDevice);
+        planeLabel1->setObjectName("planeLabel1");
+        planeLabel1->setGeometry(QRect(20, 20, 101, 61));
+        planeLabel1->setStyleSheet(QString::fromUtf8("background-image: url(:/squareAttackFliped.png);"));
+        planeLabel2 = new QPushButton(DialogOnDevice);
+        planeLabel2->setObjectName("planeLabel2");
+        planeLabel2->setGeometry(QRect(890, 10, 101, 61));
+        planeLabel2->setStyleSheet(QString::fromUtf8("background-image: url(:/Recommended Source Files/Recommended Source Files/Images/square attack.png);"));
 
         retranslateUi(DialogOnDevice);
 
@@ -230,6 +344,24 @@ public:
         player2_table->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
         turnLabel->setText(QString());
+        trackerButton1->setText(QString());
+        trackerButton2->setText(QString());
+        tracker1_Counter->setText(QCoreApplication::translate("DialogOnDevice", "0", nullptr));
+        tracker2_Counter->setText(QCoreApplication::translate("DialogOnDevice", "0", nullptr));
+        atomicBomb1->setText(QString());
+        atomicBomb2->setText(QString());
+        AtomicBombCounter1->setText(QCoreApplication::translate("DialogOnDevice", "0", nullptr));
+        AtomicBombCounter2->setText(QCoreApplication::translate("DialogOnDevice", "0", nullptr));
+        linearAttack1->setText(QString());
+        linearAttackbutton2->setText(QString());
+        linearAttackCounter1->setText(QCoreApplication::translate("DialogOnDevice", "0", nullptr));
+        linearAttackCounter2->setText(QCoreApplication::translate("DialogOnDevice", "0", nullptr));
+        atomicZone1->setText(QString());
+        atomicZone2->setText(QString());
+        trackerButton1_D->setText(QString());
+        trackerButton2_D->setText(QString());
+        planeLabel1->setText(QString());
+        planeLabel2->setText(QString());
     } // retranslateUi
 
 };
