@@ -766,6 +766,17 @@ void DialogOnDevice::dropEvent(QDropEvent *event) {
                         }
                     }
                 }
+                turn++;
+                if (turn %2 == 0)
+                {
+                    ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                }
+                else
+                {
+                    ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                }
             }
             else
             {
@@ -793,18 +804,20 @@ void DialogOnDevice::dropEvent(QDropEvent *event) {
                         }
                     }
                 }
+                turn++;
+                if (turn %2 == 0)
+                {
+                    ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
+                                                 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                }
+                else
+                {
+                    ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
+                                                 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
+                }
             }
-            turn++;
-            if (turn %2 == 0)
-            {
-                ui->turnLabel->setStyleSheet("image:url(:/Recommended Source Files/Recommended Source Files/Images/flesh.png);"
-                                             "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
-            }
-            else
-            {
-                ui->turnLabel->setStyleSheet("image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);"
-                                             "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);");
-            }
+
+
 
 
         }
