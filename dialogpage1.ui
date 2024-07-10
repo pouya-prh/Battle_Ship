@@ -172,7 +172,7 @@ color: rgb(0, 0, 255);</string>
    <widget class="QLabel" name="drop_label">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>207</x>
       <y>55</y>
       <width>91</width>
       <height>31</height>

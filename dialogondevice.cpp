@@ -12,6 +12,7 @@ DialogOnDevice::DialogOnDevice(Arms player1, Arms player2,int** player1_cells,in
     : QDialog(parent)
     , ui(new Ui::DialogOnDevice)
 {
+
     ui->setupUi(this);
     setAcceptDrops(true);
     this->player1_cells = player1_cells;
@@ -1036,8 +1037,8 @@ void DialogOnDevice::WonOrLost()
         int point = std::stoi(line);
         User user(username,drop,point,level);
         playerAccount.close();
-        DialogWon* lostPage = new DialogWon(user,"player2");
-        lostPage->show();
+        DialogWon* WonPage = new DialogWon(user,"player2");
+        WonPage->show();
     }
     for (int i = 0 ; i < 10 ;i++)
     {

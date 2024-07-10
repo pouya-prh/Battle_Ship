@@ -220,7 +220,7 @@ public:
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
         trackerButton2 = new DraggableButton(DialogGameAI);
         trackerButton2->setObjectName("trackerButton2");
-        trackerButton2->setGeometry(QRect(50, 508, 80, 80));
+        trackerButton2->setGeometry(QRect(50, 510, 80, 80));
         trackerButton2->setStyleSheet(QString::fromUtf8("image: url(:/grinTracker.png);\n"
 "background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);"));
 

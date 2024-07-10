@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <QTimer>
 #include <fstream>
+#include "dialogchoose.h"
 DialogPage1::DialogPage1(User& user,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogPage1)
@@ -12,10 +13,10 @@ DialogPage1::DialogPage1(User& user,QWidget *parent)
     this->user = user;
     ui->setupUi(this);
     std::ofstream playerAccount ("playerAccount.txt" , std::ios::out);
-    playerAccount<<user.GetUsername().toStdString()<<std::endl;
-    playerAccount<<user.GetLevel()<<std::endl;
-    playerAccount<<user.GetDrop()<<std::endl;
-    playerAccount<<user.GetPoint()<<std::endl;
+    playerAccount<<this->user.GetUsername().toStdString()<<std::endl;
+    playerAccount<<this->user.GetLevel()<<std::endl;
+    playerAccount<<this->user.GetDrop()<<std::endl;
+    playerAccount<<this->user.GetPoint()<<std::endl;
     playerAccount.close();
     ui->wellcome_lable->hide();
     ui->WifiPushbutton->hide();
@@ -69,7 +70,9 @@ void DialogPage1::on_BotPushbutton_clicked()
 
 void DialogPage1::on_WifiPushbutton_clicked()
 {
-
+    //this->close();
+    DialogChoose* choose = new DialogChoose(user,this);
+    choose->show();
 }
 
 
