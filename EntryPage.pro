@@ -12,11 +12,16 @@ TEMPLATE = app
 # Source files
 SOURCES += \
     arms.cpp \
+    dialogchoose.cpp \
+    dialogclient.cpp \
+    dialogclientplay.cpp \
     dialoggameai.cpp \
     dialoggetarm.cpp \
     dialoglost.cpp \
     dialogondevice.cpp \
     dialogpage1.cpp \
+    dialogserver.cpp \
+    dialogserverplay.cpp \
     dialogsetgameboard.cpp \
     dialogwon.cpp \
     draggablebutton.cpp \
@@ -35,11 +40,16 @@ SOURCES += \
 # Header files
 HEADERS += \
     arms.h \
+    dialogchoose.h \
+    dialogclient.h \
+    dialogclientplay.h \
     dialoggameai.h \
     dialoggetarm.h \
     dialoglost.h \
     dialogondevice.h \
     dialogpage1.h \
+    dialogserver.h \
+    dialogserverplay.h \
     dialogsetgameboard.h \
     dialogwon.h \
     draggablebutton.h \
@@ -56,11 +66,16 @@ HEADERS += \
 
 # User interface files
 FORMS += \
+    dialogchoose.ui \
+    dialogclient.ui \
+    dialogclientplay.ui \
     dialoggameai.ui \
     dialoggetarm.ui \
     dialoglost.ui \
     dialogondevice.ui \
     dialogpage1.ui \
+    dialogserver.ui \
+    dialogserverplay.ui \
     dialogsetgameboard.ui \
     dialogwon.ui \
     mainwindow.ui \

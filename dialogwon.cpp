@@ -22,6 +22,7 @@ DialogWon::DialogWon(User& user , QString player , QWidget *parent)
     ,ui(new Ui::DialogWon)
 {
     ui->setupUi(this);
+    this->user = user;
     QMediaPlayer *musicPlayer = new QMediaPlayer();
     QAudioOutput *output = new QAudioOutput();
     musicPlayer->setAudioOutput(output);

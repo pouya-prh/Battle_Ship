@@ -89,7 +89,7 @@ public:
         point_label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         drop_label = new QLabel(widget);
         drop_label->setObjectName("drop_label");
-        drop_label->setGeometry(QRect(210, 55, 91, 31));
+        drop_label->setGeometry(QRect(207, 55, 91, 31));
         drop_label->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 0, 255);\n"
 "font: 15pt \"BYRIL_Sea_Battle2\";\n"
 "color: rgb(0, 0, 255);"));

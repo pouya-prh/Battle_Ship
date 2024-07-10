@@ -53,6 +53,12 @@ private:
     int botDestroyedShip31;
     int botDestroyedShip32;
     int botDestroyedShip4;
+    int userDestroyedShip21;
+    int userDestroyedShip22;
+    int userDestroyedShip23;
+    int userDestroyedShip31;
+    int userDestroyedShip32;
+    int userDestroyedShip4;
     int Drop;
 };
 

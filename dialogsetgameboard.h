@@ -3,7 +3,7 @@
 #include "gameboard.h"
 #include "arms.h"
 #include <QDialog>
-
+#include "dialogserver.h"
 namespace Ui {
 class DialogSetGameBoard;
 }
