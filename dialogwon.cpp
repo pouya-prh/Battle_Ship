@@ -17,7 +17,19 @@ DialogWon::DialogWon(User& user,QWidget *parent)
     musicPlayer->play();
     UpdateFile::updateFile(user);
 }
-
+DialogWon::DialogWon(User& user , QString player , QWidget *parent)
+    :QDialog(parent)
+    ,ui(new Ui::DialogWon)
+{
+    ui->setupUi(this);
+    QMediaPlayer *musicPlayer = new QMediaPlayer();
+    QAudioOutput *output = new QAudioOutput();
+    musicPlayer->setAudioOutput(output);
+    musicPlayer->setSource(QUrl("qrc:/Win.mp3"));
+    musicPlayer->play();
+    UpdateFile::updateFile(user);
+    ui->label->setText(player+" win");
+}
 DialogWon::~DialogWon()
 {
     delete ui;

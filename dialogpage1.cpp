@@ -4,12 +4,19 @@
 #include "dialoggetarm.h"
 #include <windows.h>
 #include <QTimer>
+#include <fstream>
 DialogPage1::DialogPage1(User& user,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogPage1)
 {
     this->user = user;
     ui->setupUi(this);
+    std::ofstream playerAccount ("playerAccount.txt" , std::ios::out);
+    playerAccount<<user.GetUsername().toStdString()<<std::endl;
+    playerAccount<<user.GetLevel()<<std::endl;
+    playerAccount<<user.GetDrop()<<std::endl;
+    playerAccount<<user.GetPoint()<<std::endl;
+    playerAccount.close();
     ui->wellcome_lable->hide();
     ui->WifiPushbutton->hide();
     ui->BotPushbutton->hide();
