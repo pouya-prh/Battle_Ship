@@ -1024,10 +1024,19 @@ void DialogOnDevice::WonOrLost()
     if (player2Won)
     {
         this->close();
-        std::ifstream playerAccount("playerAccount.bin",std::ios::in);
-        User user;
-        playerAccount.read(reinterpret_cast<char*>(&user),sizeof(user));
-        DialogWon* lostPage = new DialogWon(user);
+        std::ifstream playerAccount("playerAccount.txt",std::ios::in);
+        std::string line;
+        std::getline(playerAccount, line);
+        QString username = QString::fromStdString(line) ;
+        std::getline(playerAccount,line);
+        int level = std::stoi(line);
+        std::getline(playerAccount,line);
+        int drop = std::stoi(line);
+        std::getline(playerAccount,line);
+        int point = std::stoi(line);
+        User user(username,drop,point,level);
+        playerAccount.close();
+        DialogWon* lostPage = new DialogWon(user,"player2");
         lostPage->show();
     }
     for (int i = 0 ; i < 10 ;i++)
@@ -1052,11 +1061,20 @@ void DialogOnDevice::WonOrLost()
     if (player1Won)
     {
         this->close();
-        std::ifstream playerAccount("playerAccount.bin",std::ios::in);
-        User user;
-        playerAccount.read(reinterpret_cast<char*>(&user),sizeof(user));
+        std::ifstream playerAccount("playerAccount.txt",std::ios::in);
+        std::string line;
+        std::getline(playerAccount, line);
+        QString username = QString::fromStdString(line) ;
+        std::getline(playerAccount,line);
+        int level = std::stoi(line);
+        std::getline(playerAccount,line);
+        int drop = std::stoi(line);
+        std::getline(playerAccount,line);
+        int point = std::stoi(line);
+        User user(username,drop,point,level);
+        playerAccount.close();
         this->close();
-        DialogWon* wonPage = new DialogWon(user);
+        DialogWon* wonPage = new DialogWon(user,"player1");
         wonPage->show();
     }
 }

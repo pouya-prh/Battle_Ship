@@ -13,6 +13,7 @@ class DialogWon : public QDialog
 
 public:
     explicit DialogWon(User&,QWidget *parent = nullptr);
+    DialogWon(User&,QString,QWidget *parent = nullptr);
     ~DialogWon();
 
 private slots:

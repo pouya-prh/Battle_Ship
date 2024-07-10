@@ -238,14 +238,12 @@ void DialogSetGameBoard::on_nextButton_clicked()
     int** cells = ui->tableWidget->returnCells();
     if(which == 1)
     {
+
         DialogGameAI* Game = new DialogGameAI(user,arms,cells);
         Game->show();
     }
     else if (which == 3)
     {
-        std::ofstream playerAccount ("playerAccount.bin" , std::ios::binary);
-        playerAccount.write(reinterpret_cast<const char*>(&user),sizeof(user));
-        playerAccount.close();
         std::fstream file ("OnDevice.json",std::ios::out);
         json data;
         data["airDefenseCounter"] = arms.getAirDefanceCount();
