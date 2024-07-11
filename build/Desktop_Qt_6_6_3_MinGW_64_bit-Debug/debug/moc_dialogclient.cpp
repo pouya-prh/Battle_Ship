@@ -41,10 +41,10 @@ constexpr auto qt_meta_stringdata_CLASSDialogClientENDCLASS = QtMocHelpers::stri
     "DialogClient",
     "ClientMoved",
     "",
+    "CoordinatesRecievedFromServer",
     "ArrayRecievedFromServer",
     "int**",
     "onConnected",
-    "sendCoordinatesToServer",
     "send2DArrayToServer",
     "on_ConnectButton_clicked",
     "SetClientBoard"
@@ -55,10 +55,10 @@ struct qt_meta_stringdata_CLASSDialogClientENDCLASS_t {
     char stringdata0[13];
     char stringdata1[12];
     char stringdata2[1];
-    char stringdata3[24];
-    char stringdata4[6];
-    char stringdata5[12];
-    char stringdata6[24];
+    char stringdata3[30];
+    char stringdata4[24];
+    char stringdata5[6];
+    char stringdata6[12];
     char stringdata7[20];
     char stringdata8[25];
     char stringdata9[15];
@@ -70,21 +70,21 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogClientENDCLASS_t qt_meta_
         QT_MOC_LITERAL(0, 12),  // "DialogClient"
         QT_MOC_LITERAL(13, 11),  // "ClientMoved"
         QT_MOC_LITERAL(25, 0),  // ""
-        QT_MOC_LITERAL(26, 23),  // "ArrayRecievedFromServer"
-        QT_MOC_LITERAL(50, 5),  // "int**"
-        QT_MOC_LITERAL(56, 11),  // "onConnected"
-        QT_MOC_LITERAL(68, 23),  // "sendCoordinatesToServer"
-        QT_MOC_LITERAL(92, 19),  // "send2DArrayToServer"
-        QT_MOC_LITERAL(112, 24),  // "on_ConnectButton_clicked"
-        QT_MOC_LITERAL(137, 14)   // "SetClientBoard"
+        QT_MOC_LITERAL(26, 29),  // "CoordinatesRecievedFromServer"
+        QT_MOC_LITERAL(56, 23),  // "ArrayRecievedFromServer"
+        QT_MOC_LITERAL(80, 5),  // "int**"
+        QT_MOC_LITERAL(86, 11),  // "onConnected"
+        QT_MOC_LITERAL(98, 19),  // "send2DArrayToServer"
+        QT_MOC_LITERAL(118, 24),  // "on_ConnectButton_clicked"
+        QT_MOC_LITERAL(143, 14)   // "SetClientBoard"
     },
     "DialogClient",
     "ClientMoved",
     "",
+    "CoordinatesRecievedFromServer",
     "ArrayRecievedFromServer",
     "int**",
     "onConnected",
-    "sendCoordinatesToServer",
     "send2DArrayToServer",
     "on_ConnectButton_clicked",
     "SetClientBoard"
@@ -104,29 +104,29 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogClientENDCLASS[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
        1,    0,   56,    2, 0x06,    1 /* Public */,
-       3,    1,   57,    2, 0x06,    2 /* Public */,
+       3,    2,   57,    2, 0x06,    2 /* Public */,
+       4,    1,   62,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   60,    2, 0x08,    4 /* Private */,
-       6,    2,   61,    2, 0x08,    5 /* Private */,
+       6,    0,   65,    2, 0x08,    7 /* Private */,
        7,    3,   66,    2, 0x08,    8 /* Private */,
        8,    0,   73,    2, 0x08,   12 /* Private */,
        9,    1,   74,    2, 0x08,   13 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
+    QMetaType::Void, 0x80000000 | 5,    2,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
-    QMetaType::Void, 0x80000000 | 4, QMetaType::Int, QMetaType::Int,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 5, QMetaType::Int, QMetaType::Int,    2,    2,    2,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 5,    2,
 
        0        // eod
 };
@@ -142,15 +142,15 @@ Q_CONSTINIT const QMetaObject DialogClient::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<DialogClient, std::true_type>,
         // method 'ClientMoved'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'CoordinatesRecievedFromServer'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'ArrayRecievedFromServer'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int * *, std::false_type>,
         // method 'onConnected'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'sendCoordinatesToServer'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'send2DArrayToServer'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int * *, std::false_type>,
@@ -172,9 +172,9 @@ void DialogClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         (void)_t;
         switch (_id) {
         case 0: _t->ClientMoved(); break;
-        case 1: _t->ArrayRecievedFromServer((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
-        case 2: _t->onConnected(); break;
-        case 3: _t->sendCoordinatesToServer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 1: _t->CoordinatesRecievedFromServer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 2: _t->ArrayRecievedFromServer((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
+        case 3: _t->onConnected(); break;
         case 4: _t->send2DArrayToServer((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
         case 5: _t->on_ConnectButton_clicked(); break;
         case 6: _t->SetClientBoard((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
@@ -190,9 +190,16 @@ void DialogClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
         {
+            using _t = void (DialogClient::*)(int , int );
+            if (_t _q_method = &DialogClient::CoordinatesRecievedFromServer; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
+                return;
+            }
+        }
+        {
             using _t = void (DialogClient::*)(int * * );
             if (_t _q_method = &DialogClient::ArrayRecievedFromServer; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 1;
+                *result = 2;
                 return;
             }
         }
@@ -236,9 +243,16 @@ void DialogClient::ClientMoved()
 }
 
 // SIGNAL 1
+void DialogClient::CoordinatesRecievedFromServer(int _t1, int _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
 void DialogClient::ArrayRecievedFromServer(int * * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP

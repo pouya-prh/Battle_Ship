@@ -19,12 +19,15 @@ public:
     void DisplayClientBoard();
 private slots:
     void DisplayServerBoard(int** clientBoard);
+    void AttackToClient(int,int);
+    void AttackToServer(int,int);
 private:
     Ui::DialogClientPlay *ui;
     DialogClient* socket;
     User user;
     Arms arms;
     int** ClientBoard;
+    int** ServerBoard;
 };
 
 #endif // DIALOGCLIENTPLAY_H

@@ -17,14 +17,18 @@ public:
     explicit DialogServerPlay(DialogServer*,User,Arms,int**,QWidget *parent = nullptr);
     ~DialogServerPlay();
     void DisplayServerBoard();
+
 private slots:
     void DisplayClientBoard(int** clientBoard);
+    void AttackToClient(int,int);
+    void AttackToServer(int,int);
 private:
     Ui::DialogServerPlay *ui;
     DialogServer* Server;
     User user;
     Arms arms;
     int** ServerBoard;
+    int** ClientBoard;
 };
 
 #endif // DIALOGSERVERPLAY_H

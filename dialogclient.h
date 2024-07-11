@@ -16,18 +16,16 @@ public:
     explicit DialogClient(User,QWidget *parent = nullptr);
     //DialogClient(QWidget *parent = nullptr);
     ~DialogClient();
-    QByteArray serialize2DArray(int**,int,int);
-    int** deserialize2DArray(const QByteArray&, int&, int&);
     void readServerData() ;
-    int* handleCoordinatesRecievedFromServer(int,int);
+    void sendCoordinatesToServer(int,int);
 private slots:
     void onConnected();
-    void sendCoordinatesToServer(int,int);
     void send2DArrayToServer(int**,int,int);
     void on_ConnectButton_clicked();
     void SetClientBoard(int**);
 signals:
     void ClientMoved();
+    void CoordinatesRecievedFromServer(int,int);
     void ArrayRecievedFromServer(int**);
 private:
     Ui::DialogClient *ui;

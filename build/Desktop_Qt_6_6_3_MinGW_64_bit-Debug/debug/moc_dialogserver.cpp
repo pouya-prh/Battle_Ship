@@ -46,14 +46,13 @@ constexpr auto qt_meta_stringdata_CLASSDialogServerENDCLASS = QtMocHelpers::stri
     "RecievedDataFromClient",
     "ServerMoved",
     "onNewConnection",
-    "sendCoordinatesToClient",
     "send2DArrayToClient",
     "SetServerBoard",
     "readClientData"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDialogServerENDCLASS_t {
-    uint offsetsAndSizes[24];
+    uint offsetsAndSizes[22];
     char stringdata0[13];
     char stringdata1[30];
     char stringdata2[1];
@@ -62,10 +61,9 @@ struct qt_meta_stringdata_CLASSDialogServerENDCLASS_t {
     char stringdata5[23];
     char stringdata6[12];
     char stringdata7[16];
-    char stringdata8[24];
-    char stringdata9[20];
+    char stringdata8[20];
+    char stringdata9[15];
     char stringdata10[15];
-    char stringdata11[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDialogServerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -79,10 +77,9 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogServerENDCLASS_t qt_meta_
         QT_MOC_LITERAL(74, 22),  // "RecievedDataFromClient"
         QT_MOC_LITERAL(97, 11),  // "ServerMoved"
         QT_MOC_LITERAL(109, 15),  // "onNewConnection"
-        QT_MOC_LITERAL(125, 23),  // "sendCoordinatesToClient"
-        QT_MOC_LITERAL(149, 19),  // "send2DArrayToClient"
-        QT_MOC_LITERAL(169, 14),  // "SetServerBoard"
-        QT_MOC_LITERAL(184, 14)   // "readClientData"
+        QT_MOC_LITERAL(125, 19),  // "send2DArrayToClient"
+        QT_MOC_LITERAL(145, 14),  // "SetServerBoard"
+        QT_MOC_LITERAL(160, 14)   // "readClientData"
     },
     "DialogServer",
     "coordinatesReceivedFromServer",
@@ -92,7 +89,6 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogServerENDCLASS_t qt_meta_
     "RecievedDataFromClient",
     "ServerMoved",
     "onNewConnection",
-    "sendCoordinatesToClient",
     "send2DArrayToClient",
     "SetServerBoard",
     "readClientData"
@@ -107,7 +103,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogServerENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -115,17 +111,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogServerENDCLASS[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   68,    2, 0x06,    1 /* Public */,
-       3,    1,   73,    2, 0x06,    4 /* Public */,
-       5,    0,   76,    2, 0x06,    6 /* Public */,
-       6,    0,   77,    2, 0x06,    7 /* Public */,
+       1,    2,   62,    2, 0x06,    1 /* Public */,
+       3,    1,   67,    2, 0x06,    4 /* Public */,
+       5,    0,   70,    2, 0x06,    6 /* Public */,
+       6,    0,   71,    2, 0x06,    7 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       7,    0,   78,    2, 0x08,    8 /* Private */,
-       8,    2,   79,    2, 0x08,    9 /* Private */,
-       9,    3,   84,    2, 0x08,   12 /* Private */,
-      10,    1,   91,    2, 0x08,   16 /* Private */,
-      11,    0,   94,    2, 0x08,   18 /* Private */,
+       7,    0,   72,    2, 0x08,    8 /* Private */,
+       8,    3,   73,    2, 0x08,    9 /* Private */,
+       9,    1,   80,    2, 0x08,   13 /* Private */,
+      10,    0,   83,    2, 0x08,   15 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -135,7 +130,6 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogServerENDCLASS[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
     QMetaType::Void, 0x80000000 | 4, QMetaType::Int, QMetaType::Int,    2,    2,    2,
     QMetaType::Void, 0x80000000 | 4,    2,
     QMetaType::Void,
@@ -165,10 +159,6 @@ Q_CONSTINIT const QMetaObject DialogServer::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onNewConnection'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'sendCoordinatesToClient'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'send2DArrayToClient'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int * *, std::false_type>,
@@ -194,10 +184,9 @@ void DialogServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 2: _t->RecievedDataFromClient(); break;
         case 3: _t->ServerMoved(); break;
         case 4: _t->onNewConnection(); break;
-        case 5: _t->sendCoordinatesToClient((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 6: _t->send2DArrayToClient((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
-        case 7: _t->SetServerBoard((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
-        case 8: _t->readClientData(); break;
+        case 5: _t->send2DArrayToClient((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
+        case 6: _t->SetServerBoard((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
+        case 7: _t->readClientData(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -252,13 +241,13 @@ int DialogServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 8;
     }
     return _id;
 }

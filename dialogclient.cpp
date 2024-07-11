@@ -53,35 +53,14 @@ void DialogClient::sendCoordinatesToServer(int row, int column)
 
 void DialogClient::SetClientBoard(int** cells)
 {
+    connect(socket,&QTcpSocket::readyRead,this,&DialogClient::readServerData);
     ClientBoard = cells;
+    send2DArrayToServer(ClientBoard,10,10);
     DialogClientPlay* gamePage = new DialogClientPlay(this,user,arms,ClientBoard);
+    gamePage->setWindowTitle("Client");
     gamePage->show();
 }
 
-QByteArray DialogClient::serialize2DArray(int** array, int rows, int columns) {
-    QByteArray byteArray;
-    QDataStream out(&byteArray, QIODevice::WriteOnly);
-    out << rows << columns;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < columns; ++j) {
-            out << array[i][j];
-        }
-    }
-    return byteArray;
-}
-
-int** DialogClient::deserialize2DArray(const QByteArray& byteArray, int& rows, int& columns) {
-    QDataStream in(byteArray);
-    in >> rows >> columns;
-    int** array = new int*[rows];
-    for (int i = 0; i < rows; ++i) {
-        array[i] = new int[columns];
-        for (int j = 0; j < columns; ++j) {
-            in >> array[i][j];
-        }
-    }
-    return array;
-}
 void DialogClient::send2DArrayToServer(int** array, int rows, int columns) {
     if (!socket) {
         qDebug() << "No client connected";
@@ -100,7 +79,7 @@ void DialogClient::send2DArrayToServer(int** array, int rows, int columns) {
 }
 
 void DialogClient::readServerData() {
-    if (socket->bytesAvailable() < sizeof(int)) {
+    if (!socket) {
         return; // Wait until enough data is available
     }
     QDataStream in(socket);
@@ -124,16 +103,9 @@ void DialogClient::readServerData() {
         // Read coordinates data
         int row, column;
         in >> row >> column;
-        handleCoordinatesRecievedFromServer(row,column);
+        emit CoordinatesRecievedFromServer(row,column);
     } else {
         // Unknown data type
         qDebug() << "Unknown data type received";
     }
-}
-int* DialogClient::handleCoordinatesRecievedFromServer(int row,int column)
-{
-    int* coordinates = new int[2];
-    coordinates[0] = row;
-    coordinates[1] = column;
-    return coordinates;
 }
