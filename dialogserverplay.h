@@ -17,6 +17,7 @@ public:
     explicit DialogServerPlay(DialogServer*,User,Arms,int**,QWidget *parent = nullptr);
     ~DialogServerPlay();
     void DisplayServerBoard();
+    void makeEmptyAround(int** cells,int value);
 
 private slots:
     void DisplayClientBoard(int** clientBoard);
@@ -29,6 +30,25 @@ private:
     Arms arms;
     int** ServerBoard;
     int** ClientBoard;
+    bool turn;
+    int ClientShip11;
+    int ClientShip12;
+    int ClientShip13;
+    int ClientShip21;
+    int ClientShip22;
+    int ClientShip23;
+    int ClientShip31;
+    int ClientShip32;
+    int ClientShip41;
+    int ServerShip11;
+    int ServerShip12;
+    int ServerShip13;
+    int ServerShip21;
+    int ServerShip22;
+    int ServerShip23;
+    int ServerShip31;
+    int ServerShip32;
+    int ServerShip41;
 };
 
 #endif // DIALOGSERVERPLAY_H

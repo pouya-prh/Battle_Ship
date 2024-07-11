@@ -32,7 +32,10 @@ void DialogClient::onConnected()
             });
 
 }
-
+int** DialogClient::returnServerGameBoard()
+{
+    return ServerGameBoard;
+}
 void DialogClient::on_ConnectButton_clicked()
 {
     QString ip = ui->IP_lineEdit->text();
@@ -97,6 +100,7 @@ void DialogClient::readServerData() {
                 in >> array[i][j];
             }
         }
+        ServerGameBoard = array;
         emit ArrayRecievedFromServer(array);
     }
     else if (dataType == 2) {
