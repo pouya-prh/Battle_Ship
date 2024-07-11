@@ -32,7 +32,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="GameBoard" name="Client_TableWidget">
+  <widget class="GameBoard" name="Server_tableWidget">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -224,7 +224,7 @@ gridline-color: rgb(48, 165, 255);</string>
     <string/>
    </property>
   </widget>
-  <widget class="GameBoard" name="Server_tableWidget">
+  <widget class="GameBoard" name="Client_TableWidget">
    <property name="enabled">
     <bool>true</bool>
    </property>

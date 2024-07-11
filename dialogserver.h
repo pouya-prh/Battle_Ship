@@ -22,7 +22,6 @@ public:
     ~DialogServer();
     void Connected();
     QString getSystemIpAddress();
-    int** handleArrayRecievedFromClient(int**);
     void handleCoordinatesRecievedFromClient(int row, int column);
     void play(User,Arms,int**);
     QByteArray serialize2DArray(int**,int,int);
@@ -38,7 +37,8 @@ private slots:
     void readClientData();
 signals:
     void coordinatesReceivedFromServer(int,int);
-    void cellClicked(int row, int column);
+    void ArrayRecievedFromClient(int**);
+    void RecievedDataFromClient();
     void ServerMoved();
 private:
     Ui::DialogServer *ui;

@@ -19,7 +19,6 @@ public:
     QByteArray serialize2DArray(int**,int,int);
     int** deserialize2DArray(const QByteArray&, int&, int&);
     void readServerData() ;
-    int** handleArrayRecievedFromServer(int**);
     int* handleCoordinatesRecievedFromServer(int,int);
 private slots:
     void onConnected();
@@ -29,6 +28,7 @@ private slots:
     void SetClientBoard(int**);
 signals:
     void ClientMoved();
+    void ArrayRecievedFromServer(int**);
 private:
     Ui::DialogClient *ui;
     QTcpSocket *socket;

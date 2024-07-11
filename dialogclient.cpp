@@ -118,7 +118,7 @@ void DialogClient::readServerData() {
                 in >> array[i][j];
             }
         }
-        handleArrayRecievedFromServer(array);
+        emit ArrayRecievedFromServer(array);
     }
     else if (dataType == 2) {
         // Read coordinates data
@@ -129,10 +129,6 @@ void DialogClient::readServerData() {
         // Unknown data type
         qDebug() << "Unknown data type received";
     }
-}
-int** DialogClient::handleArrayRecievedFromServer(int** cells)
-{
-    return cells;
 }
 int* DialogClient::handleCoordinatesRecievedFromServer(int row,int column)
 {
