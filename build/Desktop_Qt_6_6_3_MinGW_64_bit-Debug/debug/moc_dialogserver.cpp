@@ -39,7 +39,7 @@ namespace {
 struct qt_meta_stringdata_CLASSDialogServerENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSDialogServerENDCLASS = QtMocHelpers::stringData(
     "DialogServer",
-    "coordinatesReceivedFromServer",
+    "coordinatesReceivedFromClient",
     "",
     "ArrayRecievedFromClient",
     "int**",
@@ -70,7 +70,7 @@ struct qt_meta_stringdata_CLASSDialogServerENDCLASS_t {
 Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogServerENDCLASS_t qt_meta_stringdata_CLASSDialogServerENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "DialogServer"
-        QT_MOC_LITERAL(13, 29),  // "coordinatesReceivedFromServer"
+        QT_MOC_LITERAL(13, 29),  // "coordinatesReceivedFromClient"
         QT_MOC_LITERAL(43, 0),  // ""
         QT_MOC_LITERAL(44, 23),  // "ArrayRecievedFromClient"
         QT_MOC_LITERAL(68, 5),  // "int**"
@@ -82,7 +82,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogServerENDCLASS_t qt_meta_
         QT_MOC_LITERAL(160, 14)   // "readClientData"
     },
     "DialogServer",
-    "coordinatesReceivedFromServer",
+    "coordinatesReceivedFromClient",
     "",
     "ArrayRecievedFromClient",
     "int**",
@@ -146,7 +146,7 @@ Q_CONSTINIT const QMetaObject DialogServer::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSDialogServerENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<DialogServer, std::true_type>,
-        // method 'coordinatesReceivedFromServer'
+        // method 'coordinatesReceivedFromClient'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
@@ -179,7 +179,7 @@ void DialogServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<DialogServer *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->coordinatesReceivedFromServer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 0: _t->coordinatesReceivedFromClient((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 1: _t->ArrayRecievedFromClient((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
         case 2: _t->RecievedDataFromClient(); break;
         case 3: _t->ServerMoved(); break;
@@ -193,7 +193,7 @@ void DialogServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (DialogServer::*)(int , int );
-            if (_t _q_method = &DialogServer::coordinatesReceivedFromServer; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+            if (_t _q_method = &DialogServer::coordinatesReceivedFromClient; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
@@ -253,7 +253,7 @@ int DialogServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void DialogServer::coordinatesReceivedFromServer(int _t1, int _t2)
+void DialogServer::coordinatesReceivedFromClient(int _t1, int _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

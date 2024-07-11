@@ -15,7 +15,7 @@ DialogServer::DialogServer(User user,QWidget *parent)
     ui->IP_label->setText("IP: " + getSystemIpAddress());
     server->listen(QHostAddress::Any,12345);
     connect(server, &QTcpServer::newConnection, this, &DialogServer::onNewConnection);
-
+    connect(socket,&QTcpSocket::readyRead,this,&DialogServer::readClientData);
     if (!server->listen(QHostAddress::Any, 12345)) {
         qDebug() << "Server could not start!";
     } else {
@@ -76,6 +76,10 @@ void DialogServer::sendCoordinatesToClient(int row, int column)
     out << row << column;
     socket->write(block);
 }
+int** DialogServer::returnClientGameBoard()
+{
+    return ClientGameBoard;
+}
 void DialogServer::readClientData()
 {
     if (socket->bytesAvailable() < sizeof(int)) {
@@ -96,7 +100,7 @@ void DialogServer::readClientData()
                 in >> array[i][j];
             }
         }
-        emit ArrayRecievedFromClient(array);
+        ClientGameBoard = array;
     }
     else if (dataType == 2) {
         // Read coordinates data
@@ -112,7 +116,7 @@ void DialogServer::readClientData()
 void DialogServer::handleCoordinatesRecievedFromClient(int row, int column)
 {
     // Push coordinates to DialogPlaytogether instance or emit a signal
-    emit coordinatesReceivedFromServer(row, column);
+    emit coordinatesReceivedFromClient(row, column);
 }
 
 

@@ -25,14 +25,14 @@ public:
     void handleCoordinatesRecievedFromClient(int row, int column);
     void play(User,Arms,int**);
     void sendCoordinatesToClient(int,int);
-
+    int** returnClientGameBoard();
 private slots:
     void onNewConnection();
     void send2DArrayToClient(int**,int,int);
     void SetServerBoard(int**);
     void readClientData();
 signals:
-    void coordinatesReceivedFromServer(int,int);
+    void coordinatesReceivedFromClient(int,int);
     void ArrayRecievedFromClient(int**);
     void RecievedDataFromClient();
     void ServerMoved();
@@ -43,6 +43,7 @@ private:
     User user;
     Arms arms;
     int** serverGameBoard;
+    int** ClientGameBoard;
     //DialogClient Client;
 
 };

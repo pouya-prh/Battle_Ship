@@ -18,6 +18,7 @@ public:
     ~DialogClient();
     void readServerData() ;
     void sendCoordinatesToServer(int,int);
+    int** returnServerGameBoard();
 private slots:
     void onConnected();
     void send2DArrayToServer(int**,int,int);
@@ -33,6 +34,7 @@ private:
     User user;
     Arms arms;
     int** ClientBoard;
+    int** ServerGameBoard;
     //DialogServer Server;
 };
 
