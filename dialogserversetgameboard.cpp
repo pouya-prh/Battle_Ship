@@ -116,10 +116,15 @@ void DialogServerSetGameBoard::dropEvent(QDropEvent *event) {
             shipSize = 0;
             shipKind = 7;
         }
-        else
+        else if (event->source() == ui->airDefance1 || event->source() == ui->airDefance2)
         {
             shipSize = 0 ;
             shipKind = 8;
+        }
+        else
+        {
+            shipSize = 0;
+            shipKind = 0;
         }
 
         QPoint initialPosition = sourceButton->pos();

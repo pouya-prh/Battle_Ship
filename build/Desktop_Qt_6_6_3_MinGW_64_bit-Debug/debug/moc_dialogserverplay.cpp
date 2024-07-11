@@ -42,16 +42,20 @@ constexpr auto qt_meta_stringdata_CLASSDialogServerPlayENDCLASS = QtMocHelpers::
     "DisplayClientBoard",
     "",
     "int**",
-    "clientBoard"
+    "clientBoard",
+    "AttackToClient",
+    "AttackToServer"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDialogServerPlayENDCLASS_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[14];
     char stringdata0[17];
     char stringdata1[19];
     char stringdata2[1];
     char stringdata3[6];
     char stringdata4[12];
+    char stringdata5[15];
+    char stringdata6[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDialogServerPlayENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -61,13 +65,17 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDialogServerPlayENDCLASS_t qt_m
         QT_MOC_LITERAL(17, 18),  // "DisplayClientBoard"
         QT_MOC_LITERAL(36, 0),  // ""
         QT_MOC_LITERAL(37, 5),  // "int**"
-        QT_MOC_LITERAL(43, 11)   // "clientBoard"
+        QT_MOC_LITERAL(43, 11),  // "clientBoard"
+        QT_MOC_LITERAL(55, 14),  // "AttackToClient"
+        QT_MOC_LITERAL(70, 14)   // "AttackToServer"
     },
     "DialogServerPlay",
     "DisplayClientBoard",
     "",
     "int**",
-    "clientBoard"
+    "clientBoard",
+    "AttackToClient",
+    "AttackToServer"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -79,7 +87,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogServerPlayENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,10 +95,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDialogServerPlayENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x08,    1 /* Private */,
+       1,    1,   32,    2, 0x08,    1 /* Private */,
+       5,    2,   35,    2, 0x08,    3 /* Private */,
+       6,    2,   40,    2, 0x08,    6 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
 
        0        // eod
 };
@@ -106,7 +118,15 @@ Q_CONSTINIT const QMetaObject DialogServerPlay::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<DialogServerPlay, std::true_type>,
         // method 'DisplayClientBoard'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int * *, std::false_type>
+        QtPrivate::TypeAndForceComplete<int * *, std::false_type>,
+        // method 'AttackToClient'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'AttackToServer'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -118,6 +138,8 @@ void DialogServerPlay::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         (void)_t;
         switch (_id) {
         case 0: _t->DisplayClientBoard((*reinterpret_cast< std::add_pointer_t<int**>>(_a[1]))); break;
+        case 1: _t->AttackToClient((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 2: _t->AttackToServer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
         }
     }
@@ -142,13 +164,13 @@ int DialogServerPlay::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }

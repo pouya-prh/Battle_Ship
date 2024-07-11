@@ -24,14 +24,10 @@ public:
     QString getSystemIpAddress();
     void handleCoordinatesRecievedFromClient(int row, int column);
     void play(User,Arms,int**);
-    QByteArray serialize2DArray(int**,int,int);
-    int** deserialize2DArray(const QByteArray&, int&, int&);
-
-    int** ReadArray();
+    void sendCoordinatesToClient(int,int);
 
 private slots:
     void onNewConnection();
-    void sendCoordinatesToClient(int,int);
     void send2DArrayToClient(int**,int,int);
     void SetServerBoard(int**);
     void readClientData();

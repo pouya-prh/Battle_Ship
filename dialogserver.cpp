@@ -57,7 +57,9 @@ void DialogServer::Connected()
 void DialogServer::SetServerBoard(int** cells)
 {
     serverGameBoard = cells;
+    send2DArrayToClient(serverGameBoard,10,10);
     DialogServerPlay* gamePage = new DialogServerPlay(this,user,arms,serverGameBoard);
+    gamePage->setWindowTitle("Server");
     gamePage->show();
   //  connect(Client,&DialogClient::ClientMoved,this,&DialogServer::readClientData);
 
@@ -128,30 +130,6 @@ QString DialogServer::getSystemIpAddress()
     return QString();
 }
 
-QByteArray DialogServer::serialize2DArray(int** array, int rows, int columns) {
-    QByteArray byteArray;
-    QDataStream out(&byteArray, QIODevice::WriteOnly);
-    out << rows << columns;
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < columns; ++j) {
-            out << array[i][j];
-        }
-    }
-    return byteArray;
-}
-
-int** DialogServer::deserialize2DArray(const QByteArray& byteArray, int& rows, int& columns) {
-    QDataStream in(byteArray);
-    in >> rows >> columns;
-    int** array = new int*[rows];
-    for (int i = 0; i < rows; ++i) {
-        array[i] = new int[columns];
-        for (int j = 0; j < columns; ++j) {
-            in >> array[i][j];
-        }
-    }
-    return array;
-}
 void DialogServer::send2DArrayToClient(int** array, int rows, int columns) {
     if (!socket) {
         qDebug() << "No client connected";
@@ -167,11 +145,4 @@ void DialogServer::send2DArrayToClient(int** array, int rows, int columns) {
         }
     }
     socket->write(block);
-}
-
-int** DialogServer::ReadArray() {
-    QByteArray data = socket->readAll();
-    int rows, columns;
-    int** array = deserialize2DArray(data, rows, columns);
-    return array;
 }
