@@ -6,8 +6,7 @@
 #include "dialogondevice.h"
 #include <fstream>
 #include "json.hpp"
-#include "dialogserverplay.h"
-#include "dialogclientplay.h"
+
 using json = nlohmann::json;
 DialogSetGameBoard::DialogSetGameBoard(User& user,Arms& arms,int which,QWidget *parent)
     : QDialog(parent)
@@ -288,16 +287,6 @@ void DialogSetGameBoard::on_nextButton_clicked()
         this->close();
         DialogOnDevice* onDevicePage = new DialogOnDevice(player1_arms,arms,array,cells);
         onDevicePage->show();
-    }
-    else if (which == 21)
-    {
-        DialogServerPlay* playPage = new DialogServerPlay(user,arms,cells);
-        playPage->show();
-    }
-    else if (which == 22)
-    {
-        DialogClientPlay *playPage = new DialogClientPlay(user,arms,cells);
-        playPage->show();
     }
 
 }
