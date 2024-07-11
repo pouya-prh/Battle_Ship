@@ -18,6 +18,7 @@ public:
     ~DialogServerPlay();
     void DisplayServerBoard();
     void makeEmptyAround(int** cells,int value);
+    void WonOrLost();
 
 private slots:
     void DisplayClientBoard(int** clientBoard);
