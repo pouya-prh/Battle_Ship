@@ -16,7 +16,9 @@ class DialogClientPlay : public QDialog
 public:
     explicit DialogClientPlay(DialogClient*,User,Arms,int**,QWidget *parent = nullptr);
     ~DialogClientPlay();
-
+    void DisplayClientBoard();
+private slots:
+    void DisplayServerBoard(int** clientBoard);
 private:
     Ui::DialogClientPlay *ui;
     DialogClient* socket;

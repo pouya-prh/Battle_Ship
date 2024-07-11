@@ -16,7 +16,9 @@ class DialogServerPlay : public QDialog
 public:
     explicit DialogServerPlay(DialogServer*,User,Arms,int**,QWidget *parent = nullptr);
     ~DialogServerPlay();
-
+    void DisplayServerBoard();
+private slots:
+    void DisplayClientBoard(int** clientBoard);
 private:
     Ui::DialogServerPlay *ui;
     DialogServer* Server;

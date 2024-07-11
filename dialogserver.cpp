@@ -94,7 +94,7 @@ void DialogServer::readClientData()
                 in >> array[i][j];
             }
         }
-        handleArrayRecievedFromClient(array);
+        emit ArrayRecievedFromClient(array);
     }
     else if (dataType == 2) {
         // Read coordinates data
@@ -113,10 +113,6 @@ void DialogServer::handleCoordinatesRecievedFromClient(int row, int column)
     emit coordinatesReceivedFromServer(row, column);
 }
 
-int** DialogServer::handleArrayRecievedFromClient(int** cells)
-{
-    return cells;
-}
 
 
 QString DialogServer::getSystemIpAddress()
