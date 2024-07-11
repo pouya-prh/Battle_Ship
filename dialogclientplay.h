@@ -1,8 +1,10 @@
 #ifndef DIALOGCLIENTPLAY_H
 #define DIALOGCLIENTPLAY_H
 #include "user.h"
-#include <QDialog>
 #include "arms.h"
+#include "dialogclient.h"
+#include <QDialog>
+
 namespace Ui {
 class DialogClientPlay;
 }
@@ -12,17 +14,15 @@ class DialogClientPlay : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogClientPlay(User,Arms,int**,QWidget *parent = nullptr);
-    DialogClientPlay(QWidget *parent = nullptr);
+    explicit DialogClientPlay(DialogClient*,User,Arms,int**,QWidget *parent = nullptr);
     ~DialogClientPlay();
-    void DisplayClientCells();
-
 
 private:
     Ui::DialogClientPlay *ui;
+    DialogClient* socket;
     User user;
-    Arms Client_Arms;
-    int** Client_Cells;
+    Arms arms;
+    int** ClientBoard;
 };
 
 #endif // DIALOGCLIENTPLAY_H

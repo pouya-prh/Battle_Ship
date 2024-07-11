@@ -7,7 +7,7 @@ DialogGetArm::DialogGetArm(User user,int which,QWidget *parent) :
     ui(new Ui::DialogGetArm)
 {
     this->which = which;
-    if (which == 1||which == 21||which == 22) //21->server  22->client
+    if (which == 1)
     {
         this->user = user;
     }

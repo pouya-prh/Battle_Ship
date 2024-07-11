@@ -21,7 +21,9 @@ SOURCES += \
     dialogondevice.cpp \
     dialogpage1.cpp \
     dialogserver.cpp \
+    dialogservergetam.cpp \
     dialogserverplay.cpp \
+    dialogserversetgameboard.cpp \
     dialogsetgameboard.cpp \
     dialogwon.cpp \
     draggablebutton.cpp \
@@ -49,7 +51,9 @@ HEADERS += \
     dialogondevice.h \
     dialogpage1.h \
     dialogserver.h \
+    dialogservergetam.h \
     dialogserverplay.h \
+    dialogserversetgameboard.h \
     dialogsetgameboard.h \
     dialogwon.h \
     draggablebutton.h \
@@ -75,7 +79,9 @@ FORMS += \
     dialogondevice.ui \
     dialogpage1.ui \
     dialogserver.ui \
+    dialogservergetam.ui \
     dialogserverplay.ui \
+    dialogserversetgameboard.ui \
     dialogsetgameboard.ui \
     dialogwon.ui \
     mainwindow.ui \

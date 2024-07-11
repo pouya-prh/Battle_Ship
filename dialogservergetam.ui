@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogServerGetAm</class>
+ <widget class="QDialog" name="DialogServerGetAm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1050</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/Back.jpg);</string>
+  </property>
+  <widget class="QPushButton" name="trackerButton">
+   <property name="geometry">
+    <rect>
+     <x>751</x>
+     <y>322</y>
+     <width>101</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="atomicBombButton">
+   <property name="geometry">
+    <rect>
+     <x>820</x>
+     <y>190</y>
+     <width>101</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="airDefanceButton">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>40</y>
+     <width>101</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/airDefense.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="GameBoard" name="tableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>68</y>
+     <width>431</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>381</width>
+     <height>411</height>
+    </size>
+   </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <property name="accessibleDescription">
+    <string/>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15pt &quot;BYRIL_Sea_Battle2&quot;;
+
+color: rgb(41, 134, 255);
+
+selection-background-color: rgb(0, 170, 255);
+
+gridline-color: rgb(48, 165, 255);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="lineWidth">
+    <number>0</number>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="autoScroll">
+    <bool>false</bool>
+   </property>
+   <property name="dragEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="dragDropMode">
+    <enum>QAbstractItemView::DragDrop</enum>
+   </property>
+   <property name="defaultDropAction">
+    <enum>Qt::MoveAction</enum>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::NoSelection</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <property name="gridStyle">
+    <enum>Qt::DashDotLine</enum>
+   </property>
+   <property name="cornerButtonEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="rowCount">
+    <number>10</number>
+   </property>
+   <property name="columnCount">
+    <number>10</number>
+   </property>
+   <attribute name="horizontalHeaderCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>40</number>
+   </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>40</number>
+   </attribute>
+   <attribute name="verticalHeaderMinimumSectionSize">
+    <number>40</number>
+   </attribute>
+   <attribute name="verticalHeaderDefaultSectionSize">
+    <number>40</number>
+   </attribute>
+   <row>
+    <property name="text">
+     <string>A</string>
+    </property>
+    <property name="font">
+     <font>
+      <fontweight>Thin</fontweight>
+     </font>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>B</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>D</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>E</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>F</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>G</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>H</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>I</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>J</string>
+    </property>
+   </row>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <column/>
+   <item row="0" column="0">
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+   <item row="3" column="2">
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="trackerCounter">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>401</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nextButton">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>510</y>
+     <width>221</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton{
+background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+background-color: rgb(85, 0, 255);
+font: 25pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 0, 255);
+}
+QPushButton:hover {
+ 
+	color: rgb(0, 85, 0);
+	background-color: rgb(0, 85, 0);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>Next</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="linearAttackButton">
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>320</y>
+     <width>101</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/square attack.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="mineButton">
+   <property name="geometry">
+    <rect>
+     <x>900</x>
+     <y>30</y>
+     <width>111</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/mine2.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="atomicBombCounter">
+   <property name="geometry">
+    <rect>
+     <x>820</x>
+     <y>270</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>901</x>
+     <y>30</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 150, 0);</string>
+   </property>
+   <property name="text">
+    <string>$5</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mineCounter">
+   <property name="geometry">
+    <rect>
+     <x>902</x>
+     <y>119</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>741</x>
+     <y>40</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 150, 0);</string>
+   </property>
+   <property name="text">
+    <string>$10</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="airDefanceCounter">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>120</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>820</x>
+     <y>190</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(150, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>$100</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="linearAttackCounter">
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>400</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>911</x>
+     <y>320</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 150, 0);</string>
+   </property>
+   <property name="text">
+    <string>$12</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>751</x>
+     <y>322</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(0, 150, 0);</string>
+   </property>
+   <property name="text">
+    <string>$15</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GameBoard</class>
+   <extends>QTableWidget</extends>
+   <header location="global">gameboard.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

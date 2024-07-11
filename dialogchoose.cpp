@@ -8,6 +8,8 @@ DialogChoose::DialogChoose(User user,QWidget *parent)
     ,user(user)
 {
     ui->setupUi(this);
+
+
 }
 
 DialogChoose::~DialogChoose()

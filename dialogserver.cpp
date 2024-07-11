@@ -1,8 +1,9 @@
 #include "dialogserver.h"
 #include "ui_dialogserver.h"
-#include "dialoggetarm.h"
+#include  "dialogservergetam.h"
+#include "dialogserversetgameboard.h"
 #include "QDebug"
-
+#include "dialogserverplay.h"
 DialogServer::DialogServer(User user,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogServer)
@@ -22,7 +23,6 @@ DialogServer::DialogServer(User user,QWidget *parent)
     }
 
 }
-DialogServer::DialogServer(QWidget *parent){}
 
 DialogServer::~DialogServer()
 {
@@ -35,51 +35,88 @@ void DialogServer::onNewConnection()
     qDebug() << "Client connected!";
     socket = server->nextPendingConnection();
     connect(socket, &QTcpSocket::readyRead, this, &DialogServer::readClientData);
-    connect(this, &DialogServer::cellClicked, this, &DialogServer::handleCellClicked);
     Connected();
 }
 
 void DialogServer::Connected()
 {
     this->close();
-    DialogGetArm* getArm = new DialogGetArm(user,21);
+    DialogServerGetAm* getArm = new DialogServerGetAm(user);
     getArm->show();
+    connect(getArm,&DialogServerGetAm::ArmsSet,this,[this,getArm]()
+    {
+        arms = getArm->returnArms();
+        DialogServerSetGameBoard* setBoard = new DialogServerSetGameBoard(user,arms);
+        setBoard->show();
+        connect(setBoard,&DialogServerSetGameBoard::SetGameBoardFinished,this,&DialogServer::SetServerBoard);      
+    });
 
 
 }
-void DialogServer::handleCellClicked(int row, int column)
+
+void DialogServer::SetServerBoard(int** cells)
 {
-    if (socket && socket->isOpen()) {
-        QByteArray data;
-        QDataStream out(&data, QIODevice::WriteOnly);
-        out << row << column;
-        socket->write(data);
+    serverGameBoard = cells;
+    DialogServerPlay* gamePage = new DialogServerPlay(this,user,arms,serverGameBoard);
+    gamePage->show();
+  //  connect(Client,&DialogClient::ClientMoved,this,&DialogServer::readClientData);
+
+}
+void DialogServer::sendCoordinatesToClient(int row, int column)
+{
+    if (!socket) {
+        qDebug() << "No client connected";
+        return;
     }
+    QByteArray block;
+    QDataStream out(&block, QIODevice::WriteOnly);
+    out << static_cast<int>(2); // DataType: 2 for coordinates
+    out << row << column;
+    socket->write(block);
 }
 void DialogServer::readClientData()
 {
-    QTcpSocket *clientSocket = qobject_cast<QTcpSocket*>(sender());
-    if (!clientSocket) {
-        return;
+    if (socket->bytesAvailable() < sizeof(int)) {
+        return; // Wait until enough data is available
     }
+    QDataStream in(socket);
+    int dataType;
+    in >> dataType;
 
-    QByteArray data = clientSocket->readAll();
-    // Assuming data contains coordinates in a known format (e.g., "row,column")
-    QList<QByteArray> parts = data.split(',');
-    if (parts.size() == 2) {
-        int row = parts[0].toInt();
-        int column = parts[1].toInt();
-        handleReceivedCoordinates(row, column);
+    if (dataType == 1) {
+        // Read 2D array data
+        int rows, columns;
+        in >> rows >> columns;
+        int** array = new int*[rows];
+        for (int i = 0; i < rows; ++i) {
+            array[i] = new int[columns];
+            for (int j = 0; j < columns; ++j) {
+                in >> array[i][j];
+            }
+        }
+        handleArrayRecievedFromClient(array);
+    }
+    else if (dataType == 2) {
+        // Read coordinates data
+        int row, column;
+        in >> row >> column;
+        handleCoordinatesRecievedFromClient(row,column);
+    } else {
+        // Unknown data type
+        qDebug() << "Unknown data type received";
     }
 }
 
-void DialogServer::handleReceivedCoordinates(int row, int column)
+void DialogServer::handleCoordinatesRecievedFromClient(int row, int column)
 {
     // Push coordinates to DialogPlaytogether instance or emit a signal
     emit coordinatesReceivedFromServer(row, column);
 }
 
-
+int** DialogServer::handleArrayRecievedFromClient(int** cells)
+{
+    return cells;
+}
 
 
 QString DialogServer::getSystemIpAddress()
@@ -93,4 +130,52 @@ QString DialogServer::getSystemIpAddress()
         }
     }
     return QString();
+}
+
+QByteArray DialogServer::serialize2DArray(int** array, int rows, int columns) {
+    QByteArray byteArray;
+    QDataStream out(&byteArray, QIODevice::WriteOnly);
+    out << rows << columns;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < columns; ++j) {
+            out << array[i][j];
+        }
+    }
+    return byteArray;
+}
+
+int** DialogServer::deserialize2DArray(const QByteArray& byteArray, int& rows, int& columns) {
+    QDataStream in(byteArray);
+    in >> rows >> columns;
+    int** array = new int*[rows];
+    for (int i = 0; i < rows; ++i) {
+        array[i] = new int[columns];
+        for (int j = 0; j < columns; ++j) {
+            in >> array[i][j];
+        }
+    }
+    return array;
+}
+void DialogServer::send2DArrayToClient(int** array, int rows, int columns) {
+    if (!socket) {
+        qDebug() << "No client connected";
+        return;
+    }
+    QByteArray block;
+    QDataStream out(&block, QIODevice::WriteOnly);
+    out << static_cast<int>(1); // DataType: 1 for 2D array
+    out << rows << columns;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < columns; ++j) {
+            out << array[i][j];
+        }
+    }
+    socket->write(block);
+}
+
+int** DialogServer::ReadArray() {
+    QByteArray data = socket->readAll();
+    int rows, columns;
+    int** array = deserialize2DArray(data, rows, columns);
+    return array;
 }

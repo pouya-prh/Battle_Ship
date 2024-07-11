@@ -8,6 +8,7 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 
+
 namespace Ui {
 class DialogServer;
 }
@@ -18,20 +19,27 @@ class DialogServer : public QDialog
 
 public:
     explicit DialogServer(User,QWidget *parent = nullptr);
-    DialogServer(QWidget *parent = nullptr);
     ~DialogServer();
     void Connected();
     QString getSystemIpAddress();
-    void readClientData();
-    void handleReceivedCoordinates(int row, int column);
+    int** handleArrayRecievedFromClient(int**);
+    void handleCoordinatesRecievedFromClient(int row, int column);
     void play(User,Arms,int**);
+    QByteArray serialize2DArray(int**,int,int);
+    int** deserialize2DArray(const QByteArray&, int&, int&);
+
+    int** ReadArray();
 
 private slots:
     void onNewConnection();
-    void handleCellClicked(int row, int column);
+    void sendCoordinatesToClient(int,int);
+    void send2DArrayToClient(int**,int,int);
+    void SetServerBoard(int**);
+    void readClientData();
 signals:
     void coordinatesReceivedFromServer(int,int);
     void cellClicked(int row, int column);
+    void ServerMoved();
 private:
     Ui::DialogServer *ui;
     QTcpSocket *socket;
@@ -39,6 +47,7 @@ private:
     User user;
     Arms arms;
     int** serverGameBoard;
+    //DialogClient Client;
 
 };
 

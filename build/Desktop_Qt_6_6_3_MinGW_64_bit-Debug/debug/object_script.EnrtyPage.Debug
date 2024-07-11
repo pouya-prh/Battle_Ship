@@ -8,7 +8,9 @@ debug/dialoglost.o
 debug/dialogondevice.o
 debug/dialogpage1.o
 debug/dialogserver.o
+debug/dialogservergetam.o
 debug/dialogserverplay.o
+debug/dialogserversetgameboard.o
 debug/dialogsetgameboard.o
 debug/dialogwon.o
 debug/draggablebutton.o
@@ -36,7 +38,9 @@ debug/moc_dialoglost.o
 debug/moc_dialogondevice.o
 debug/moc_dialogpage1.o
 debug/moc_dialogserver.o
+debug/moc_dialogservergetam.o
 debug/moc_dialogserverplay.o
+debug/moc_dialogserversetgameboard.o
 debug/moc_dialogsetgameboard.o
 debug/moc_dialogwon.o
 debug/moc_draggablebutton.o

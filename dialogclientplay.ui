@@ -16,7 +16,23 @@
   <property name="styleSheet">
    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/Back.jpg);</string>
   </property>
-  <widget class="GameBoard" name="Server_TableWidget">
+  <widget class="QPushButton" name="linearAttackbutton">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>514</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/squareAttackFliped.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="GameBoard" name="Client_TableWidget">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -192,40 +208,23 @@ gridline-color: rgb(48, 165, 255);</string>
     </property>
    </item>
   </widget>
-  <widget class="QPushButton" name="trackerButton">
+  <widget class="QPushButton" name="atomicBombButton">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>510</y>
+     <x>190</x>
+     <y>515</y>
      <width>81</width>
      <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);</string>
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="DraggableButton" name="atomicZone">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>340</y>
-     <width>160</width>
-     <height>160</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">image: url(:/redBox.png);
-background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="GameBoard" name="Client_tableWidget">
+  <widget class="GameBoard" name="Server_tableWidget">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -395,28 +394,27 @@ gridline-color: rgb(48, 165, 255);</string>
     </property>
    </item>
   </widget>
-  <widget class="DraggableButton" name="trackerButton2">
+  <widget class="QPushButton" name="planeLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>510</y>
-     <width>80</width>
-     <height>80</height>
+     <x>10</x>
+     <y>20</y>
+     <width>101</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/grinTracker.png);
-background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
+    <string notr="true">background-image: url(:/squareAttackFliped.png);</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="trackerCounter">
+  <widget class="QLabel" name="linearAttackCounter">
    <property name="geometry">
     <rect>
-     <x>128</x>
-     <y>568</y>
+     <x>380</x>
+     <y>577</y>
      <width>21</width>
      <height>21</height>
     </rect>
@@ -433,17 +431,18 @@ color: rgb(85, 85, 85);</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="atomicBombButton">
+  <widget class="QLabel" name="turnLabel">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>510</y>
-     <width>81</width>
-     <height>81</height>
+     <x>510</x>
+     <y>260</y>
+     <width>41</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/atomic bomb.png);</string>
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/fleshP.png);
+background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -453,7 +452,7 @@ color: rgb(85, 85, 85);</string>
    <property name="geometry">
     <rect>
      <x>250</x>
-     <y>569</y>
+     <y>576</y>
      <width>21</width>
      <height>21</height>
     </rect>
@@ -470,10 +469,47 @@ color: rgb(85, 85, 85);</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="DraggableButton" name="atomicZone_2">
+  <widget class="QPushButton" name="trackerButton">
    <property name="geometry">
     <rect>
-     <x>156</x>
+     <x>51</x>
+     <y>515</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Recommended Source Files/Recommended Source Files/Images/tracker.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="trackerCounter">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>580</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
+font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
+color: rgb(85, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="DraggableButton" name="atomicZone">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
      <y>440</y>
      <width>160</width>
      <height>160</height>
@@ -487,54 +523,18 @@ background-image: url(:/Recommended Source Files/Recommended Source Files/Images
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="linearAttackbutton">
+  <widget class="DraggableButton" name="trackerButton2">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>510</y>
-     <width>81</width>
-     <height>81</height>
+     <x>50</x>
+     <y>520</y>
+     <width>80</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/squareAttackFliped.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="linearAttackCounter">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>570</y>
-     <width>21</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);
-font: 10pt &quot;BYRIL_Sea_Battle2&quot;;
-color: rgb(85, 85, 85);</string>
-   </property>
-   <property name="text">
-    <string>0</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="planeLabel">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>40</y>
-     <width>101</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/squareAttackFliped.png);</string>
+    <string notr="true">image: url(:/grinTracker.png);
+background-image: url(:/Recommended Source Files/Recommended Source Files/Images/WhiteBackG.png);</string>
    </property>
    <property name="text">
     <string/>

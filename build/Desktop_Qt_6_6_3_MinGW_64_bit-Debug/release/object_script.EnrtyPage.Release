@@ -8,7 +8,9 @@ release/dialoglost.o
 release/dialogondevice.o
 release/dialogpage1.o
 release/dialogserver.o
+release/dialogservergetam.o
 release/dialogserverplay.o
+release/dialogserversetgameboard.o
 release/dialogsetgameboard.o
 release/dialogwon.o
 release/draggablebutton.o
@@ -36,7 +38,9 @@ release/moc_dialoglost.o
 release/moc_dialogondevice.o
 release/moc_dialogpage1.o
 release/moc_dialogserver.o
+release/moc_dialogservergetam.o
 release/moc_dialogserverplay.o
+release/moc_dialogserversetgameboard.o
 release/moc_dialogsetgameboard.o
 release/moc_dialogwon.o
 release/moc_draggablebutton.o

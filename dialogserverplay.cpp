@@ -1,16 +1,24 @@
 #include "dialogserverplay.h"
 #include "ui_dialogserverplay.h"
-#include "dialogserver.h"
-DialogServerPlay::DialogServerPlay(User user,Arms arms,int** ServerBoard,QWidget *parent)
+
+DialogServerPlay::DialogServerPlay(DialogServer* server,User user,Arms arms,int** ServerBoard,QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::DialogServerPlay)
+    ,Server(server)
+    ,arms(arms)
 {
-    ui->setupUi(this);
-    this->ServerBoard = ServerBoard;
     this->user = user;
-    this->arms = arms;
-    DialogServer *server = new DialogServer();
-    connect(ui->Server_tableWidget, &QTableWidget::cellClicked, server, &DialogServer::cellClicked);
+   // this->arms = arms;
+    this->ServerBoard = ServerBoard;
+    ui->setupUi(this);
+    setAcceptDrops(true);
+    ui->trackerButton2->hide();
+    ui->planeLabel->hide();
+    ui->atomicZone->hide();
+    ui->linearAttackCounter->setText(QString::number(arms.getLineAttackerCount()));
+    ui->atomicBombCounter->setText(QString::number(arms.getAtomicBombCount()));
+    ui->trackerCounter->setText(QString::number(arms.getTrackerCount()));
+
 }
 
 DialogServerPlay::~DialogServerPlay()

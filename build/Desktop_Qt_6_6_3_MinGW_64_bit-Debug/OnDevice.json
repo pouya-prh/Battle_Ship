@@ -1,7 +1,7 @@
 {
-     "airDefenseCounter": 0,
-     "atomicBombCounter": 0,
-     "linearAttackCounter": 0,
-     "mineCounter": 0,
-     "trackerCounter": 3
+     "airDefenseCounter": 2,
+     "atomicBombCounter": 1,
+     "linearAttackCounter": 2,
+     "mineCounter": 1,
+     "trackerCounter": 1
 }
